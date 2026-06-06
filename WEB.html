@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectra Event Organizer</title>
+    <style>
+        /* Mendaftarkan variabel warna agar bisa dianimasikan oleh browser */
+        @property --warna1 {
+            syntax: '<color>';
+            initial-value: #667eea;
+            inherits: false;
+        }
+        @property --warna2 {
+            syntax: '<color>';
+            initial-value: #764ba2;
+            inherits: false;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* Menggunakan variabel warna pada gradasi */
+            background: linear-gradient(135deg, var(--warna1) 0%, var(--warna2) 100%);
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            /* Animasi transisi transisi warna selama 2 detik */
+            transition: --warna1 2s ease, --warna2 2s ease; 
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 650px;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 1.5rem;
+        }
+        .content-section {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo-spectra {
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        h1 { 
+            margin: 0 0 0.5rem 0; 
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+        }
+        h2 {
+            font-size: 1.4rem;
+            color: #f3e5f5;
+            margin-bottom: 0.5rem;
+            border-left: 4px solid #fff;
+            padding-left: 10px;
+        }
+        p { 
+            opacity: 0.9; 
+            line-height: 1.6;
+            margin: 0 0 1rem 0;
+        }
+        ul {
+            margin: 0 0 1rem 0;
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+        li {
+            opacity: 0.9;
+        }
+        .contact-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-section">
+            <img src="LOGO.png" alt="Logo Spectra Jaya Abadi" class="logo-spectra">
+            <h1 id="greeting">SPECTRA EVENT ORGANIZER</h1>
+            <p style="font-style: italic; opacity: 0.8;">Mewujudkan event yang kreatif, profesional, dan berkesan.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Tentang Kami</h2>
+            <p>Spectra merupakan organisasi yang bergerak di bidang penyelenggaraan berbagai kegiatan dan event.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Event Terbaru</h2>
+            <ul>
+                <li>Seminar Nasional 2026</li>
+                <li>Festival Seni dan Budaya</li>
+                <li>Kompetisi Kreatif Mahasiswa</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Kontak</h2>
+            <div class="contact-info">
+                <strong>Email:</strong> info@spectra.com
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Daftar kombinasi warna (Warna Kiri dan Warna Kanan)
+        const themes = [
+            { w1: '#667eea', w2: '#764ba2' }, // Ungu - Biru (Awal)
+            { w1: '#ff9a9e', w2: '#fecfef' }, // Pink Lembut
+            { w1: '#a1c4fd', w2: '#c2e9fb' }, // Biru Langit
+            { w1: '#11998e', w2: '#38ef7d' }, // Hijau Tosca
+            { w1: '#ff9a00', w2: '#ff5a00' }  // Oranye Cerah
+        ];
+        
+        let currentThemeIndex = 0;
+
+        function changeBackgroundAutomatically() {
+            // Naikkan indeks urutan tema warna
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            
+            // Ubah isi variabel CSS secara langsung melalui JavaScript
+            document.body.style.setProperty('--warna1', themes[currentThemeIndex].w1);
+            document.body.style.setProperty('--warna2', themes[currentThemeIndex].w2);
+        }
+
+        // Jalankan fungsi otomatis setiap 4 detik sekali
+        setInterval(changeBackgroundAutomatically, 4000);
+    </script>
+</body>
+</html>
