@@ -6,51 +6,74 @@
     <title>Spectra Event Organizer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* --- ANIMASI WELCOME SPLASH SCREEN CAPITAL (ALA VIDEO GAME) --- */
+        /* --- ANIMASI WELCOME SPLASH SCREEN ANTI-STUCK --- */
         #splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #000000 !important; /* Memaksa latar belakang awal HITAM pekat */
+            background-color: #000000 !important;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 99999; /* Angka super besar agar tidak tertutup apapun */
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            z-index: 99999;
             padding: 20px;
             box-sizing: border-box;
+            
+            /* PENGAMAN UTAMA: Layar hitam dipaksa memudar & hilang otomatis pada detik ke-4 
+               walaupun JavaScript browser sedang macet */
+            animation: fadeOutSplash 1s ease 4s forwards;
+            pointer-events: auto;
         }
 
         .welcome-text {
             font-size: 2.2rem; 
             font-weight: 800;
-            color: #ffffff !important; /* Memaksa teks awal berwarna PUTIH */
+            color: #ffffff !important;
             letter-spacing: 4px;
             text-transform: uppercase; 
             text-align: center;
             text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
-            animation: gameIntro 2.8s ease-out forwards;
+            animation: gameIntro 2.5s ease-out forwards;
             opacity: 0;
             line-height: 1.4;
             max-width: 900px;
         }
 
+        /* Tombol Lewati Darurat di Pojok Kanan Bawah */
+        .skip-btn {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .skip-btn:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* Animasi Teks Muncul */
         @keyframes gameIntro {
-            0% {
-                opacity: 0;
-                transform: translateY(40px);
-                filter: blur(10px);
-            }
-            60% {
-                opacity: 1;
-                filter: blur(0px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+            60% { opacity: 1; filter: blur(0px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animasi Pengaman Hilang Otomatis */
+        @keyframes fadeOutSplash {
+            0% { opacity: 1; visibility: visible; }
+            99% { opacity: 0; visibility: visible; }
+            100% { opacity: 0; visibility: hidden; display: none; pointer-events: none; }
         }
 
         /* --- STYLING UTAMA WEB SPECTRA EO --- */
@@ -59,7 +82,7 @@
             margin: 0;
             display: flex;
             min-height: 100vh;
-            background-color: #ffffff !important; /* Latar luar dikunci PUTIH */
+            background-color: #ffffff !important; /* Latar belakang luar murni PUTIH */
             color: #ffffff; 
             box-sizing: border-box;
         }
@@ -185,6 +208,7 @@
 
     <div id="splash-screen">
         <div class="welcome-text">WELCOME DI WEBSITE RESMI PT SPECTRA JAYA ABADI</div>
+        <button class="skip-btn" onclick="manualCloseSplash()">Lewati <i class="fa-solid fa-forward"></i></button>
     </div>
 
     <nav>
@@ -212,27 +236,4 @@
                     <p style="font-style: italic; opacity: 0.8; text-align: center;">"Mewujudkan Event yang Kreatif, Profesional, dan Berkesan"</p>
                 </div>
                 <p style="text-align: center;">Selamat datang di platform resmi PT Spectra Jaya Abadi. Kami siap membantu merencanakan dan mengeksekusi berbagai kegiatan penting Anda dengan standar kualitas tertinggi.</p>
-                <p style="text-align: center;">Silakan pilih menu di panel sebelah kiri untuk menjelajahi profil serta agenda lengkap kami.</p>
-            </div>
-
-            <div id="tentang" class="page-content">
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <span style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8;">Profil Perusahaan</span>
-                    <h1 style="font-size: 2rem; margin-top: 5px;">PT Spectra Jaya Abadi</h1>
-                </div>
-                <h2>Tentang Perusahaan</h2>
-                <p>PT Spectra Jaya Abadi adalah perusahaan yang bergerak di bidang Event Organizer (EO) yang didirikan pada tahun 2024 di Indralaya Utara, Kabupaten Ogan Ilir, Sumatera Selatan. Perusahaan ini lahir dari semangat dua orang pendiri yang memiliki visi untuk menghadirkan berbagai kegiatan yang tidak hanya menghibur, tetapi juga memberikan manfaat bagi masyarakat. Seiring perkembangan perusahaan, tim pendiri bertambah menjadi tiga orang yang bersama-sama berkomitmen mengembangkan PT Spectra Jaya Abadi menjadi penyelenggara acara yang profesional dan terpercaya.</p>
-                <p>Dengan mengusung slogan <strong>“Mewujudkan Event yang Kreatif, Profesional, dan Berkesan”</strong>, PT Spectra Jaya Abadi berfokus pada penyelenggaraan berbagai kegiatan kompetitif, edukatif, dan sosial.</p>
-                
-                <h2>Bidang Kegiatan</h2>
-                <ul>
-                    <li>Turnamen video game dan e-sports.</li>
-                    <li>Kompetisi dan festival pelajar.</li>
-                    <li>Kegiatan Palang Merah Remaja (PMR) dan Palang Merah Indonesia (PMI).</li>
-                    <li>Program penggalangan dana untuk korban bencana alam.</li>
-                    <li>Kegiatan sosial seperti pembagian takjil dan bakti sosial.</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <h2 style="margin-top: 0;">Visi</h2>
-                    <p>Menjadi perusahaan event organizer yang unggul, inovatif, dan terpercaya dalam menyelenggarakan kegiatan kreatif, edukatif
+                <p style="text-align: center;">Silakan pilih menu di panel sebelah kiri untuk menjelajahi profil serta agenda lengkap
