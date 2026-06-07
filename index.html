@@ -18,6 +18,7 @@
             background-color: #ffffff;
             color: #222222;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* --- SPLASH SCREEN BLACK --- */
@@ -33,33 +34,81 @@
             align-items: center;
             z-index: 99999;
             padding: 20px;
-            animation: lunturLayar 0.6s ease 2.8s forwards;
+            animation: lunturLayar 0.6s ease 3.8s forwards;
+            overflow: hidden; /* Biar partikel gak keluar layar */
         }
 
-        /* Box welcome disesuaikan agar menyatu dengan kilatan petir */
+        /* Box welcome dengan efek glow listrik */
         .welcome-box {
             text-align: center;
-            border: 3px solid #ffffff; 
-            padding: 25px 40px;
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            border: 4px solid #ffffff; 
+            padding: 30px 50px;
+            background: rgba(255, 255, 255, 0.02);
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.5), inset 0 0 20px rgba(0, 210, 255, 0.3);
+            position: relative;
             animation: wadahMuncul 1.2s ease-out forwards;
         }
 
-        /* --- ANIMASI PETIR PADA TEKS --- */
+        /* --- ANIMASI BRUTAL PADA TEKS --- */
         .welcome-text {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 900;
             color: #ffffff; 
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             line-height: 1.4;
-            /* Pasang animasi petir berkedip dan menyengat */
-            animation: kilatPetir 0.3s linear infinite alternate;
+            position: relative;
+            /* Pasang animasi petir brutal dan glitch kencang */
+            animation: kilatPetir 0.15s linear infinite alternate, textGlitch 0.5s ease-in-out infinite;
         }
 
+        /* Efek Glitch Merah-Biru di belakang teks */
+        .welcome-text::before,
+        .welcome-text::after {
+            content: "WELCOME DI WEBSITE RESMI\brPT SPECTRA JAYA ABADI";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+
+        .welcome-text::before {
+            color: #ff0055;
+            z-index: -1;
+            animation: glitchRed 0.4s ease-in-out infinite;
+        }
+
+        .welcome-text::after {
+            color: #00ffff;
+            z-index: -2;
+            animation: glitchBlue 0.4s ease-in-out infinite 0.2s;
+        }
+
+        /* --- PARTIKEL MELEDAK --- */
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #00d2ff;
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleBurst 1s ease-out forwards;
+        }
+
+        /* Menambahkan partikel secara manual dengan posisi berbeda */
+        .p1 { top: 20%; left: 10%; animation-delay: 0.1s; }
+        .p2 { top: 50%; left: 5%; animation-delay: 0.2s; }
+        .p3 { top: 80%; left: 15%; animation-delay: 0.3s; }
+        .p4 { top: 15%; right: 10%; animation-delay: 0.1s; }
+        .p5 { top: 45%; right: 5%; animation-delay: 0.2s; }
+        .p6 { top: 75%; right: 15%; animation-delay: 0.3s; }
+        .p7 { top: 5%; left: 50%; animation-delay: 0.4s; }
+        .p8 { bottom: 5%; left: 50%; animation-delay: 0.4s; }
+
         @keyframes wadahMuncul {
-            0% { opacity: 0; transform: scale(0.9); }
+            0% { opacity: 0; transform: scale(0.8); }
             100% { opacity: 1; transform: scale(1); }
         }
 
@@ -69,32 +118,68 @@
             100% { opacity: 0; visibility: hidden; display: none !important; z-index: -1; }
         }
 
-        /* KEYFRAMES EFEK PETIR/KILATAN LISTRIK */
+        /* KEYFRAMES EFEK PETIR BRUTAL KENCANG */
         @keyframes kilatPetir {
-            0%, 20%, 40%, 60%, 80%, 100% {
+            0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100% {
                 text-shadow: 
-                    0 0 4px #ffffff,
-                    0 0 10px #00d2ff,
-                    0 0 20px #00d2ff,
-                    0 0 40px #0066ff;
+                    0 0 5px #ffffff,
+                    0 0 15px #00d2ff,
+                    0 0 30px #00d2ff,
+                    0 0 60px #0066ff,
+                    0 0 100px #0011ff;
                 opacity: 1;
             }
-            /* Detik-detik redup mendadak sebelum menyambar kencang */
-            10%, 30%, 70% {
-                text-shadow: 
-                    0 0 2px #ffffff,
-                    0 0 4px #00d2ff;
-                opacity: 0.6;
-            }
-            90% {
-                text-shadow: 
-                    0 0 8px #ffffff,
-                    0 0 25px #00d2ff,
-                    0 0 50px #0066ff,
-                    0 0 80px #0011ff;
-                opacity: 1;
+            /* Flicker super cepat dan redup total */
+            5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% {
+                text-shadow: none;
+                opacity: 0.1;
             }
         }
+
+        /* KEYFRAMES TEXT GLITCH */
+        @keyframes textGlitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes glitchRed {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(-5px, -5px); }
+            60% { transform: translate(5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes glitchBlue {
+            0% { transform: translate(0); }
+            20% { transform: translate(5px, -5px); }
+            40% { transform: translate(5px, 5px); }
+            60% { transform: translate(-5px, -5px); }
+            80% { transform: translate(-5px, 5px); }
+            100% { transform: translate(0); }
+        }
+
+        /* KEYFRAMES PARTIKEL MELEDAK */
+        @keyframes particleBurst {
+            0% { opacity: 0; transform: scale(1) translate(0, 0); }
+            10% { opacity: 1; }
+            100% { opacity: 0; transform: scale(0.5) translate(var(--tw), var(--th)); }
+        }
+
+        /* Variabel CSS untuk arah ledakan partikel manual */
+        .p1 { --tw: -100px; --th: -100px; }
+        .p2 { --tw: -150px; --th: 0px; }
+        .p3 { --tw: -100px; --th: 100px; }
+        .p4 { --tw: 100px; --th: -100px; }
+        .p5 { --tw: 150px; --th: 0px; }
+        .p6 { --tw: 100px; --th: 100px; }
+        .p7 { --tw: 0px; --th: -150px; }
+        .p8 { --tw: 0px; --th: 150px; }
 
         /* --- TATA LETAK UTAMA MENYAMPING --- */
         .wrapper {
@@ -372,6 +457,14 @@
     <div id="splash-screen">
         <div class="welcome-box">
             <div class="welcome-text">WELCOME DI WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
+            <div class="particle p1"></div>
+            <div class="particle p2"></div>
+            <div class="particle p3"></div>
+            <div class="particle p4"></div>
+            <div class="particle p5"></div>
+            <div class="particle p6"></div>
+            <div class="particle p7"></div>
+            <div class="particle p8"></div>
         </div>
     </div>
 
