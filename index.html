@@ -3,101 +3,432 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PT Spectra Jaya Abadi</title>
+    <title>PT Spectra Jaya Abadi - Official Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
     <style>
-        /* 1. VARIABEL WARNA (Mudah diubah) */
-        :root {
-            --primary: #4a148c;
-            --secondary: #764ba2;
-            --dark: #1e1b29;
-            --white: #ffffff;
-            --gray: #f8f9fa;
+        /* --- UTILITY RESET & DASAR --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
         }
 
-        /* 2. BASE STYLING */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--white); color: #222; padding: 20px; line-height: 1.6; }
-        .main-container { max-width: 800px; margin: 0 auto; }
+        body {
+            background-color: #ffffff;
+            color: #222222;
+            line-height: 1.6;
+            padding: 15px;
+        }
 
-        /* 3. KOMPONEN UI */
-        header { text-align: center; margin-bottom: 30px; }
-        .logo-box { border: 2px solid var(--primary); display: inline-block; padding: 10px 30px; border-radius: 50px; }
-        
-        nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
-        nav a { background: var(--secondary); color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; }
-        
-        .section { display: none; padding: 20px; border-radius: 10px; border: 1px solid #eee; }
-        :target { display: block !important; }
-        :target ~ #beranda { display: none !important; }
-        #beranda:target { display: block !important; }
-        #beranda { display: block; }
+        /* --- SPLASH SCREEN ANIMASI MASUK --- */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #4a148c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            padding: 20px;
+            animation: lunturLayar 0.6s ease 3.2s forwards;
+            pointer-events: none;
+        }
 
-        /* 4. SUB-MENU EVENT */
-        .sub-nav { display: flex; gap: 10px; margin-bottom: 20px; }
-        .sub-nav a { background: var(--primary); color: white; padding: 8px 15px; border-radius: 4px; font-size: 0.9rem; text-decoration: none; }
-        .sub-page { display: none; padding: 15px; background: var(--gray); border-radius: 8px; }
-        #event-mendatang:target, #event-selesai:target { display: block !important; }
+        .welcome-box {
+            text-align: center;
+            border: 3px solid #ffffff;
+            padding: 25px 40px;
+            background: rgba(0, 0, 0, 0.2);
+            animation: wadahMuncul 1.5s ease-out forwards;
+        }
 
-        /* 5. TYPOGRAPHY & BOXES */
-        h1 { color: var(--primary); margin-bottom: 10px; }
-        .dark-box { background: var(--dark); color: white; padding: 20px; border-radius: 10px; margin: 15px 0; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0; }
-        .card { background: var(--gray); padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #eee; }
+        .welcome-text {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1.4;
+        }
+
+        @keyframes wadahMuncul {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes lunturLayar {
+            0% { opacity: 1; visibility: visible; }
+            100% { opacity: 0; visibility: hidden; display: none !important; }
+        }
+
+        /* --- HEADER & LOGO (PERSIS GAMBAR) --- */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header .logo-container {
+            display: inline-block;
+            border: 2px solid #4a148c;
+            padding: 4px 20px;
+            border-radius: 30px;
+            margin-bottom: 10px;
+        }
+
+        header img {
+            height: 45px;
+            vertical-align: middle;
+        }
+
+        header h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #222222;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* --- MENU BERTUMPUK (VERTICAL STACK) --- */
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 450px;
+            margin: 0 auto 25px auto;
+        }
+
+        nav a {
+            background: #764ba2;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: background 0.3s ease;
+        }
+
+        nav a i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        nav a:hover, nav a:active {
+            background: #4a148c;
+        }
+
+        /* --- AREA KONTEN UTAMA --- */
+        .main-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* LOGIKA CSS TARGET UNTUK PERPINDAHAN NAVIGATION */
+        .page-content {
+            display: none;
+            width: 100%;
+            animation: efekPudar 0.4s ease-in-out forwards;
+        }
+
+        /* Kondisi Awal: Tampilkan Beranda */
+        #beranda {
+            display: block;
+        }
+
+        /* Kondisi Klik: Tampilkan yang dipilih, sembunyikan beranda */
+        :target {
+            display: block !important;
+        }
+        :target ~ #beranda {
+            display: none !important;
+        }
+        #beranda:target {
+            display: block !important;
+        }
+
+        @keyframes efekPudar {
+            0% { opacity: 0; transform: translateY(5px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- STYLING TEKS & KONTEN --- */
+        .title-main {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #111111;
+            margin-bottom: 3px;
+        }
+
+        .company-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #4a148c;
+            margin-bottom: 15px;
+        }
+
+        .subtitle-sec {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #4a148c;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+
+        .text-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #444444;
+            text-align: justify;
+            margin-bottom: 12px;
+        }
+
+        /* Grid Bidang Kegiatan */
+        .kegiatan-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .kegiatan-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 15px 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .kegiatan-card i {
+            font-size: 1.6rem;
+            color: #4a148c;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .kegiatan-card p {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #222222;
+        }
+
+        /* List Nilai-Nilai Perusahaan */
+        .list-nilai {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .list-nilai li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            color: #444444;
+        }
+
+        .list-nilai li::before {
+            content: "•";
+            color: #4a148c;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 5px;
+            top: -2px;
+        }
+
+        /* Kotak Informasi Eksklusif (Dark Box) */
+        .dark-box {
+            background: #1e1b29;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 12px;
+        }
+
+        .dark-box h3 {
+            color: #ffffff;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            border-left: 4px solid #764ba2;
+            padding-left: 8px;
+        }
+
+        .dark-box ul {
+            padding-left: 15px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .dark-box li {
+            margin-bottom: 5px;
+        }
+
+        /* Kontak Info (Sesuai Berkas Proposal Asli) */
+        .contact-box {
+            background: #f8f9fa;
+            border-left: 4px solid #4a148c;
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+            margin-top: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #333333;
+        }
+
+        .contact-item i {
+            color: #4a148c;
+            margin-top: 4px;
+            width: 15px;
+            text-align: center;
+        }
+
+        .event-badge {
+            background: #e53935;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
     </style>
 </head>
-
 <body>
-    <div class="main-container">
-        <header>
-            <div class="logo-box"><h2>SPECTRA EO</h2></div>
-        </header>
 
-        <nav>
-            <a href="#beranda">Beranda</a>
-            <a href="#tentang">Tentang</a>
-            <a href="#event">Event</a>
-            <a href="#kontak">Kontak</a>
-        </nav>
-
-        <div id="beranda" class="section">
-            <h1>Profil Perusahaan</h1>
-            <p>PT Spectra Jaya Abadi - Mewujudkan Event yang Kreatif, Profesional, dan Berkesan.</p>
-            <div class="grid">
-                <div class="card"><i class="fa-solid fa-gamepad"></i><p>e-sports</p></div>
-                <div class="card"><i class="fa-solid fa-square-plus"></i><p>PMI / PMR</p></div>
-            </div>
-        </div>
-
-        <div id="tentang" class="section">
-            <h1>Tentang Kami</h1>
-            <p>Berdiri sejak 2024 di Indralaya Utara, Ogan Ilir.</p>
-        </div>
-
-        <div id="event" class="section">
-            <h1>Agenda & Acara</h1>
-            <div class="sub-nav">
-                <a href="#event-mendatang">Mendatang</a>
-                <a href="#event-selesai">Selesai</a>
-            </div>
-            <div id="event-mendatang" class="sub-page">
-                <h3>🎉 GEBYAR HARI PMI 2026</h3>
-                <p>Segera hadir kompetisi tingkat Sumatera Selatan!</p>
-            </div>
-            <div id="event-selesai" class="sub-page">
-                <h3>🏆 Turnamen e-Sports 2024</h3>
-                <p>Event yang telah sukses dilaksanakan.</p>
-            </div>
-        </div>
-
-        <div id="kontak" class="section">
-            <h1>Hubungi Kami</h1>
-            <div class="dark-box">
-                <p>Telepon: +62 821-8507-8701</p>
-                <p>Alamat: Jl. Desa Tanjung Baru, Indralaya Utara</p>
-            </div>
+    <div id="splash-screen">
+        <div class="welcome-box">
+            <div class="welcome-text">WELCOME DI WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
         </div>
     </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo PT Spectra Jaya Abadi">
+        </div>
+        <h2>SPECTRA EO</h2>
+    </header>
+
+    <nav>
+        <a href="#beranda"><i class="fa-solid fa-house"></i> Beranda</a>
+        <a href="#tentang"><i class="fa-solid fa-building-user"></i> Tentang Kami</a>
+        <a href="#event"><i class="fa-solid fa-calendar-days"></i> Event</a>
+        <a href="#kontak"><i class="fa-solid fa-address-book"></i> Kontak</a>
+    </nav>
+
+    <div class="main-container">
+
+        <div id="tentang" class="page-content">
+            <h1 class="title-main">Tentang Kami</h1>
+            <div class="company-name">PT Spectra Jaya Abadi</div>
+            
+            <h2 class="subtitle-sec">Sejarah Singkat</h2>
+            <p class="text-desc">PT Spectra Jaya Abadi didirikan atas dasar komitmen dan semangat kolaborasi untuk menghadirkan layanan manajemen acara (Event Organizer) terbaik di wilayah Ogan Ilir dan sekitarnya.</p>
+            <p class="text-desc">Perusahaan ini didirikan oleh dua orang founder inovatif pada tahun 2024, yang kemudian berkembang menjadi tiga orang anggota inti manajemen demi mengoptimalkan pelayanan operasional.</p>
+            
+            <div class="dark-box">
+                <h3>Komitmen Utama</h3>
+                <p style="font-size:0.9rem; line-height: 1.5;">Kami percaya bahwa setiap detail dalam sebuah acara, baik turnamen game, agenda sosial, maupun festival pendidikan, berhak dikelola dengan transparansi tinggi dan konsep yang matang.</p>
+            </div>
+        </div>
+
+        <div id="event" class="page-content">
+            <h1 class="title-main">Agenda & Acara</h1>
+            <div class="company-name">PT Spectra Jaya Abadi</div>
+            <div class="event-badge">Upcoming Event</div>
+            
+            <h2 class="subtitle-sec" style="margin-top: 5px; color: #d32f2f;">🎉 GEBYAR HARI PMI 2026 🎉</h2>
+            <p class="text-desc" style="font-style: italic; font-weight: bold; color: #e65100;">"Saatnya Tunjukkan Prestasi dan Semangat Kemanusiaanmu!"</p>
+            
+            <p class="text-desc">Bersiaplah menjadi bagian dari salah satu acara paling bergengsi tahun 2026 di Sumatera Selatan! GEBYAR HARI PMI 2026 hadir sebagai ajang kompetisi, kreativitas, dan pengembangan bakat pelajar yang mempertemukan peserta terbaik dari berbagai daerah.</p>
+            
+            <div class="dark-box">
+                <h3>Detail Informasi Acara:</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li><i class="fa-solid fa-location-dot" style="color:#764ba2; margin-right:8px;"></i> <strong>Tempat:</strong> Sekolah PGRI Indralaya Utara</li>
+                    <li><i class="fa-solid fa-calendar" style="color:#764ba2; margin-right:8px;"></i> <strong>Tahun Pelaksanaan:</strong> 2026</li>
+                    <li><i class="fa-solid fa-trophy" style="color:#764ba2; margin-right:8px;"></i> <strong>Tingkat Kompetisi:</strong> Se-Sumatera Selatan</li>
+                </ul>
+            </div>
+            
+            <p class="text-desc" style="margin-top: 15px; font-weight: bold; text-align: center; color: #d32f2f; background: #ffebee; padding: 10px; border-radius: 8px;">
+                🚀 Pendaftaran segera dibuka. Kuota peserta terbatas! 🏆
+            </p>
+        </div>
+
+        <div id="kontak" class="page-content">
+            <h1 class="title-main">Hubungi Kami</h1>
+            <div class="company-name">PT Spectra Jaya Abadi</div>
+            
+            <p class="text-desc">Hubungi kami sekarang untuk berkonsultasi mengenai rencana kemitraan, sponsor, penyusunan anggaran, atau pembuatan konsep acara Anda.</p>
+            
+            <div class="contact-box">
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i> 
+                    <span><strong>Telepon:</strong> +62 821-8507-8701</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i> 
+                    <span><strong>Email:</strong> spectrajayaabadi@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i> 
+                    <span><strong>Alamat Resmi:</strong> Jl. Desa tanjung baru, Tanjung Baru, Indralaya Utara, Ogan Ilir, Sumatera Selatan</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="beranda" class="page-content">
+            <h1 class="title-main">Profil Perusahaan</h1>
+            <div class="company-name">PT Spectra Jaya Abadi</div>
+            
+            <h2 class="subtitle-sec" style="margin-top:0;">Tentang Perusahaan</h2>
+            <p class="text-desc">PT Spectra Jaya Abadi adalah perusahaan yang bergerak di bidang Event Organizer (EO) yang didirikan pada tahun 2024 di Indralaya Utara, Kabupaten Ogan Ilir, Sumatera Selatan. Berfokus pada penyelenggaraan kompetitif, edukatif, dan sosial dengan slogan <strong>"Mewujudkan Event yang Kreatif, Profesional, dan Berkesan"</strong>.</p>
+            
+            <h2 class="subtitle-sec">Bidang Kegiatan</h2>
+            <div class="kegiatan-grid">
+                <div class="kegiatan-card">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <p>e-sports</p>
+                </div>
+                <div class="kegiatan-card">
+                    <i class="fa-solid fa-square-plus"></i>
+                    <p>PMI / PMR</p>
+                </div>
+                <div class="kegiatan-card">
+                    <i class="fa-solid fa-cookie-bite"></i>
+                    <p>Takjil</p>
+                </div>
+                <div class="kegiatan-card">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                    <p>Sosial</p>
+                </div>
+            </div>
+
+            <h2 class="subtitle-sec">Nilai-Nilai Perusahaan</h2>
+            <ul class="list-nilai">
+                <li>Pemenuhan dan perusahaan terpercaya.</li>
+                <li>Pematangan disetiap lini manajemen.</li>
+                <li>Mengalihkan risiko ketidakpastian acara.</li>
+                <li>Memaksimalkan kepuasan konsumen.</li>
+            </ul>
+        </div>
+
+    </div>
+
 </body>
 </html>
