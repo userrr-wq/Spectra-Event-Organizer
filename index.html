@@ -64,19 +64,19 @@
             100% { opacity: 0; visibility: hidden; display: none !important; }
         }
 
-        /* --- TATA LETAK UTAMA MENYAMPING SECARA PERMANEN (HP & LAPTOP) --- */
+        /* --- TATA LETAK UTAMA MENYAMPING SECARA PERMANEN --- */
         .wrapper {
             display: flex;
-            flex-direction: row; /* Dikunci menyamping di semua perangkat */
+            flex-direction: row;
             width: 100%;
             flex: 1;
         }
 
-        /* --- SIDEBAR KIRI FIX --- */
+        /* --- SIDEBAR KIRI --- */
         nav {
-            width: 160px; /* Dipersempit agar muat di layar HP */
+            width: 150px;
             background: #ffffff;
-            padding: 15px 10px;
+            padding: 15px 8px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -94,7 +94,7 @@
         }
 
         .logo-box img {
-            width: 60px; /* Diperkecil agar proporsional di HP */
+            width: 55px;
             height: auto;
             border-radius: 50%;
             border: 2px solid #4a148c;
@@ -102,7 +102,7 @@
         }
 
         .logo-box h2 {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #333333;
             margin-top: 5px;
             font-weight: 800;
@@ -119,20 +119,20 @@
             background: #764ba2;
             color: #ffffff;
             border: none;
-            padding: 10px 8px;
+            padding: 10px 5px;
             border-radius: 6px;
-            font-size: 0.8rem; /* Font diperkecil untuk menghemat ruang HP */
+            font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             transition: all 0.3s ease;
             width: 100%;
         }
 
         nav button i {
-            width: 15px;
+            width: 12px;
             text-align: center;
         }
 
@@ -142,14 +142,16 @@
 
         nav button.active {
             background: #4a148c !important;
+            box-shadow: 0 4px 8px rgba(74, 20, 140, 0.2);
         }
 
-        /* --- KONTEN SEBELAH KANAN --- */
+        /* --- AREA KONTEN UTAMA --- */
         .main-container {
             flex: 1;
-            margin-left: 160px; /* Jarak pas mengikuti lebar sidebar */
-            padding: 20px;
+            margin-left: 150px;
+            padding: 15px;
             background: #ffffff;
+            overflow-x: hidden;
         }
 
         .page-content {
@@ -158,31 +160,33 @@
         }
 
         @keyframes efekPudar {
-            0% { opacity: 0; transform: translateY(10px); }
+            0% { opacity: 0; transform: translateY(8px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* STRUKTUR GRID 2 KOLOM KANAN-KIRI PERMANEN */
+        /* --- STRUKTUR PANEL GRID --- */
         .grid-layout {
             display: grid;
-            grid-template-columns: 1fr; /* Default tetap 1 kolom bertumpuk di dalam area konten */
+            grid-template-columns: 1fr;
             gap: 20px;
             margin-top: 15px;
         }
 
         .title-main {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: #111111;
             margin-bottom: 5px;
+            border-bottom: 2px solid #764ba2;
+            padding-bottom: 5px;
         }
 
         .subtitle-sec {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: #4a148c;
-            margin-top: 10px;
-            margin-bottom: 8px;
+            margin-top: 12px;
+            margin-bottom: 6px;
         }
 
         .text-desc {
@@ -190,47 +194,49 @@
             line-height: 1.5;
             color: #444444;
             text-align: justify;
+            margin-bottom: 10px;
         }
 
-        /* Grid Daftar Kegiatan */
+        /* Grid Item Box */
         .kegiatan-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
+            margin-top: 8px;
         }
 
         .kegiatan-card {
             background: #f9f9f9;
             border: 1px solid #eeeeee;
-            padding: 10px;
+            padding: 10px 5px;
             border-radius: 6px;
             text-align: center;
         }
 
         .kegiatan-card i {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: #4a148c;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .kegiatan-card p {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             color: #333333;
         }
 
-        /* Kotak Visi Misi Gelap */
+        /* Kotak Gelap Khas Desain */
         .dark-box {
             background: #1e1b29;
             color: #ffffff;
             padding: 15px;
             border-radius: 10px;
+            margin-top: 10px;
         }
 
         .dark-box h3 {
             color: #ffffff;
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 8px;
             border-left: 3px solid #764ba2;
             padding-left: 8px;
@@ -239,175 +245,4 @@
         .dark-box ul {
             padding-left: 15px;
             font-size: 0.8rem;
-            line-height: 1.6;
-        }
-
-        /* List Nilai Perusahaan */
-        .list-nilai {
-            list-style: none;
-        }
-
-        .list-nilai li {
-            position: relative;
-            padding-left: 15px;
-            margin-bottom: 5px;
-            font-size: 0.85rem;
-            color: #444444;
-        }
-
-        .list-nilai li::before {
-            content: "•";
-            color: #4a148c;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        /* Footer Info */
-        .footer-info {
-            margin-top: 20px;
-            padding-top: 10px;
-            border-top: 1px solid #eeeeee;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 5px;
-            font-size: 0.8rem;
-            color: #333333;
-            font-weight: 600;
-        }
-
-        .contact-item i {
-            color: #4a148c;
-        }
-
-        /* PERUBAHAN TAMPILAN JIKA DIBUKA DI LAPTOP (DIPERLEBAR) */
-        @media (min-width: 768px) {
-            nav {
-                width: 260px;
-                padding: 25px 15px;
-            }
-            .logo-box img {
-                width: 90px;
-            }
-            .logo-box h2 {
-                font-size: 1.2rem;
-            }
-            nav button {
-                font-size: 1rem;
-                padding: 12px 15px;
-            }
-            .main-container {
-                margin-left: 260px;
-                padding: 40px;
-            }
-            .grid-layout {
-                grid-template-columns: 1.2fr 1fr; /* Membagi dua tiang di laptop */
-                gap: 30px;
-            }
-            .kegiatan-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            .title-main { font-size: 1.8rem; }
-            .subtitle-sec { font-size: 1.3rem; }
-            .text-desc { font-size: 0.95rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="splash-screen">
-        <div class="welcome-box">
-            <div class="welcome-text">WELCOME DI WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
-        </div>
-    </div>
-
-    <div class="wrapper">
-        <nav>
-            <div class="logo-box">
-                <img src="logo.png" alt="Logo">
-                <h2>SPECTRA EO</h2>
-            </div>
-            <div class="menu-group">
-                <button onclick="aksesHalaman('beranda')" id="btn-beranda" class="active">
-                    <i class="fa-solid fa-house"></i> Beranda
-                </button>
-                <button onclick="aksesHalaman('tentang')" id="btn-tentang">
-                    <i class="fa-solid fa-building-user"></i> Tentang
-                </button>
-                <button onclick="aksesHalaman('event')" id="btn-event">
-                    <i class="fa-solid fa-calendar-days"></i> Event
-                </button>
-                <button onclick="aksesHalaman('kontak')" id="btn-kontak">
-                    <i class="fa-solid fa-address-book"></i> Kontak
-                </button>
-            </div>
-        </nav>
-
-        <div class="main-container">
-            <div id="beranda" class="page-content" style="display: block;">
-                <h1 class="title-main">Profil Perusahaan</h1>
-                <h2 class="subtitle-sec" style="margin-top:0;">PT Spectra Jaya Abadi</h2>
-                
-                <div class="grid-layout">
-                    <div>
-                        <h3 class="subtitle-sec" style="margin-top:0;">Tentang Perusahaan</h3>
-                        <p class="text-desc">PT Spectra Jaya Abadi adalah perusahaan Event Organizer (EO) didirikan tahun 2024 di Indralaya Utara, Ogan Ilir, Sumsel. Slogan: <strong>"Mewujudkan Event yang Kreatif, Profesional, dan Berkesan"</strong>.</p>
-                        
-                        <h3 class="subtitle-sec">Bidang Kegiatan</h3>
-                        <div class="kegiatan-grid">
-                            <div class="kegiatan-card"><i class="fa-solid fa-gamepad"></i><p>e-sports</p></div>
-                            <div class="kegiatan-card"><i class="fa-solid fa-square-plus"></i><p>PMI/PMR</p></div>
-                            <div class="kegiatan-card"><i class="fa-solid fa-cookie-bite"></i><p>Takjil</p></div>
-                            <div class="kegiatan-card"><i class="fa-solid fa-hand-holding-heart"></i><p>Sosial</p></div>
-                        </div>
-
-                        <h3 class="subtitle-sec">Nilai Perusahaan</h3>
-                        <ul class="list-nilai">
-                            <li>Pemenuhan perusahaan terpercaya.</li>
-                            <li>Pematangan lini manajemen.</li>
-                            <li>Mengalihkan risiko acara.</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <div class="dark-box">
-                            <h3>Visi & Misi</h3>
-                            <p style="font-size:0.75rem; margin-bottom:5px;"><strong>Visi:</strong> Menjadi EO unggul dan terpercaya di Sumsel.</p>
-                            <ul>
-                                <li>Acara profesional.</li>
-                                <li>Kegiatan kreatif.</li>
-                                <li>Hubungan komunitas positif.</li>
-                            </ul>
-                        </div>
-
-                        <div class="footer-info">
-                            <div class="contact-item"><i class="fa-solid fa-phone"></i> 0891 1234 3890</div>
-                            <div class="contact-item"><i class="fa-solid fa-envelope"></i> info@spectrajayaabadi.com</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="tentang" class="page-content"><h1 class="title-main">Tentang Kami</h1></div>
-            <div id="event" class="page-content"><h1 class="title-main">Event</h1></div>
-            <div id="kontak" class="page-content"><h1 class="title-main">Kontak</h1></div>
-        </div>
-    </div>
-
-    <script>
-        function aksesHalaman(idTujuan) {
-            var halaman = document.getElementsByClassName('page-content');
-            for (var i = 0; i < halaman.length; i++) { halaman[i].style.display = 'none'; }
-            var tombol = document.querySelectorAll('nav button');
-            for (var j = 0; j < tombol.length; j++) { tombol[j].classList.remove('active'); }
-            
-            document.getElementById(idTujuan).style.display = 'block';
-            document.getElementById('btn-' + idTujuan).classList.add('active');
-        }
-    </script>
-</body>
-</html>
+            line-height:
