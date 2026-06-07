@@ -6,82 +6,71 @@
     <title>Spectra Event Organizer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* --- ANIMASI WELCOME SPLASH SCREEN (ANTI-ERROR & OTOMATIS) --- */
+        /* --- LAYAR ANIMASI MASUK (SPLASH SCREEN) --- */
         #splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #000000 !important;
+            background-color: #000000;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 99999;
-            padding: 20px;
-            box-sizing: border-box;
-            /* Dipaksa menghilang otomatis pada detik ke-4 secara murni lewat CSS */
-            animation: hilangkanLayarHitam 0.6s ease 3.8s forwards;
-            pointer-events: auto;
+            z-index: 9999;
+            animation: hilangkanSplash 0.5s ease 3.5s forwards;
         }
 
         .welcome-text {
-            font-size: 2.2rem; 
+            font-size: 2rem; 
             font-weight: 800;
-            color: #ffffff !important;
-            letter-spacing: 4px;
+            color: #ffffff;
+            letter-spacing: 3px;
             text-transform: uppercase; 
             text-align: center;
-            text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
-            animation: teksMuncul 2.3s ease-out forwards;
-            opacity: 0;
             line-height: 1.4;
-            max-width: 900px;
+            max-width: 800px;
+            padding: 20px;
+            animation: teksMuncul 2s ease-out forwards;
         }
 
         @keyframes teksMuncul {
-            0% { opacity: 0; transform: translateY(40px); filter: blur(10px); }
-            60% { opacity: 1; filter: blur(0px); }
+            0% { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes hilangkanLayarHitam {
+        @keyframes hilangkanSplash {
             0% { opacity: 1; visibility: visible; }
-            99% { opacity: 0; visibility: visible; }
-            100% { opacity: 0; visibility: hidden; display: none !important; pointer-events: none; }
+            100% { opacity: 0; visibility: hidden; display: none; }
         }
 
-        /* --- STYLING UTAMA WEB --- */
+        /* --- STYLING DASAR WEB --- */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             display: flex;
             min-height: 100vh;
-            background-color: #ffffff !important; /* Latar belakang dasar web PUTIH */
-            color: #ffffff; 
-            box-sizing: border-box;
+            background-color: #ffffff;
+            color: #ffffff;
         }
 
-        /* --- STYLING SIDEBAR KIRI --- */
+        /* --- SIDEBAR KIRI --- */
         nav {
             width: 260px;
-            background: rgba(118, 75, 162, 0.12);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: #f3e5f5; /* Warna ungu sangat muda agar kontras */
             padding: 20px 15px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            border-right: 1px solid rgba(118, 75, 162, 0.2);
+            gap: 10px;
+            border-right: 2px solid #764ba2;
             position: fixed;
             height: 100vh;
             box-sizing: border-box;
-            z-index: 10;
         }
 
         .sidebar-logo {
             display: block;
-            max-width: 100px;
+            max-width: 90px;
             height: auto;
             margin: 0 auto 10px auto;
             border-radius: 8px;
@@ -91,11 +80,10 @@
             font-size: 1.3rem;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-            border-bottom: 1px solid rgba(118, 75, 162, 0.2);
+            margin-bottom: 15px;
             padding-bottom: 15px;
-            color: #4a148c; 
+            border-bottom: 1px solid #764ba2;
+            color: #4a148c;
         }
 
         nav button {
@@ -103,38 +91,30 @@
             border: none;
             text-align: left;
             width: 100%;
-            color: #4a148c; 
-            font-family: inherit;
+            color: #4a148c;
             font-weight: 600;
-            padding: 12px 20px;
-            border-radius: 12px;
-            transition: 0.3s ease;
+            padding: 12px 15px;
+            border-radius: 8px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             font-size: 1rem;
-        }
-
-        nav button i {
-            font-size: 1.2rem;
-            width: 25px;
-            text-align: center;
+            transition: 0.2s;
         }
 
         nav button:hover {
-            background: rgba(118, 75, 162, 0.15);
-            transform: translateX(5px);
+            background: #e1bee7;
         }
 
         nav button.active {
-            background: #764ba2 !important; 
-            color: #ffffff !important; 
+            background: #764ba2;
+            color: #ffffff;
         }
 
-        /* --- KONTEN UTAMA & PAPAN TEKS HITAM --- */
+        /* --- KONTEN UTAMA (PAPAN HITAM) --- */
         .main-content {
-            margin-left: 260px; 
+            margin-left: 260px;
             flex: 1;
             padding: 40px;
             display: flex;
@@ -145,45 +125,43 @@
 
         .container {
             width: 100%;
-            max-width: 750px;
-            padding: 2.5rem;
-            background: #1a1a1a !important; /* Papan tengah HITAM pekat */
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 700px;
+            padding: 2rem;
+            background: #1a1a1a; /* Kunci papan tengah warna hitam */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             box-sizing: border-box;
         }
-        
+
+        /* Menyembunyikan halaman default */
         .page-content {
-            display: none; /* Sembunyikan halaman lain di awal */
+            display: none;
         }
 
         .header-section {
             text-align: center;
             margin-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 1rem;
         }
 
-        h1 { margin: 0 0 0.5rem 0; font-size: 2.2rem; color: #ffffff; }
-        h2 { font-size: 1.6rem; margin-top: 1.8rem; margin-bottom: 1rem; border-left: 4px solid #fff; padding-left: 12px; color: #ffffff; }
-        p { opacity: 0.9; line-height: 1.6; margin: 0 0 1rem 0; text-align: justify; color: #ffffff; }
-        ul { padding-left: 20px; line-height: 1.8; color: #ffffff; }
-        li { margin-bottom: 6px; }
+        h1 { margin: 0 0 0.5rem 0; font-size: 2rem; }
+        h2 { font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 1rem; border-left: 4px solid #764ba2; padding-left: 10px; }
+        p { opacity: 0.9; line-height: 1.6; text-align: justify; margin-bottom: 1rem; }
+        ul { padding-left: 20px; line-height: 1.8; }
 
         .highlight-box {
             background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 10px;
             margin-bottom: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .event-badge {
             background: #e53935;
             color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 0.8rem;
             font-weight: bold;
             display: inline-block;
         }
@@ -199,16 +177,16 @@
         <img src="logo.png" alt="Logo" class="sidebar-logo">
         <div class="sidebar-brand">SPECTRA EO</div>
         
-        <button onclick="bukaHalaman('beranda')" id="nav-beranda" class="active">
+        <button onclick="pindah('beranda')" id="btn-beranda" class="active">
             <i class="fa-solid fa-house"></i> Beranda
         </button>
-        <button onclick="bukaHalaman('tentang')" id="nav-tentang">
+        <button onclick="pindah('tentang')" id="btn-tentang">
             <i class="fa-solid fa-building-user"></i> Tentang Kami
         </button>
-        <button onclick="bukaHalaman('event')" id="nav-event">
+        <button onclick="pindah('event')" id="btn-event">
             <i class="fa-solid fa-calendar-days"></i> Event
         </button>
-        <button onclick="bukaHalaman('kontak')" id="nav-kontak">
+        <button onclick="pindah('kontak')" id="btn-kontak">
             <i class="fa-solid fa-address-book"></i> Kontak
         </button>
     </nav>
@@ -227,46 +205,32 @@
 
             <div id="tentang" class="page-content">
                 <div style="text-align: center; margin-bottom: 20px;">
-                    <span style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8;">Profil Perusahaan</span>
-                    <h1 style="font-size: 2rem; margin-top: 5px;">PT Spectra Jaya Abadi</h1>
+                    <span style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px;">Profil Perusahaan</span>
+                    <h1 style="font-size: 1.8rem; margin-top: 5px;">PT Spectra Jaya Abadi</h1>
                 </div>
                 <h2>Tentang Perusahaan</h2>
                 <p>PT Spectra Jaya Abadi adalah perusahaan yang bergerak di bidang Event Organizer (EO) yang didirikan pada tahun 2024 di Indralaya Utara, Kabupaten Ogan Ilir, Sumatera Selatan. Perusahaan ini lahir dari semangat dua orang pendiri yang memiliki visi untuk menghadirkan berbagai kegiatan yang tidak hanya menghibur, tetapi juga memberikan manfaat bagi masyarakat. Seiring perkembangan perusahaan, tim pendiri bertambah menjadi tiga orang yang bersama-sama berkomitmen mengembangkan PT Spectra Jaya Abadi menjadi penyelenggara acara yang profesional dan terpercaya.</p>
-                <p>Dengan mengusung slogan <strong>“Mewujudkan Event yang Kreatif, Profesional, dan Berkesan”</strong>, PT Spectra Jaya Abadi berfokus pada penyelenggaraan berbagai kegiatan kompetitif, edukatif, dan sosial.</p>
                 
                 <h2>Bidang Kegiatan</h2>
                 <ul>
                     <li>Turnamen video game dan e-sports.</li>
                     <li>Kompetisi dan festival pelajar.</li>
                     <li>Kegiatan Palang Merah Remaja (PMR) dan Palang Merah Indonesia (PMI).</li>
-                    <li>Program penggalangan dana untuk korban bencana alam.</li>
-                    <li>Kegiatan sosial seperti pembagian takjil dan bakti sosial.</li>
                 </ul>
-
-                <div class="highlight-box">
-                    <h2 style="margin-top: 0;">Visi</h2>
-                    <p>Menjadi perusahaan event organizer yang unggul, inovatif, dan terpercaya dalam menyelenggarakan kegiatan kreatif, edukatif, kompetitif, dan sosial yang memberikan dampak positif bagi masyarakat Indonesia.</p>
-                </div>
             </div>
 
             <div id="event" class="page-content">
                 <div style="text-align: center; margin-bottom: 20px;">
                     <span class="event-badge">Upcoming Event</span>
-                    <h1 style="font-size: 2rem; margin-top: 5px; color: #ffeb3b;">🎉 GEBYAR HARI PMI 2026 🎉</h1>
-                    <p style="font-style: italic; font-weight: bold; color: #ffca28; text-align: center;">"Saatnya Tunjukkan Prestasi dan Semangat Kemanusiaanmu!"</p>
+                    <h1 style="font-size: 1.8rem; margin-top: 5px; color: #ffeb3b;">🎉 GEBYAR HARI PMI 2026 🎉</h1>
                 </div>
-                <p>Bersiaplah menjadi bagian dari salah satu acara paling bergengsi tahun 2026 di Sumatera Selatan! GEBYAR HARI PMI 2026 hadir sebagai ajang kompetisi, kreativitas, dan pengembangan bakat pelajar yang mempertemukan peserta terbaik dari berbagai daerah di Sumatera Selatan.</p>
+                <p>GEBYAR HARI PMI 2026 hadir sebagai ajang kompetisi, kreativitas, dan pengembangan bakat pelajar yang mempertemukan peserta terbaik dari berbagai daerah di Sumatera Selatan.</p>
                 
                 <div class="highlight-box">
-                    <ul style="list-style: none; padding-left: 0; margin: 0;">
-                        <li><i class="fa-solid fa-location-dot" style="color: #e53935; width: 25px;"></i> <strong>Tempat:</strong> Sekolah PGRI Indralaya Utara</li>
-                        <li><i class="fa-solid fa-calendar-check" style="color: #4caf50; width: 25px;"></i> <strong>Tahun:</strong> 2026</li>
-                        <li><i class="fa-solid fa-trophy" style="color: #ffb300; width: 25px;"></i> <strong>Tingkat:</strong> Se-Sumatera Selatan</li>
-                    </ul>
+                    <strong>Tempat:</strong> Sekolah PGRI Indralaya Utara<br>
+                    <strong>Tahun:</strong> 2026<br>
+                    <strong>Tingkat:</strong> Se-Sumatera Selatan
                 </div>
-
-                <p>Jangan lewatkan kesempatan emas untuk membawa nama baik sekolahmu dan bersaing dengan peserta-peserta terbaik dari seluruh Sumatera Selatan. Raih pengalaman berharga, sertifikat, penghargaan, serta kesempatan menjadi juara dalam ajang yang akan dikenang sepanjang tahun.</p>
-                <p style="text-align: center; font-weight: bold; color: #ff8a80;">Pendaftaran segera dibuka. Kuota peserta terbatas! 🚀🏆</p>
             </div>
 
             <div id="kontak" class="page-content">
@@ -281,24 +245,22 @@
     </div>
 
     <script>
-        function bukaHalaman(idHalaman) {
-            var hal = document.getElementsByClassName('page-content');
-            for (var i = 0; i < hal.length; i++) {
-                hal[i].style.display = 'none';
+        function pindah(idTarget) {
+            // Sembunyikan semua halaman
+            var semuaHalaman = document.getElementsByClassName('page-content');
+            for (var i = 0; i < semuaHalaman.length; i++) {
+                semuaHalaman[i].style.display = 'none';
             }
 
-            var tombol = document.querySelectorAll('nav button');
-            for (var j = 0; j < tombol.length; j++) {
-                tombol[j].classList.remove('active');
+            // Matikan semua tombol aktif
+            var semuaTombol = document.querySelectorAll('nav button');
+            for (var j = 0; j < semuaTombol.length; j++) {
+                semuaTombol[j].classList.remove('active');
             }
 
-            var targetHalaman = document.getElementById(idHalaman);
-            var targetTombol = document.getElementById('nav-' + idHalaman);
-            
-            if(targetHalaman && targetTombol) {
-                targetHalaman.style.display = 'block';
-                targetTombol.classList.add('active');
-            }
+            // Tampilkan halaman yang dituju
+            document.getElementById(idTarget).style.display = 'block';
+            document.getElementById('btn-' + idTarget).classList.add('active');
         }
     </script>
 </body>
