@@ -1,37 +1,79 @@
-<div class="main-container">
-
-            <div id="event" class="page-content">
-                <h1 class="title-main">Agenda & Acara</h1>
-                <div class="company-name">PT Spectra Jaya Abadi</div>
-                
-                <div style="display: flex; gap: 10px; margin: 15px 0;">
-                    <a href="#event-mendatang" style="flex:1; padding: 10px; background:#4a148c; color:white; text-align:center; border-radius:5px; text-decoration:none; font-size:0.8rem; font-weight:bold;">Event Mendatang</a>
-                    <a href="#event-selesai" style="flex:1; padding: 10px; background:#6c757d; color:white; text-align:center; border-radius:5px; text-decoration:none; font-size:0.8rem; font-weight:bold;">Event Selesai</a>
-                </div>
-
-                <div id="event-mendatang" class="sub-page">
-                    <div class="event-badge" style="background:#e53935;">Upcoming</div>
-                    <h2 class="subtitle-sec" style="color: #d32f2f;">🎉 GEBYAR HARI PMI 2026 🎉</h2>
-                    <p class="text-desc">Acara mendatang tahun 2026 yang akan mempertemukan peserta terbaik se-Sumatera Selatan.</p>
-                </div>
-
-                <div id="event-selesai" class="sub-page" style="display:none;">
-                    <div class="event-badge" style="background:#4caf50;">History</div>
-                    <h2 class="subtitle-sec" style="color: #2e7d32;">🏆 Turnamen e-Sports 2024</h2>
-                    <p class="text-desc">Event sukses yang telah dilaksanakan di Indralaya Utara dengan partisipasi 50+ tim.</p>
-                </div>
-            </div>
-
-            </div>
-
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Spectra Jaya Abadi - Official Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        .sub-page { display: none; padding: 10px; background: #fdfdfd; border: 1px solid #eee; border-radius: 8px; }
-        
-        /* Logika Sub-Menu */
+        /* --- UTILITY RESET & DASAR --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Helvetica, Arial, sans-serif; }
+        body { background-color: #ffffff; color: #222222; line-height: 1.6; padding: 15px; }
+
+        /* --- SPLASH SCREEN --- */
+        #splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: #4a148c; display: flex; justify-content: center; align-items: center; z-index: 99999; animation: lunturLayar 0.6s ease 3.2s forwards; pointer-events: none; }
+        .welcome-box { text-align: center; border: 3px solid #ffffff; padding: 25px 40px; background: rgba(0, 0, 0, 0.2); animation: wadahMuncul 1.5s ease-out forwards; }
+        .welcome-text { font-size: 1.4rem; font-weight: 900; color: #ffffff; text-transform: uppercase; }
+        @keyframes wadahMuncul { 0% { opacity: 0; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
+        @keyframes lunturLayar { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; display: none !important; } }
+
+        /* --- HEADER & NAV --- */
+        header { text-align: center; margin-bottom: 20px; }
+        header .logo-container { display: inline-block; border: 2px solid #4a148c; padding: 4px 20px; border-radius: 30px; margin-bottom: 10px; }
+        header img { height: 45px; vertical-align: middle; }
+        header h2 { font-size: 1.3rem; font-weight: 800; color: #222222; text-transform: uppercase; }
+        nav { display: flex; flex-direction: column; gap: 10px; max-width: 450px; margin: 0 auto 25px auto; }
+        nav a { background: #764ba2; color: #ffffff; text-decoration: none; padding: 12px 20px; border-radius: 8px; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+        nav a:hover { background: #4a148c; }
+
+        /* --- LOGIKA SUB-MENU EVENT --- */
+        .sub-menu-btn { display: flex; gap: 10px; margin: 15px 0; }
+        .sub-menu-btn a { flex: 1; padding: 10px; background: #6a1b9a; color: white; text-align: center; border-radius: 5px; text-decoration: none; font-size: 0.85rem; font-weight: bold; }
+        .sub-page { display: none; padding: 15px; border: 1px solid #eee; border-radius: 8px; background: #f9f9f9; }
         #event-mendatang:target, #event-selesai:target { display: block !important; }
-        
-        /* Agar saat klik event, otomatis muncul yang mendatatang */
-        #event:target #event-mendatang { display: block !important; }
+
+        /* --- KONTEN UMUM --- */
+        .main-container { max-width: 600px; margin: 0 auto; }
+        .page-content { display: none; width: 100%; }
+        #beranda { display: block; }
+        :target { display: block !important; }
+        :target ~ #beranda { display: none !important; }
+        #beranda:target { display: block !important; }
+        .title-main { font-size: 1.6rem; font-weight: 800; color: #111111; margin-bottom: 3px; }
+        .company-name { font-size: 1.15rem; font-weight: 700; color: #4a148c; margin-bottom: 15px; }
+        .subtitle-sec { font-size: 1.2rem; font-weight: 700; color: #4a148c; margin: 15px 0 8px 0; }
+        .text-desc { font-size: 0.95rem; color: #444444; text-align: justify; margin-bottom: 12px; }
+        .kegiatan-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .kegiatan-card { background: #f8f9fa; border: 1px solid #e9ecef; padding: 15px; border-radius: 10px; text-align: center; }
+        .dark-box { background: #1e1b29; color: #ffffff; padding: 15px; border-radius: 10px; }
+        .contact-box { background: #f8f9fa; border-left: 4px solid #4a148c; padding: 15px; border-radius: 0 10px 10px 0; }
+        .event-badge { background: #e53935; color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; display: inline-block; }
     </style>
-</body>
-</html>
+</head>
+<body>
+
+    <div id="splash-screen"><div class="welcome-box"><div class="welcome-text">WELCOME DI WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div></div></div>
+
+    <header>
+        <div class="logo-container"><img src="logo.png" alt="Logo"></div>
+        <h2>SPECTRA EO</h2>
+    </header>
+
+    <nav>
+        <a href="#beranda"><i class="fa-solid fa-house"></i> Beranda</a>
+        <a href="#tentang"><i class="fa-solid fa-building-user"></i> Tentang Kami</a>
+        <a href="#event"><i class="fa-solid fa-calendar-days"></i> Event</a>
+        <a href="#kontak"><i class="fa-solid fa-address-book"></i> Kontak</a>
+    </nav>
+
+    <div class="main-container">
+        
+        <div id="tentang" class="page-content">
+            <h1 class="title-main">Tentang Kami</h1>
+            <div class="company-name">PT Spectra Jaya Abadi</div>
+            <p class="text-desc">Perusahaan Event Organizer (EO) yang didirikan pada tahun 2024 di Indralaya Utara...</p>
+        </div>
+
+        <div id="event" class="page-content">
+            <h1 class="title-main">Agenda & Acara</h1>
+            <div class="sub-menu-
