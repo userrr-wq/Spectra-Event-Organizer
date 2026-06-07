@@ -65,7 +65,7 @@
         /* --- STYLING KONTEN --- */
         .container {
             width: 100%;
-            max-width: 650px;
+            max-width: 700px;
             padding: 2.5rem;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
@@ -102,13 +102,6 @@
             text-align: left;
             margin-bottom: 1.5rem;
         }
-        
-        .logo-spectra {
-            max-width: 250px;
-            height: auto;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
 
         h1 { 
             margin: 0 0 0.5rem 0; 
@@ -117,27 +110,44 @@
         }
         h2 {
             font-size: 1.8rem;
-            color: #f3e5f5;
-            margin-top: 0;
+            color: #ffffff;
+            margin-top: 1.5rem;
             margin-bottom: 1rem;
             border-left: 4px solid #fff;
             padding-left: 10px;
+        }
+        h3 {
+            font-size: 1.3rem;
+            color: #f3e5f5;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
         }
         p { 
             opacity: 0.9; 
             line-height: 1.6;
             margin: 0 0 1rem 0;
+            text-align: justify;
         }
         ul {
             margin: 0 0 1rem 0;
             padding-left: 20px;
             line-height: 1.8;
+            opacity: 0.95;
         }
-        .contact-info {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 8px;
-            line-height: 1.8;
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* Kotak khusus untuk Visi, Misi, dan Kontak */
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .highlight-box p {
+            text-align: left;
         }
     </style>
 </head>
@@ -145,7 +155,7 @@
 
     <nav>
         <a onclick="showPage('beranda')" id="nav-beranda" class="active">Beranda</a>
-        <a onclick="showPage('tentang')" id="nav-tentang">Tentang</a>
+        <a onclick="showPage('tentang')" id="nav-tentang">Tentang Kami</a>
         <a onclick="showPage('event')" id="nav-event">Event</a>
         <a onclick="showPage('kontak')" id="nav-kontak">Kontak</a>
     </nav>
@@ -154,37 +164,89 @@
         
         <div id="beranda" class="page-content active">
             <div class="header-section">
-                <img src="logo.png" alt="Logo" class="logo-spectra" style="display:none;">
                 <h1>SPECTRA EVENT ORGANIZER</h1>
-                <p style="font-style: italic; opacity: 0.8;">Mewujudkan event yang kreatif, profesional, dan berkesan.</p>
+                <p style="font-style: italic; opacity: 0.8; text-align: center;">"Mewujudkan Event yang Kreatif, Profesional, dan Berkesan"</p>
             </div>
             <div class="content-section" style="text-align: center;">
-                <p>Selamat datang di platform resmi Spectra. Kami siap membantu merencanakan dan mengeksekusi berbagai kegiatan penting Anda dengan standar kualitas tertinggi.</p>
-                <p>Silakan gunakan menu di atas untuk menjelajahi profil kami lebih dalam.</p>
+                <p style="text-align: center;">Selamat datang di platform resmi PT Spectra Jaya Abadi. Kami siap membantu merencanakan dan mengeksekusi berbagai kegiatan penting Anda dengan standar kualitas tertinggi.</p>
+                <p style="text-align: center;">Silakan gunakan menu di atas untuk menjelajahi profil, visi misi, serta bidang kegiatan kami secara lengkap.</p>
             </div>
         </div>
 
         <div id="tentang" class="page-content">
-            <h2>Tentang Kami</h2>
-            <p>Spectra merupakan organisasi profesional yang bergerak di bidang manajemen dan penyelenggaraan berbagai skala kegiatan (Event Management).</p>
-            <p>Fokus utama kami adalah memberikan solusi end-to-end yang inovatif, mulai dari penyusunan konsep kreatif, manajemen produksi, hingga eksekusi di lapangan guna membangun reputasi dan kepuasan maksimal bagi klien kami.</p>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <span style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7;">Profil Perusahaan</span>
+                <h1 style="font-size: 2rem; margin-top: 5px;">PT Spectra Jaya Abadi</h1>
+            </div>
+            
+            <h2>Tentang Perusahaan</h2>
+            <p>PT Spectra Jaya Abadi adalah perusahaan yang bergerak di bidang Event Organizer (EO) yang didirikan pada tahun 2024 di Indralaya Utara, Kabupaten Ogan Ilir, Sumatera Selatan. Perusahaan ini lahir dari semangat dua orang pendiri yang memiliki visi untuk menghadirkan berbagai kegiatan yang tidak hanya menghibur, tetapi juga memberikan manfaat bagi masyarakat. Seiring perkembangan perusahaan, tim pendiri bertambah menjadi tiga orang yang bersama-sama berkomitmen mengembangkan PT Spectra Jaya Abadi menjadi penyelenggara acara yang profesional dan terpercaya.</p>
+            <p>Dengan mengusung slogan <strong>“Mewujudkan Event yang Kreatif, Profesional, dan Berkesan”</strong>, PT Spectra Jaya Abadi berfokus pada penyelenggaraan berbagai kegiatan kompetitif, edukatif, dan sosial. Perusahaan hadir sebagai wadah bagi masyarakat, komunitas, organisasi, maupun instansi untuk berkolaborasi dalam menciptakan acara yang berkualitas dan berdampak positif.</p>
+
+            <h2>Bidang Kegiatan</h2>
+            <p>PT Spectra Jaya Abadi menyelenggarakan berbagai jenis kegiatan, antara lain:</p>
+            <ul>
+                <li>Turnamen video game dan e-sports.</li>
+                <li>Kompetisi dan festival pelajar.</li>
+                <li>Kegiatan Palang Merah Remaja (PMR) dan Palang Merah Indonesia (PMI).</li>
+                <li>Program penggalangan dana untuk korban bencana alam.</li>
+                <li>Kegiatan sosial seperti pembagian takjil dan bakti sosial.</li>
+                <li>Seminar, pelatihan, dan kegiatan pengembangan generasi muda.</li>
+                <li>Acara komunitas dan kegiatan kemasyarakatan lainnya.</li>
+            </ul>
+            <p>Melalui berbagai program tersebut, perusahaan berupaya menciptakan ruang bagi generasi muda untuk mengembangkan potensi, memperkuat jiwa kompetitif, serta meningkatkan kepedulian sosial terhadap lingkungan sekitar.</p>
+
+            <div class="highlight-box">
+                <h2 style="margin-top: 0;">Visi</h2>
+                <p>Menjadi perusahaan event organizer yang unggul, inovatif, dan terpercaya dalam menyelenggarakan kegiatan kreatif, edukatif, kompetitif, dan sosial yang memberikan dampak positif bagi masyarakat Indonesia.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h2 style="margin-top: 0;">Misi</h2>
+                <ul>
+                    <li>Menyelenggarakan acara yang profesional, berkualitas, dan berorientasi pada kepuasan peserta serta mitra kerja.</li>
+                    <li>Mengembangkan kegiatan yang mendorong kreativitas, bakat, dan potensi generasi muda.</li>
+                    <li>Menjadi penghubung antara komunitas, lembaga, dan masyarakat dalam menciptakan kegiatan yang bermanfaat.</li>
+                    <li>Meningkatkan kepedulian sosial melalui berbagai program kemanusiaan dan kegiatan amal.</li>
+                    <li>Membangun kerja sama yang berkelanjutan dengan berbagai pihak untuk mendukung kemajuan masyarakat dan pembangunan daerah.</li>
+                </ul>
+            </div>
+
+            <h2>Nilai-Nilai Perusahaan</h2>
+            <p>PT Spectra Jaya Abadi menjalankan setiap kegiatan berdasarkan nilai-nilai berikut:</p>
+            <ul>
+                <li><strong>Profesionalisme:</strong> Dalam setiap proses perencanaan dan pelaksanaan acara.</li>
+                <li><strong>Kreativitas:</strong> Dalam menghadirkan konsep yang menarik dan inovatif.</li>
+                <li><strong>Integritas:</strong> Dalam menjaga kepercayaan mitra dan peserta.</li>
+                <li><strong>Kolaborasi:</strong> Untuk menciptakan hubungan kerja yang harmonis dan produktif.</li>
+                <li><strong>Kepedulian Sosial:</strong> Sebagai bentuk tanggung jawab terhadap masyarakat.</li>
+            </ul>
+
+            <h2>Penutup</h2>
+            <p>Sebagai perusahaan yang masih terus berkembang, PT Spectra Jaya Abadi berkomitmen untuk menjadi mitra terpercaya dalam penyelenggaraan berbagai kegiatan yang inspiratif dan bermanfaat. Dengan menggabungkan unsur hiburan, edukasi, kompetisi, dan kepedulian sosial, perusahaan berharap dapat memberikan kontribusi nyata bagi masyarakat sekaligus menciptakan pengalaman acara yang berkesan bagi setiap peserta.</p>
+            
+            <p style="text-align: center; font-weight: bold; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 15px;">
+                PT Spectra Jaya Abadi<br>
+                <span style="font-weight: normal; font-style: italic; font-size: 0.9rem; opacity: 0.8;">Mewujudkan Event yang Kreatif, Profesional, dan Berkesan.</span>
+            </p>
         </div>
 
         <div id="event" class="page-content">
-            <h2>Event Terbaru 2026</h2>
-            <p>Berikut adalah beberapa agenda kegiatan besar yang kami kelola dalam waktu dekat:</p>
+            <h2>Event Terbaru</h2>
+            <p>Berikut adalah beberapa agenda kegiatan yang kami kelola dalam waktu dekat:</p>
             <ul>
-                <li><strong>Seminar Nasional 2026</strong> - Kumpulan inovasi teknologi dan akademik.</li>
-                <li><strong>Festival Seni dan Budaya</strong> - Pameran kolaboratif talenta nusantara.</li>
-                <li><strong>Kompetisi Kreatif Mahasiswa</strong> - Wadah unjuk bakat dan ide bisnis startup.</li>
+                <li><strong>Turnamen E-Sports & Video Game</strong> - Kompetisi regional mencari talenta terbaik.</li>
+                <li><strong>Festival Pelajar Kreatif</strong> - Wadah unjuk bakat seni, budaya, dan edukasi bagi generasi muda.</li>
+                <li><strong>Agenda Bakti Sosial & Kemanusiaan</strong> - Program rutin penggalangan dana dan pembagian bantuan sosial.</li>
             </ul>
         </div>
 
         <div id="kontak" class="page-content">
             <h2>Hubungi Kami</h2>
-            <p>Punya rencana event atau ingin berkolaborasi bersama tim Spectra? Silakan hubungi layanan respons cepat kami melalui info berikut:</p>
-            <div class="contact-info">
-                <strong>Email resmi:</strong> info@spectra.com<br>
+            <p>Punya rencana event atau ingin berkolaborasi bersama tim PT Spectra Jaya Abadi? Silakan hubungi layanan respons cepat kami melalui info berikut:</p>
+            <div class="highlight-box">
+                <strong>Alamat Kantor:</strong> Indralaya Utara, Kabupaten Ogan Ilir, Sumatera Selatan.<br>
+                <strong>Email Resmi:</strong> info@spectrajayaabadi.com<br>
                 <strong>Jam Operasional:</strong> Senin - Jumat (09.00 - 17.00 WIB)
             </div>
         </div>
