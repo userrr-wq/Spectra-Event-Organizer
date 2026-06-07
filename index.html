@@ -13,37 +13,35 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #000000; /* Layar hitam penuh sinematik */
+            background-color: #000000 !important; /* Memaksa latar belakang awal HITAM pekat */
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999; /* Memastikan berada di lapisan paling depan */
-            transition: opacity 1s ease, visibility 1s ease;
+            z-index: 99999; /* Angka super besar agar tidak tertutup apapun */
+            transition: opacity 0.8s ease, visibility 0.8s ease;
             padding: 20px;
             box-sizing: border-box;
         }
 
         .welcome-text {
-            font-size: 2.2rem; /* Ukuran disesuaikan agar rapi dalam satu baris */
+            font-size: 2.2rem; 
             font-weight: 800;
-            color: #ffffff;
+            color: #ffffff !important; /* Memaksa teks awal berwarna PUTIH */
             letter-spacing: 4px;
-            text-transform: uppercase; /* Memastikan huruf KAPITAL */
+            text-transform: uppercase; 
             text-align: center;
-            text-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-            /* Memanggil animasi gerakan dari bawah ke tengah layar */
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
             animation: gameIntro 2.8s ease-out forwards;
             opacity: 0;
             line-height: 1.4;
             max-width: 900px;
         }
 
-        /* Struktur Gerakan Animasi Teks */
         @keyframes gameIntro {
             0% {
                 opacity: 0;
-                transform: translateY(60px) scale(0.95); /* Mulai dari bawah */
-                filter: blur(12px); /* Efek buram misterius di awal */
+                transform: translateY(40px);
+                filter: blur(10px);
             }
             60% {
                 opacity: 1;
@@ -51,7 +49,7 @@
             }
             100% {
                 opacity: 1;
-                transform: translateY(0) scale(1); /* Berhenti kokoh di tengah */
+                transform: translateY(0);
             }
         }
 
@@ -61,7 +59,7 @@
             margin: 0;
             display: flex;
             min-height: 100vh;
-            background-color: #ffffff; /* Latar luar PUTIH murni */
+            background-color: #ffffff !important; /* Latar luar dikunci PUTIH */
             color: #ffffff; 
             box-sizing: border-box;
         }
@@ -237,62 +235,4 @@
 
                 <div class="highlight-box">
                     <h2 style="margin-top: 0;">Visi</h2>
-                    <p>Menjadi perusahaan event organizer yang unggul, inovatif, dan terpercaya dalam menyelenggarakan kegiatan kreatif, edukatif, kompetitif, dan sosial yang memberikan dampak positif bagi masyarakat Indonesia.</p>
-                </div>
-            </div>
-
-            <div id="event" class="page-content">
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <span class="event-badge">Upcoming Event</span>
-                    <h1 style="font-size: 2rem; margin-top: 5px; color: #ffeb3b;">🎉 GEBYAR HARI PMI 2026 🎉</h1>
-                    <p style="font-style: italic; font-weight: bold; color: #ffca28; text-align: center;">"Saatnya Tunjukkan Prestasi dan Semangat Kemanusiaanmu!"</p>
-                </div>
-                <p>Bersiaplah menjadi bagian dari salah satu acara paling bergengsi tahun 2026 di Sumatera Selatan! GEBYAR HARI PMI 2026 hadir sebagai ajang kompetisi, kreativitas, dan pengembangan bakat pelajar yang mempertemukan peserta terbaik dari berbagai daerah di Sumatera Selatan.</p>
-                
-                <div class="highlight-box">
-                    <ul style="list-style: none; padding-left: 0; margin: 0;">
-                        <li><i class="fa-solid fa-location-dot" style="color: #e53935; width: 25px;"></i> <strong>Tempat:</strong> Sekolah PGRI Indralaya Utara</li>
-                        <li><i class="fa-solid fa-calendar-check" style="color: #4caf50; width: 25px;"></i> <strong>Tahun:</strong> 2026</li>
-                        <li><i class="fa-solid fa-trophy" style="color: #ffb300; width: 25px;"></i> <strong>Tingkat:</strong> Se-Sumatera Selatan</li>
-                    </ul>
-                </div>
-
-                <p>Jangan lewatkan kesempatan emas untuk membawa nama baik sekolahmu dan bersaing dengan peserta-peserta terbaik dari seluruh Sumatera Selatan. Raih pengalaman berharga, sertifikat, penghargaan, serta kesempatan menjadi juara dalam ajang yang akan dikenang sepanjang tahun.</p>
-                <p style="text-align: center; font-weight: bold; color: #ff8a80;">Pendaftaran segera dibuka. Kuota peserta terbatas! 🚀🏆</p>
-            </div>
-
-            <div id="kontak" class="page-content">
-                <h2>Hubungi Kami</h2>
-                <div class="highlight-box">
-                    <strong>Alamat Kantor:</strong> Indralaya Utara, Kabupaten Ogan Ilir, Sumatera Selatan.<br><br>
-                    <strong>Email Resmi:</strong> info@spectrajayaabadi.com
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <script>
-        // Fungsi klik menu samping
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => page.style.display = 'none');
-
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(link => link.classList.remove('active'));
-
-            document.getElementById(pageId).style.display = 'block';
-            document.getElementById('nav-' + pageId).classList.add('active');
-        }
-
-        // Fungsi menghilangkan Splash Screen secara otomatis setelah 3.8 detik
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                const splash = document.getElementById('splash-screen');
-                splash.style.opacity = '0';
-                splash.style.visibility = 'hidden';
-            }, 3800); // Waktu diperpanjang sedikit agar kalimat panjang terbaca sempurna
-        });
-    </script>
-</body>
-</html>
+                    <p>Menjadi perusahaan event organizer yang unggul, inovatif, dan terpercaya dalam menyelenggarakan kegiatan kreatif, edukatif
