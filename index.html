@@ -6,47 +6,52 @@
     <title>Spectra Event Organizer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* --- ANIMASI WELCOME SPLASH SCREEN (ALA VIDEO GAME) --- */
+        /* --- ANIMASI WELCOME SPLASH SCREEN CAPITAL (ALA VIDEO GAME) --- */
         #splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #000000; /* Layar hitam penuh khas game */
+            background-color: #000000; /* Layar hitam penuh sinematik */
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999; /* Memastikan berada di paling depan */
+            z-index: 9999; /* Memastikan berada di lapisan paling depan */
             transition: opacity 1s ease, visibility 1s ease;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .welcome-text {
-            font-size: 3.5rem;
+            font-size: 2.2rem; /* Ukuran disesuaikan agar rapi dalam satu baris */
             font-weight: 800;
             color: #ffffff;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-            /* Memanggil animasi muncul dari bawah pelan-pelan ke tengah */
-            animation: gameIntro 2.5s ease-out forwards;
+            letter-spacing: 4px;
+            text-transform: uppercase; /* Memastikan huruf KAPITAL */
+            text-align: center;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+            /* Memanggil animasi gerakan dari bawah ke tengah layar */
+            animation: gameIntro 2.8s ease-out forwards;
             opacity: 0;
+            line-height: 1.4;
+            max-width: 900px;
         }
 
-        /* Struktur Animasi Gerakan Teks */
+        /* Struktur Gerakan Animasi Teks */
         @keyframes gameIntro {
             0% {
                 opacity: 0;
-                transform: translateY(50px) scale(0.9); /* Mulai dari bawah & agak kecil */
-                filter: blur(10px); /* Efek buram fajar */
+                transform: translateY(60px) scale(0.95); /* Mulai dari bawah */
+                filter: blur(12px); /* Efek buram misterius di awal */
             }
-            70% {
+            60% {
                 opacity: 1;
                 filter: blur(0px);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0) scale(1); /* Berhenti tepat di tengah layar */
+                transform: translateY(0) scale(1); /* Berhenti kokoh di tengah */
             }
         }
 
@@ -56,7 +61,7 @@
             margin: 0;
             display: flex;
             min-height: 100vh;
-            background-color: #ffffff; /* Latar belakang luar PUTIH murni */
+            background-color: #ffffff; /* Latar luar PUTIH murni */
             color: #ffffff; 
             box-sizing: border-box;
         }
@@ -181,7 +186,7 @@
 <body>
 
     <div id="splash-screen">
-        <div class="welcome-text">Welcome</div>
+        <div class="welcome-text">WELCOME DI WEBSITE RESMI PT SPECTRA JAYA ABADI</div>
     </div>
 
     <nav>
@@ -219,7 +224,7 @@
                 </div>
                 <h2>Tentang Perusahaan</h2>
                 <p>PT Spectra Jaya Abadi adalah perusahaan yang bergerak di bidang Event Organizer (EO) yang didirikan pada tahun 2024 di Indralaya Utara, Kabupaten Ogan Ilir, Sumatera Selatan. Perusahaan ini lahir dari semangat dua orang pendiri yang memiliki visi untuk menghadirkan berbagai kegiatan yang tidak hanya menghibur, tetapi juga memberikan manfaat bagi masyarakat. Seiring perkembangan perusahaan, tim pendiri bertambah menjadi tiga orang yang bersama-sama berkomitmen mengembangkan PT Spectra Jaya Abadi menjadi penyelenggara acara yang profesional dan terpercaya.</p>
-                <p>Dengan mengusung slogan <strong>“Mewujudkan Event yang Kreatif, Profesional, dan Berkesan”</strong>, PT Spectra Jaya Abadi berfokus pada penyelenggaraan berbagai kegiatan kompetitif, edukatif, dan sosial. Perusahaan hadir sebagai wadah bagi masyarakat, komunitas, organisasi, maupun instansi untuk berkolaborasi dalam menciptakan acara yang berkualitas dan berdampak positif.</p>
+                <p>Dengan mengusung slogan <strong>“Mewujudkan Event yang Kreatif, Profesional, dan Berkesan”</strong>, PT Spectra Jaya Abadi berfokus pada penyelenggaraan berbagai kegiatan kompetitif, edukatif, dan sosial.</p>
                 
                 <h2>Bidang Kegiatan</h2>
                 <ul>
@@ -280,14 +285,10 @@
             document.getElementById('nav-' + pageId).classList.add('active');
         }
 
-        // Fungsi menghilangkan Splash Screen secara otomatis setelah 3.5 detik
+        // Fungsi menghilangkan Splash Screen secara otomatis setelah 3.8 detik
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
                 splash.style.opacity = '0';
                 splash.style.visibility = 'hidden';
-            }, 3500); // 3500 milidetik = 3.5 detik berjalan
-        });
-    </script>
-</body>
-</html>
+            }, 3800); // Waktu diperpanjang sedikit agar kalimat
