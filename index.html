@@ -6,7 +6,7 @@
     <title>Spectra Event Organizer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* --- ANIMASI WELCOME SPLASH SCREEN ANTI-STUCK --- */
+        /* --- ANIMASI WELCOME SPLASH SCREEN (ANTI-STUCK & OTOMATIS) --- */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -20,10 +20,8 @@
             z-index: 99999;
             padding: 20px;
             box-sizing: border-box;
-            
-            /* PENGAMAN UTAMA: Layar hitam dipaksa memudar & hilang otomatis pada detik ke-4 
-               walaupun JavaScript browser sedang macet */
-            animation: fadeOutSplash 1s ease 4s forwards;
+            /* Dipaksa menghilang pada detik ke-4 secara absolut via CSS */
+            animation: fadeOutSplash 0.8s ease 3.8s forwards;
             pointer-events: auto;
         }
 
@@ -35,41 +33,34 @@
             text-transform: uppercase; 
             text-align: center;
             text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
-            animation: gameIntro 2.5s ease-out forwards;
+            animation: gameIntro 2.3s ease-out forwards;
             opacity: 0;
             line-height: 1.4;
             max-width: 900px;
         }
 
-        /* Tombol Lewati Darurat di Pojok Kanan Bawah */
         .skip-btn {
             position: absolute;
             bottom: 30px;
             right: 30px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.85rem;
-            transition: 0.3s;
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
-        .skip-btn:hover {
-            background: #ffffff;
-            color: #000000;
+            z-index: 100000;
         }
 
-        /* Animasi Teks Muncul */
         @keyframes gameIntro {
             0% { opacity: 0; transform: translateY(40px); filter: blur(10px); }
             60% { opacity: 1; filter: blur(0px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Animasi Pengaman Hilang Otomatis */
         @keyframes fadeOutSplash {
             0% { opacity: 1; visibility: visible; }
             99% { opacity: 0; visibility: visible; }
@@ -101,7 +92,7 @@
             position: fixed;
             height: 100vh;
             box-sizing: border-box;
-            z-index: 100;
+            z-index: 1000; /* Ditinggikan agar selalu bisa diklik pengunjung */
         }
 
         .sidebar-brand {
@@ -115,9 +106,13 @@
             color: #4a148c; 
         }
 
-        nav a {
+        nav button {
+            background: none;
+            border: none;
+            text-align: left;
+            width: 100%;
             color: #4a148c; 
-            text-decoration: none;
+            font-family: inherit;
             font-weight: 600;
             padding: 12px 20px;
             border-radius: 12px;
@@ -126,20 +121,23 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            font-size: 1rem;
         }
 
-        nav a i {
+        nav button i {
             font-size: 1.2rem;
             width: 25px;
             text-align: center;
+            pointer-events: none;
         }
 
-        nav a:hover {
+        nav button:hover {
             background: rgba(118, 75, 162, 0.15);
             transform: translateX(5px);
         }
 
-        nav a.active {
+        /* Penanda tombol aktif */
+        nav button.active {
             background: #764ba2 !important; 
             color: #ffffff !important; 
         }
@@ -166,11 +164,13 @@
             box-sizing: border-box;
         }
         
+        /* Default menyembunyikan halaman */
         .page-content {
             display: none;
         }
+        /* Menampilkan halaman yang aktif */
         .page-content.active {
-            display: block;
+            display: block !important;
         }
 
         .header-section {
@@ -213,18 +213,18 @@
 
     <nav>
         <div class="sidebar-brand">SPECTRA EO</div>
-        <a onclick="showPage('beranda')" id="nav-beranda" class="active">
+        <button onclick="showPage('beranda')" id="nav-beranda" class="active">
             <i class="fa-solid fa-house"></i> Beranda
-        </a>
-        <a onclick="showPage('tentang')" id="nav-tentang">
+        </button>
+        <button onclick="showPage('tentang')" id="nav-tentang">
             <i class="fa-solid fa-building-user"></i> Tentang Kami
-        </a>
-        <a onclick="showPage('event')" id="nav-event">
+        </button>
+        <button onclick="showPage('event')" id="nav-event">
             <i class="fa-solid fa-calendar-days"></i> Event
-        </a>
-        <a onclick="showPage('kontak')" id="nav-kontak">
+        </button>
+        <button onclick="showPage('kontak')" id="nav-kontak">
             <i class="fa-solid fa-address-book"></i> Kontak
-        </a>
+        </button>
     </nav>
 
     <div class="main-content">
@@ -236,4 +236,13 @@
                     <p style="font-style: italic; opacity: 0.8; text-align: center;">"Mewujudkan Event yang Kreatif, Profesional, dan Berkesan"</p>
                 </div>
                 <p style="text-align: center;">Selamat datang di platform resmi PT Spectra Jaya Abadi. Kami siap membantu merencanakan dan mengeksekusi berbagai kegiatan penting Anda dengan standar kualitas tertinggi.</p>
-                <p style="text-align: center;">Silakan pilih menu di panel sebelah kiri untuk menjelajahi profil serta agenda lengkap
+                <p style="text-align: center;">Silakan pilih menu di panel sebelah kiri untuk menjelajahi profil serta agenda lengkap kami.</p>
+            </div>
+
+            <div id="tentang" class="page-content">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <span style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8;">Profil Perusahaan</span>
+                    <h1 style="font-size: 2rem; margin-top: 5px;">PT Spectra Jaya Abadi</h1>
+                </div>
+                <h2>Tentang Perusahaan</h2>
+                <p>PT Spectra Jaya Abadi adalah perusahaan yang bergerak di bidang Event Organizer (EO) yang didirikan pada tahun 2024 di Indralaya Utara, Kabupaten Ogan Ilir, Sumatera Selatan. Perusahaan ini lahir dari semangat dua orang pendiri yang memiliki visi untuk menghadirkan berbagai kegiatan
