@@ -6,7 +6,7 @@
     <title>Spectra Event Organizer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* --- ANIMASI WELCOME SPLASH SCREEN (ANTI-STUCK & OTOMATIS) --- */
+        /* --- ANIMASI WELCOME SPLASH SCREEN (ANTI-STUCK TOTAL) --- */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -20,8 +20,8 @@
             z-index: 99999;
             padding: 20px;
             box-sizing: border-box;
-            /* Dipaksa menghilang pada detik ke-4 secara absolut via CSS */
-            animation: fadeOutSplash 0.8s ease 3.8s forwards;
+            /* Menggunakan animasi CSS murni untuk membuang layar hitam pada detik ke-4 */
+            animation: hapusSplash 0.5s ease 3.8s forwards;
             pointer-events: auto;
         }
 
@@ -39,32 +39,16 @@
             max-width: 900px;
         }
 
-        .skip-btn {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(255, 255, 255, 0.15);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 8px 18px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 100000;
-        }
-
         @keyframes gameIntro {
             0% { opacity: 0; transform: translateY(40px); filter: blur(10px); }
             60% { opacity: 1; filter: blur(0px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes fadeOutSplash {
+        @keyframes hapusSplash {
             0% { opacity: 1; visibility: visible; }
             99% { opacity: 0; visibility: visible; }
-            100% { opacity: 0; visibility: hidden; display: none; pointer-events: none; }
+            100% { opacity: 0; visibility: hidden; display: none !important; pointer-events: none; }
         }
 
         /* --- STYLING UTAMA WEB SPECTRA EO --- */
@@ -73,7 +57,7 @@
             margin: 0;
             display: flex;
             min-height: 100vh;
-            background-color: #ffffff !important; /* Latar belakang luar murni PUTIH */
+            background-color: #ffffff !important; /* Latar belakang luar PUTIH murni */
             color: #ffffff; 
             box-sizing: border-box;
         }
@@ -92,7 +76,7 @@
             position: fixed;
             height: 100vh;
             box-sizing: border-box;
-            z-index: 1000; /* Ditinggikan agar selalu bisa diklik pengunjung */
+            z-index: 10; /* Berada di atas main-content agar tidak terhalang */
         }
 
         .sidebar-brand {
@@ -106,6 +90,7 @@
             color: #4a148c; 
         }
 
+        /* Menggunakan inline onclick langsung agar 100% bisa diklik tanpa nunggu script load */
         nav button {
             background: none;
             border: none;
@@ -128,7 +113,6 @@
             font-size: 1.2rem;
             width: 25px;
             text-align: center;
-            pointer-events: none;
         }
 
         nav button:hover {
@@ -136,7 +120,6 @@
             transform: translateX(5px);
         }
 
-        /* Penanda tombol aktif */
         nav button.active {
             background: #764ba2 !important; 
             color: #ffffff !important; 
@@ -164,13 +147,9 @@
             box-sizing: border-box;
         }
         
-        /* Default menyembunyikan halaman */
+        /* Pengaturan Sembunyi/Tampil Halaman murni dari ID */
         .page-content {
             display: none;
-        }
-        /* Menampilkan halaman yang aktif */
-        .page-content.active {
-            display: block !important;
         }
 
         .header-section {
@@ -208,21 +187,20 @@
 
     <div id="splash-screen">
         <div class="welcome-text">WELCOME DI WEBSITE RESMI PT SPECTRA JAYA ABADI</div>
-        <button class="skip-btn" onclick="manualCloseSplash()">Lewati <i class="fa-solid fa-forward"></i></button>
     </div>
 
     <nav>
         <div class="sidebar-brand">SPECTRA EO</div>
-        <button onclick="showPage('beranda')" id="nav-beranda" class="active">
+        <button onclick="bukaHalaman('beranda')" id="nav-beranda" class="active">
             <i class="fa-solid fa-house"></i> Beranda
         </button>
-        <button onclick="showPage('tentang')" id="nav-tentang">
+        <button onclick="bukaHalaman('tentang')" id="nav-tentang">
             <i class="fa-solid fa-building-user"></i> Tentang Kami
         </button>
-        <button onclick="showPage('event')" id="nav-event">
+        <button onclick="bukaHalaman('event')" id="nav-event">
             <i class="fa-solid fa-calendar-days"></i> Event
         </button>
-        <button onclick="showPage('kontak')" id="nav-kontak">
+        <button onclick="bukaHalaman('kontak')" id="nav-kontak">
             <i class="fa-solid fa-address-book"></i> Kontak
         </button>
     </nav>
@@ -230,7 +208,7 @@
     <div class="main-content">
         <div class="container">
             
-            <div id="beranda" class="page-content active">
+            <div id="beranda" class="page-content" style="display: block;">
                 <div class="header-section">
                     <h1>SPECTRA EVENT ORGANIZER</h1>
                     <p style="font-style: italic; opacity: 0.8; text-align: center;">"Mewujudkan Event yang Kreatif, Profesional, dan Berkesan"</p>
@@ -295,55 +273,23 @@
     </div>
 
     <script>
-        // Fungsi utama perpindahan halaman
-        function showPage(pageId) {
-            // Ambil semua kontainer halaman
-            const pages = document.querySelectorAll('.page-content');
-            for (let i = 0; i < pages.length; i++) {
-                pages[i].classList.remove('active');
-                pages[i].style.display = 'none'; // Memaksa hilang total
+        function bukaHalaman(idHalaman) {
+            // Sembunyikan semua konten secara paksa
+            var hal = document.getElementsByClassName('page-content');
+            for (var i = 0; i < hal.length; i++) {
+                hal[i].style.display = 'none';
             }
 
-            // Ambil semua tombol navigasi
-            const buttons = document.querySelectorAll('nav button');
-            for (let j = 0; j < buttons.length; j++) {
-                buttons[j].classList.remove('active');
+            // Hapus semua status aktif tombol menu
+            var tombol = document.querySelectorAll('nav button');
+            for (var j = 0; j < tombol.length; j++) {
+                tombol[j].classList.remove('active');
             }
 
-            // Aktifkan halaman dan tombol pilihan tujuan
-            const targetPage = document.getElementById(pageId);
-            const targetButton = document.getElementById('nav-' + pageId);
-            
-            if (targetPage && targetButton) {
-                targetPage.classList.add('active');
-                targetPage.style.display = 'block';
-                targetButton.classList.add('active');
-            }
+            // Tampilkan halaman target dan aktifkan tombolnya
+            document.getElementById(idHalaman).style.display = 'block';
+            document.getElementById('nav-' + idHalaman).classList.add('active');
         }
-
-        // Fungsi tutup splash screen manual (Lewati)
-        function manualCloseSplash() {
-            const splash = document.getElementById('splash-screen');
-            if(splash) {
-                splash.style.opacity = '0';
-                splash.style.visibility = 'hidden';
-                splash.style.display = 'none';
-            }
-        }
-
-        // Fungsi otomatisasi cadangan dari browser
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const splash = document.getElementById('splash-screen');
-                if (splash) {
-                    splash.style.opacity = '0';
-                    setTimeout(() => {
-                        splash.style.visibility = 'hidden';
-                        splash.style.display = 'none';
-                    }, 500);
-                }
-            }, 3800);
-        });
     </script>
 </body>
 </html>
