@@ -11,8 +11,8 @@
             margin: 0;
             display: flex;
             min-height: 100vh;
-            background-color: #ffffff !important; /* Memaksa background luar tetap PUTIH murni */
-            color: #ffffff !important; /* Memaksa teks utama di dalam papan tetap PUTIH */
+            background-color: #ffffff; /* Latar belakang luar PUTIH murni */
+            color: #ffffff; /* Warna teks default di dalam papan */
             box-sizing: border-box;
         }
 
@@ -30,6 +30,7 @@
             position: fixed;
             height: 100vh;
             box-sizing: border-box;
+            z-index: 100;
         }
 
         .sidebar-brand {
@@ -40,13 +41,13 @@
             letter-spacing: 1px;
             border-bottom: 1px solid rgba(118, 75, 162, 0.2);
             padding-bottom: 15px;
-            color: #4a148c; /* Tulisan SPECTRA EO berwarna ungu gelap */
+            color: #4a148c; /* Tulisan SPECTRA EO tetap UNGU GELAP agar terbaca jelas */
         }
 
         nav a {
-            color: #4a148c; /* Tombol menu berwarna ungu gelap */
+            color: #4a148c; /* Tombol menu UNGU GELAP agar terlihat di latar putih */
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             padding: 12px 20px;
             border-radius: 12px;
             transition: 0.3s ease;
@@ -63,19 +64,18 @@
         }
 
         nav a:hover {
-            background: rgba(118, 75, 162, 0.1);
+            background: rgba(118, 75, 162, 0.15);
             transform: translateX(5px);
         }
 
         nav a.active {
-            background: #764ba2 !important;
-            color: white !important;
-            font-weight: 600;
+            background: #764ba2 !important; /* Menu yang aktif berwarna ungu solid */
+            color: #ffffff !important; /* Teks menu aktif menjadi putih */
         }
 
         /* --- KONTEN UTAMA & PAPAN TEKS HITAM --- */
         .main-content {
-            margin-left: 260px;
+            margin-left: 260px; /* Memberi ruang agar tidak tertutup sidebar */
             flex: 1;
             padding: 40px;
             display: flex;
@@ -89,13 +89,14 @@
             width: 100%;
             max-width: 750px;
             padding: 2.5rem;
-            background: #1a1a1a !important; /* Terkunci HITAM agar tulisan putih kelihatan jelas */
+            background: #1a1a1a !important; /* HITAM PEKAT */
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-sizing: border-box;
         }
         
+        /* Mengatur perpindahan halaman */
         .page-content {
             display: none;
         }
@@ -110,19 +111,22 @@
             padding-bottom: 1.5rem;
         }
 
-        h1 { margin: 0 0 0.5rem 0; font-size: 2.2rem; }
-        h2 { font-size: 1.6rem; margin-top: 1.8rem; margin-bottom: 1rem; border-left: 4px solid #fff; padding-left: 12px; }
-        p { opacity: 0.9; line-height: 1.6; margin: 0 0 1rem 0; text-align: justify; }
-        ul { padding-left: 20px; line-height: 1.8; }
+        h1 { margin: 0 0 0.5rem 0; font-size: 2.2rem; color: #ffffff; }
+        h2 { font-size: 1.6rem; margin-top: 1.8rem; margin-bottom: 1rem; border-left: 4px solid #fff; padding-left: 12px; color: #ffffff; }
+        p { opacity: 0.9; line-height: 1.6; margin: 0 0 1rem 0; text-align: justify; color: #ffffff; }
+        ul { padding-left: 20px; line-height: 1.8; color: #ffffff; }
+        li { margin-bottom: 6px; }
 
         .highlight-box {
             background: rgba(255, 255, 255, 0.05);
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .event-badge {
             background: #e53935;
+            color: white;
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
@@ -155,7 +159,7 @@
             <div id="beranda" class="page-content active">
                 <div class="header-section">
                     <h1>SPECTRA EVENT ORGANIZER</h1>
-                    <p style="font-style: italic; opacity: 0.8;">"Mewujudkan Event yang Kreatif, Profesional, dan Berkesan"</p>
+                    <p style="font-style: italic; opacity: 0.8; text-align: center;">"Mewujudkan Event yang Kreatif, Profesional, dan Berkesan"</p>
                 </div>
                 <p style="text-align: center;">Selamat datang di platform resmi PT Spectra Jaya Abadi. Kami siap membantu merencanakan dan mengeksekusi berbagai kegiatan penting Anda dengan standar kualitas tertinggi.</p>
                 <p style="text-align: center;">Silakan pilih menu di panel sebelah kiri untuk menjelajahi profil serta agenda lengkap kami.</p>
@@ -168,30 +172,54 @@
                 </div>
                 <h2>Tentang Perusahaan</h2>
                 <p>PT Spectra Jaya Abadi adalah perusahaan yang bergerak di bidang Event Organizer (EO) yang didirikan pada tahun 2024 di Indralaya Utara, Kabupaten Ogan Ilir, Sumatera Selatan. Perusahaan ini lahir dari semangat dua orang pendiri yang memiliki visi untuk menghadirkan berbagai kegiatan yang tidak hanya menghibur, tetapi juga memberikan manfaat bagi masyarakat. Seiring perkembangan perusahaan, tim pendiri bertambah menjadi tiga orang yang bersama-sama berkomitmen mengembangkan PT Spectra Jaya Abadi menjadi penyelenggara acara yang profesional dan terpercaya.</p>
-                <p>Dengan mengusung slogan <strong>“Mewujudkan Event yang Kreatif, Profesional, dan Berkesan”</strong>, PT Spectra Jaya Abadi berfokus pada penyelenggaraan berbagai kegiatan kompetitif, edukatif, dan sosial.</p>
+                <p>Dengan mengusung slogan <strong>“Mewujudkan Event yang Kreatif, Profesional, dan Berkesan”</strong>, PT Spectra Jaya Abadi berfokus pada penyelenggaraan berbagai kegiatan kompetitif, edukatif, dan sosial. Perusahaan hadir sebagai wadah bagi masyarakat, komunitas, organisasi, maupun instansi untuk berkolaborasi dalam menciptakan acara yang berkualitas dan berdampak positif.</p>
                 
                 <h2>Bidang Kegiatan</h2>
+                <p>PT Spectra Jaya Abadi menyelenggarakan berbagai jenis kegiatan, antara lain:</p>
                 <ul>
                     <li>Turnamen video game dan e-sports.</li>
                     <li>Kompetisi dan festival pelajar.</li>
                     <li>Kegiatan Palang Merah Remaja (PMR) dan Palang Merah Indonesia (PMI).</li>
                     <li>Program penggalangan dana untuk korban bencana alam.</li>
                     <li>Kegiatan sosial seperti pembagian takjil dan bakti sosial.</li>
+                    <li>Seminar, pelatihan, dan kegiatan pengembangan generasi muda.</li>
+                    <li>Acara komunitas dan kegiatan kemasyarakatan lainnya.</li>
                 </ul>
 
                 <div class="highlight-box">
-                    <h2>Visi</h2>
+                    <h2 style="margin-top: 0;">Visi</h2>
                     <p>Menjadi perusahaan event organizer yang unggul, inovatif, dan terpercaya dalam menyelenggarakan kegiatan kreatif, edukatif, kompetitif, dan sosial yang memberikan dampak positif bagi masyarakat Indonesia.</p>
                 </div>
+
+                <div class="highlight-box">
+                    <h2 style="margin-top: 0;">Misi</h2>
+                    <ul>
+                        <li>Menyelenggarakan acara yang profesional, berkualitas, dan berorientasi pada kepuasan peserta serta mitra kerja.</li>
+                        <li>Mengembangkan kegiatan yang mendorong kreativitas, bakat, dan potensi generasi muda.</li>
+                        <li>Menjadi penghubung antara komunitas, lembaga, dan masyarakat dalam menciptakan kegiatan yang bermanfaat.</li>
+                        <li>Meningkatkan kepedulian sosial melalui berbagai program kemanusiaan dan kegiatan amal.</li>
+                        <li>Meningkatkan kerja sama yang berkelanjutan dengan berbagai pihak untuk mendukung kemajuan masyarakat dan pembangunan daerah.</li>
+                    </ul>
+                </div>
+
+                <h2>Nilai-Nilai Perusahaan</h2>
+                <ul>
+                    <li><strong>Profesionalisme:</strong> Dalam setiap proses perencanaan dan pelaksanaan acara.</li>
+                    <li><strong>Kreativitas:</strong> Dalam menghadirkan konsep yang menarik dan inovatif.</li>
+                    <li><strong>Integritas:</strong> Dalam menjaga kepercayaan mitra dan peserta.</li>
+                    <li><strong>Kolaborasi:</strong> Untuk menciptakan hubungan kerja yang harmonis dan produktif.</li>
+                    <li><strong>Kepedulian Sosial:</strong> Sebagai bentuk tanggung jawab terhadap masyarakat.</li>
+                </ul>
             </div>
 
             <div id="event" class="page-content">
                 <div style="text-align: center; margin-bottom: 20px;">
                     <span class="event-badge">Upcoming Event</span>
                     <h1 style="font-size: 2rem; margin-top: 5px; color: #ffeb3b;">🎉 GEBYAR HARI PMI 2026 🎉</h1>
-                    <p style="font-style: italic; font-weight: bold; color: #ffca28;">"Saatnya Tunjukkan Prestasi dan Semangat Kemanusiaanmu!"</p>
+                    <p style="font-style: italic; font-weight: bold; color: #ffca28; text-align: center;">"Saatnya Tunjukkan Prestasi dan Semangat Kemanusiaanmu!"</p>
                 </div>
                 <p>Bersiaplah menjadi bagian dari salah satu acara paling bergengsi tahun 2026 di Sumatera Selatan! GEBYAR HARI PMI 2026 hadir sebagai ajang kompetisi, kreativitas, dan pengembangan bakat pelajar yang mempertemukan peserta terbaik dari berbagai daerah di Sumatera Selatan.</p>
+                <p>Puluhan sekolah dari berbagai kabupaten dan kota di Sumatera Selatan akan berpartisipasi dalam rangkaian lomba yang kompetitif, edukatif, dan penuh semangat kebersamaan. Kegiatan ini menjadi wadah bagi generasi muda untuk menunjukkan kemampuan, memperluas relasi, serta meraih prestasi di tingkat provinsi.</p>
                 
                 <div class="highlight-box">
                     <ul style="list-style: none; padding-left: 0; margin: 0;">
@@ -201,15 +229,24 @@
                     </ul>
                 </div>
 
-                <p>Jangan lewatkan kesempatan emas untuk membawa nama baik sekolahmu dan bersaing dengan peserta-peserta terbaik dari seluruh Sumatera Selatan. Raih pengalaman berharga, sertifikat, penghargaan, serta kesempatan menjadi juara.</p>
-                <p style="text-align: center; font-weight: bold; color: #ff8a80;">Pendaftaran segera dibuka. Kuota peserta terbatas! 🚀🏆</p>
+                <p>Jangan lewatkan kesempatan emas untuk membawa nama baik sekolahmu dan bersaing dengan peserta-peserta terbaik dari seluruh Sumatera Selatan. Raih pengalaman berharga, sertifikat, penghargaan, serta kesempatan menjadi juara dalam ajang yang akan dikenang sepanjang tahun.</p>
+                
+                <div class="highlight-box" style="text-align: center; background: rgba(229, 57, 53, 0.15); border: 1px solid rgba(229, 57, 53, 0.3);">
+                    <p style="text-align: center; font-weight: bold; margin-bottom: 5px; color: #ff8a80;">Segera daftarkan dirimu dan tim terbaikmu!</p>
+                    <p style="text-align: center; font-size: 0.95rem; margin-bottom: 0;">Pendaftaran segera dibuka. Kuota peserta terbatas! 🚀🏆</p>
+                </div>
+
+                <p style="font-size: 0.9rem; opacity: 0.8;">Mari bersama meriahkan GEBYAR HARI PMI 2026, ajang prestasi, kreativitas, dan semangat kemanusiaan bagi generasi muda Sumatera Selatan. PMI sendiri merupakan organisasi kemanusiaan nasional yang telah lama berperan dalam kegiatan sosial dan kemanuusiaan di Indonesia.</p>
+                <p style="text-align: center; font-weight: bold; font-size: 1.1rem; color: #ffeb3b; margin-top: 20px;">"Berkarya, Berprestasi, dan Menginspirasi untuk Kemanusiaan!"</p>
             </div>
 
             <div id="kontak" class="page-content">
                 <h2>Hubungi Kami</h2>
+                <p>Punya rencana event atau ingin berkolaborasi bersama tim PT Spectra Jaya Abadi? Silakan hubungi layanan respons cepat kami melalui info berikut:</p>
                 <div class="highlight-box">
-                    <strong>Alamat Kantor:</strong> Indralaya Utara, Kabupaten Ogan Ilir, Sumatera Selatan.<br>
-                    <strong>Email Resmi:</strong> info@spectrajayaabadi.com
+                    <strong>Alamat Kantor:</strong> Indralaya Utara, Kabupaten Ogan Ilir, Sumatera Selatan.<br><br>
+                    <strong>Email Resmi:</strong> info@spectrajayaabadi.com<br><br>
+                    <strong>Jam Operasional:</strong> Senin - Jumat (09.00 - 17.00 WIB)
                 </div>
             </div>
 
@@ -218,12 +255,18 @@
 
     <script>
         function showPage(pageId) {
+            // Sembunyikan semua halaman
             const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => page.classList.remove('active'));
+            pages.forEach(page => page.style.display = 'none');
+
+            // Matikan semua tanda aktif di tombol menu
             const navLinks = document.querySelectorAll('nav a');
             navLinks.forEach(link => link.classList.remove('active'));
 
-            document.getElementById(pageId).classList.add('active');
+            // Tampilkan halaman yang diklik
+            document.getElementById(pageId).style.display = 'block';
+
+            // Beri warna aktif pada menu yang diklik
             document.getElementById('nav-' + pageId).classList.add('active');
         }
     </script>
