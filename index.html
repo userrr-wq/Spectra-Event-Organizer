@@ -6,16 +6,26 @@
     <title>Spectra Event Organizer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* Mendaftarkan variabel warna agar bisa dianimasikan oleh browser */
-        @property --warna1 {
-            syntax: '<color>';
-            initial-value: #667eea;
-            inherits: false;
+        /* Variabel Warna Utama untuk Mode Terang (Default) */
+        :root {
+            --bg-body: #f4f6f9; /* Background utama putih keabu-abuan bersih */
+            --bg-sidebar: rgba(118, 75, 162, 0.15); /* Sidebar ungu transparan tipis */
+            --border-sidebar: rgba(118, 75, 162, 0.2);
+            --text-nav: #4a148c; /* Teks menu ungu gelap */
+            --bg-container: rgba(118, 75, 162, 0.85); /* Papan teks ungu solid mewah */
+            --text-main: #ffffff; /* Teks di dalam papan berwarna putih agar kontras */
+            --box-shadow: 0 10px 30px rgba(118, 75, 162, 0.15);
         }
-        @property --warna2 {
-            syntax: '<color>';
-            initial-value: #764ba2;
-            inherits: false;
+
+        /* Variabel Warna untuk Mode Gelap (Saat class .dark-mode aktif) */
+        .dark-mode {
+            --bg-body: #121212; /* Background utama hitam pekat */
+            --bg-sidebar: rgba(255, 255, 255, 0.05); /* Sidebar hitam transparan */
+            --border-sidebar: rgba(255, 255, 255, 0.1);
+            --text-nav: #ffffff; /* Teks menu menjadi putih */
+            --bg-container: rgba(30, 30, 30, 0.85); /* Papan teks menjadi abu-abu gelap mewah */
+            --text-main: #e0e0e0;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         body {
@@ -23,54 +33,64 @@
             margin: 0;
             display: flex;
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--warna1) 0%, var(--warna2) 100%);
-            color: white;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             box-sizing: border-box;
-            transition: --warna1 2s ease, --warna2 2s ease; 
+            transition: background-color 0.5s ease, color 0.5s ease; 
         }
 
         /* --- STYLING SIDEBAR (MENU SEBELAH KIRI) --- */
         nav {
             width: 260px;
-            background: rgba(255, 255, 255, 0.12);
+            background: var(--bg-sidebar);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             padding: 30px 15px;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            border-right: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 4px 0 25px rgba(0,0,0,0.1);
+            border-right: 1px solid var(--border-sidebar);
+            box-shadow: 4px 0 25px rgba(0,0,0,0.05);
             position: fixed;
             height: 100vh;
             box-sizing: border-box;
+            justify-content: space-between; /* Membuat tombol mode berada di paling bawah */
+            transition: background 0.5s ease, border 0.5s ease;
+        }
+
+        .menu-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
         }
 
         .sidebar-brand {
             font-size: 1.4rem;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             letter-spacing: 1px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid var(--border-sidebar);
             padding-bottom: 15px;
+            color: var(--text-nav);
+            transition: color 0.5s ease;
         }
 
         nav a {
-            color: white;
+            color: var(--text-nav);
             text-decoration: none;
             font-weight: 500;
             padding: 12px 20px;
             border-radius: 12px;
-            transition: 0.3s ease;
+            transition: 0.3s ease, color 0.5s ease;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 15px; /* Jarak antara logo ikon dan teks menu */
+            gap: 15px;
             font-size: 1.05rem;
         }
 
-        /* Mengatur ukuran logo ikon di menu */
         nav a i {
             font-size: 1.2rem;
             width: 25px;
@@ -78,20 +98,43 @@
         }
 
         nav a:hover {
-            background: rgba(255, 255, 255, 0.18);
-            transform: translateX(5px); /* Efek bergeser sedikit ke kanan saat didekati mouse */
+            background: rgba(118, 75, 162, 0.1);
+            transform: translateX(5px);
         }
 
         nav a.active {
-            background: white;
-            color: #764ba2;
+            background: #764ba2; /* Tombol menu aktif berwarna ungu solid */
+            color: white !important;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+        }
+
+        /* --- TOMBOL PENGGANTI MODE (DARK/LIGHT) --- */
+        .theme-toggle-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1rem;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 12px rgba(118, 75, 162, 0.2);
+            width: 100%;
+        }
+        .theme-toggle-btn:hover {
+            background: #5a3485;
+            transform: scale(1.02);
         }
 
         /* --- STYLING KONTEN UTAMA --- */
         .main-content {
-            margin-left: 260px; /* Memberi ruang agar tidak tertutup menu sidebar kiri */
+            margin-left: 260px;
             flex: 1;
             padding: 40px;
             display: flex;
@@ -100,30 +143,29 @@
             box-sizing: border-box;
         }
 
+        /* PAPAN TEKS BERWARNA UNGU */
         .container {
             width: 100%;
             max-width: 750px;
             padding: 2.5rem;
-            background: rgba(255, 255, 255, 0.08);
+            background: var(--bg-container);
             border-radius: 20px;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             box-sizing: border-box;
+            transition: background 0.5s ease, box-shadow 0.5s ease;
         }
         
-        /* Menyembunyikan halaman yang sedang tidak aktif */
         .page-content {
             display: none;
             animation: slideIn 0.4s ease forwards;
         }
-        /* Menampilkan halaman yang aktif */
         .page-content.active {
             display: block;
         }
 
-        /* Animasi muncul dari samping secara halus */
         @keyframes slideIn {
             from { opacity: 0; transform: translateX(15px); }
             to { opacity: 1; transform: translateX(0); }
@@ -150,7 +192,7 @@
             padding-left: 12px;
         }
         p { 
-            opacity: 0.9; 
+            opacity: 0.95; 
             line-height: 1.6;
             margin: 0 0 1rem 0;
             text-align: justify;
@@ -165,9 +207,8 @@
             margin-bottom: 6px;
         }
 
-        /* Kotak khusus untuk Visi, Misi, dan Kontak */
         .highlight-box {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 1.5rem;
@@ -178,19 +219,26 @@
 <body>
 
     <nav>
-        <div class="sidebar-brand">SPECTRA EO</div>
-        <a onclick="showPage('beranda')" id="nav-beranda" class="active">
-            <i class="fa-solid fa-house"></i> Beranda
-        </a>
-        <a onclick="showPage('tentang')" id="nav-tentang">
-            <i class="fa-solid fa-building-user"></i> Tentang Kami
-        </a>
-        <a onclick="showPage('event')" id="nav-event">
-            <i class="fa-solid fa-calendar-days"></i> Event
-        </a>
-        <a onclick="showPage('kontak')" id="nav-kontak">
-            <i class="fa-solid fa-address-book"></i> Kontak
-        </a>
+        <div class="menu-wrapper">
+            <div class="sidebar-brand">SPECTRA EO</div>
+            <a onclick="showPage('beranda')" id="nav-beranda" class="active">
+                <i class="fa-solid fa-house"></i> Beranda
+            </a>
+            <a onclick="showPage('tentang')" id="nav-tentang">
+                <i class="fa-solid fa-building-user"></i> Tentang Kami
+            </a>
+            <a onclick="showPage('event')" id="nav-event">
+                <i class="fa-solid fa-calendar-days"></i> Event
+            </a>
+            <a onclick="showPage('kontak')" id="nav-kontak">
+                <i class="fa-solid fa-address-book"></i> Kontak
+            </a>
+        </div>
+
+        <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <i id="theme-icon" class="fa-solid fa-moon"></i> 
+            <span id="theme-text">Mode Gelap</span>
+        </button>
     </nav>
 
     <div class="main-content">
@@ -199,7 +247,7 @@
             <div id="beranda" class="page-content active">
                 <div class="header-section">
                     <h1>SPECTRA EVENT ORGANIZER</h1>
-                    <p style="font-style: italic; opacity: 0.8; text-align: center;">"Mewujudkan Event yang Kreatif, Profesional, dan Berkesan"</p>
+                    <p style="font-style: italic; opacity: 0.9; text-align: center;">"Mewujudkan Event yang Kreatif, Profesional, dan Berkesan"</p>
                 </div>
                 <div class="content-section" style="text-align: center;">
                     <p style="text-align: center;">Selamat datang di platform resmi PT Spectra Jaya Abadi. Kami siap membantu merencanakan dan mengeksekusi berbagai kegiatan penting Anda dengan standar kualitas tertinggi.</p>
@@ -209,7 +257,7 @@
 
             <div id="tentang" class="page-content">
                 <div style="text-align: center; margin-bottom: 20px;">
-                    <span style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7;">Profil Perusahaan</span>
+                    <span style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8;">Profil Perusahaan</span>
                     <h1 style="font-size: 2rem; margin-top: 5px;">PT Spectra Jaya Abadi</h1>
                 </div>
                 
@@ -291,40 +339,35 @@
     <script>
         /* --- JAVASCRIPT FITUR PERPINDAHAN MENU --- */
         function showPage(pageId) {
-            // Hapus kelas 'active' dari semua halaman konten
             const pages = document.querySelectorAll('.page-content');
             pages.forEach(page => page.classList.remove('active'));
 
-            // Hapus kelas 'active' dari semua tombol navigasi menu
             const navLinks = document.querySelectorAll('nav a');
             navLinks.forEach(link => link.classList.remove('active'));
 
-            // Tampilkan halaman konten yang dipilih
             document.getElementById(pageId).classList.add('active');
-
-            // Beri tanda aktif pada tombol navigasi yang sedang dibuka
             document.getElementById('nav-' + pageId).classList.add('active');
         }
 
-        /* --- JAVASCRIPT ANIMASI BACKGROUND OTOMATIS --- */
-        const themes = [
-            { w1: '#667eea', w2: '#764ba2' }, // Ungu - Biru
-            { w1: '#ff9a9e', w2: '#fecfef' }, // Pink Lembut
-            { w1: '#a1c4fd', w2: '#c2e9fb' }, // Biru Langit
-            { w1: '#11998e', w2: '#38ef7d' }, // Hijau Tosca
-            { w1: '#ff9a00', w2: '#ff5a00' }  // Oranye Cerah
-        ];
-        
-        let currentThemeIndex = 0;
+        /* --- JAVASCRIPT FITUR PENGGANTI MODE WARNA (TOGGLE THEME) --- */
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
 
-        function changeBackgroundAutomatically() {
-            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-            document.body.style.setProperty('--warna1', themes[currentThemeIndex].w1);
-            document.body.style.setProperty('--warna2', themes[currentThemeIndex].w2);
+            // Cek apakah mode gelap sedang aktif atau tidak
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                // Perubahan teks dan ikon saat beralih ke Mode Gelap
+                icon.className = 'fa-solid fa-sun';
+                text.innerText = 'Mode Terang';
+            } else {
+                // Perubahan teks dan ikon saat kembali ke Mode Terang
+                icon.className = 'fa-solid fa-moon';
+                text.innerText = 'Mode Gelap';
+            }
         }
-
-        // Interval transisi otomatis berjalan setiap 4 detik
-        setInterval(changeBackgroundAutomatically, 4000);
     </script>
 </body>
 </html>
