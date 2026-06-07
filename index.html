@@ -183,4 +183,280 @@
             font-weight: 700;
             color: #4a148c;
             margin-top: 15px;
-            margin-bottom
+            margin-bottom: 10px;
+        }
+
+        .text-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #444444;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        /* Grid Daftar Kegiatan Ber-Ikon */
+        .kegiatan-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 kolom berdampingan */
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .kegiatan-card {
+            background: #f9f9f9;
+            border: 1px solid #eeeeee;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .kegiatan-card i {
+            font-size: 1.8rem;
+            color: #4a148c;
+            margin-bottom: 8px;
+        }
+
+        .kegiatan-card p {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #333333;
+        }
+
+        /* Kotak Visi & Misi Gelap Sesuai Desain */
+        .dark-box {
+            background: #1e1b29; /* Hitam keunguan pekat */
+            color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .dark-box h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            border-left: 4px solid #764ba2;
+            padding-left: 10px;
+        }
+
+        .dark-box ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .dark-box li {
+            margin-bottom: 8px;
+        }
+
+        /* List Nilai Perusahaan */
+        .list-nilai {
+            list-style: none;
+        }
+
+        .list-nilai li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #444444;
+        }
+
+        .list-nilai li::before {
+            content: "•";
+            color: #4a148c;
+            font-weight: bold;
+            font-size: 1.3rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* Bagian Penutup / Footer Info */
+        .footer-info {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 2px solid #eeeeee;
+        }
+
+        .footer-info p {
+            font-size: 0.9rem;
+            color: #666666;
+            margin-bottom: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #333333;
+            font-weight: 600;
+        }
+
+        .contact-item i {
+            color: #4a148c;
+            width: 15px;
+        }
+
+        /* --- AKALAN RAHASIA MEDIA QUERY UNTUK LAYAR LAPTOP/DESKTOP --- */
+        @media (min-width: 768px) {
+            .wrapper {
+                flex-direction: row; /* Ubah posisi jadi menyamping kiri-kanan */
+            }
+
+            nav {
+                width: 280px; /* Sidebar kiri terkunci kokoh */
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                left: 0;
+                border-right: 2px solid #eaeaea;
+                border-bottom: none;
+                padding-top: 40px;
+            }
+
+            .main-container {
+                margin-left: 280px; /* Beri ruang agar tidak tertabrak sidebar */
+                padding: 40px 50px;
+            }
+
+            .grid-layout {
+                grid-template-columns: 1.2fr 1fr; /* Membagi jadi 2 Tiang sejajar persis gambar */
+                gap: 40px;
+            }
+
+            .kegiatan-grid {
+                grid-template-columns: repeat(4, 1fr); /* Tampilan icon melebar jadi 4 kolom di laptop */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="splash-screen">
+        <div class="welcome-box">
+            <div class="welcome-text">WELCOME DI WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+
+        <nav>
+            <div class="logo-box">
+                <img src="logo.png" alt="Logo PT Spectra Jaya Abadi">
+                <h2>SPECTRA EO</h2>
+            </div>
+            <div class="menu-group">
+                <button onclick="aksesHalaman('beranda')" id="btn-beranda" class="active">
+                    <i class="fa-solid fa-house"></i> Beranda
+                </button>
+                <button onclick="aksesHalaman('tentang')" id="btn-tentang">
+                    <i class="fa-solid fa-building-user"></i> Tentang Kami
+                </button>
+                <button onclick="aksesHalaman('event')" id="btn-event">
+                    <i class="fa-solid fa-calendar-days"></i> Event
+                </button>
+                <button onclick="aksesHalaman('kontak')" id="btn-kontak">
+                    <i class="fa-solid fa-address-book"></i> Kontak
+                </button>
+            </div>
+        </nav>
+
+        <div class="main-container">
+
+            <div id="beranda" class="page-content" style="display: block;">
+                <h1 class="title-main">Profil Perusahaan</h1>
+                <h2 class="subtitle-sec" style="margin-top:0;">PT Spectra Jaya Abadi</h2>
+                
+                <div class="grid-layout">
+                    <div>
+                        <h3 class="subtitle-sec" style="margin-top:0;">Tentang Perusahaan</h3>
+                        <p class="text-desc">PT Spectra Jaya Abadi adalah perusahaan yang bergerak di bidang Event Organizer (EO) yang didirikan pada tahun 2024 di Indralaya Utara, Kabupaten Ogan Ilir, Sumatera Selatan. Berfokus pada penyelenggaraan kompetitif, edukatif, dan sosial dengan slogan <strong>"Mewujudkan Event yang Kreatif, Profesional, dan Berkesan"</strong>.</p>
+                        
+                        <h3 class="subtitle-sec">Bidang Kegiatan</h3>
+                        <div class="kegiatan-grid">
+                            <div class="kegiatan-card"><i class="fa-solid fa-gamepad"></i><p>e-sports</p></div>
+                            <div class="kegiatan-card"><i class="fa-solid fa-square-plus"></i><p>PMI / PMR</p></div>
+                            <div class="kegiatan-card"><i class="fa-solid fa-cookie-bite"></i><p>Takjil</p></div>
+                            <div class="kegiatan-card"><i class="fa-solid fa-hand-holding-heart"></i><p>Sosial</p></div>
+                        </div>
+
+                        <h3 class="subtitle-sec">Nilai-Nilai Perusahaan</h3>
+                        <ul class="list-nilai">
+                            <li>Pemenuhan dan perusahaan terpercaya.</li>
+                            <li>Pematangan disetiap lini manajemen.</li>
+                            <li>Mengalihkan risiko ketidakpastian acara.</li>
+                            <li>Memaksimalkan kepuasan konsumen.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="dark-box">
+                            <h3>Visi & Misi</h3>
+                            <p style="font-size:0.85rem; margin-bottom:10px; opacity:0.8;"><strong>Visi:</strong> Menjadi perusahaan event organizer yang unggul, inovatif, dan terpercaya di Sumatera Selatan.</p>
+                            <p style="font-size:0.85rem; font-weight:bold; margin-bottom:5px;">Misi:</p>
+                            <ul>
+                                <li>Menyelenggarakan acara yang profesional.</li>
+                                <li>Mengembangkan kegiatan kreatif.</li>
+                                <li>Menjadi penghubung komunitas positif.</li>
+                                <li>Meningkatkan kepedulian sosial & bakti sesama.</li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-info">
+                            <h3 class="subtitle-sec" style="margin-top:0;">Penutup</h3>
+                            <p>Demikian profil singkat ini kami buat, sebagai gambaran umum profesionalisme komitmen kerja PT Spectra Jaya Abadi.</p>
+                            <div class="contact-item"><i class="fa-solid fa-phone"></i> 0891 1234 3890</div>
+                            <div class="contact-item"><i class="fa-solid fa-envelope"></i> info@spectrajayaabadi.com</div>
+                            <div class="contact-item"><i class="fa-solid fa-location-dot"></i> Indralaya Utara, Ogan Ilir</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tentang" class="page-content">
+                <h1 class="title-main">Tentang Kami</h1>
+                <p class="text-desc">PT Spectra Jaya Abadi didirikan dari semangat kolaborasi para pendiri untuk menghadirkan pelayanan Event Organizer terbaik yang berbasis di Ogan Ilir, Sumatera Selatan. Kami percaya setiap detail momen berharga Anda layak dikelola secara luar biasa.</p>
+            </div>
+
+            <div id="event" class="page-content">
+                <h1 class="title-main">Agenda & Event</h1>
+                <p class="text-desc">Nantikan informasi pendaftaran kompetisi e-sports, festival seni pelajar, serta aksi donor darah akbar kemanusiaan yang akan kami gelar dalam waktu dekat.</p>
+            </div>
+
+            <div id="kontak" class="page-content">
+                <h1 class="title-main">Hubungi Kontak Resmi</h1>
+                <p class="text-desc">Silakan hubungi tim marketing dan administrasi kami untuk kerja sama penawaran kemitraan ataupun konsultasi konsep acara Anda.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function aksesHalaman(idTujuan) {
+            // Sembunyikan seluruh tab halaman secara aman
+            var halaman = document.getElementsByClassName('page-content');
+            for (var i = 0; i < halaman.length; i++) {
+                halaman[i].style.display = 'none';
+            }
+
+            // Hapus status warna tombol aktif terdahulu
+            var tombol = document.querySelectorAll('nav button');
+            for (var j = 0; j < tombol.length; j++) {
+                tombol[j].classList.remove('active');
+            }
+
+            // Hidupkan halaman target & beri warna pada tombol yang diklik
+            var targetHalaman = document.getElementById(idTujuan);
+            var targetTombol = document.getElementById('btn-' + idTujuan);
+            
+            if (targetHalaman && targetTombol) {
+                targetHalaman.style.display = 'block';
+                targetTombol.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
