@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PT Spectra Jaya Abadi - Official Website</title>
+    <title>PT Penolong Terampil Indonesia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* --- UTILITY RESET & DASAR --- */
+        /* --- RESET & ROOT STYLE --- */
         * {
             margin: 0;
             padding: 0;
@@ -15,464 +15,369 @@
         }
 
         body {
-            background-color: #ffffff;
-            color: #222222;
+            background-color: #0b0f19; /* Latar belakang gelap futuristik sesuai gambar */
+            color: #ffffff;
             min-height: 100vh;
-            overflow-x: hidden;
+            padding: 20px 15px;
         }
 
-        /* --- SPLASH SCREEN BLACK NEON --- */
-        #splash-screen {
-            position: fixed;
-            top: 0;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- HEADER LOGO --- */
+        .header-logo {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        /* Garis Gradasi Atas seperti di SS */
+        .header-logo::before {
+            content: '';
+            position: absolute;
+            top: -15px;
             left: 0;
             width: 100%;
-            height: 100vh;
-            background-color: #000000; /* Latar belakang hitam pekat */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-            padding: 20px;
-            /* Animasi luntur lalu hilang total dari layar */
-            animation: lunturLayar 0.6s ease 3s forwards;
+            height: 4px;
+            background: linear-gradient(90deg, #ff0000, #ff7700, #00d2ff);
+            border-radius: 2px;
         }
 
-        /* Box welcome minimalis dengan glow biru santai */
-        .welcome-box {
-            text-align: center;
-            padding: 30px 50px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            /* Cahaya biru di sekeliling box */
-            box-shadow: 0 0 20px rgba(0, 110, 255, 0.4), inset 0 0 10px rgba(0, 110, 255, 0.2);
-            animation: wadahMuncul 1s ease-out forwards;
-        }
-
-        /* --- TEKS 3D + LAMPU BIRU NEON GLOW --- */
-        .welcome-text {
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: #ffffff; 
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            line-height: 1.4;
-            
-            /* GABUNGAN EFEK TULISAN 3D & NEON GLOW BIRU (ANTENG) */
-            text-shadow: 
-                /* Efek Dimensi 3D Tebal (Warna Abu-abu Kegelapan) */
-                1px 1px 0px #bbbbbb,
-                2px 2px 0px #888888,
-                3px 3px 0px #555555,
-                4px 4px 0px #222222,
-                /* Cahaya Neon Biru (Biru Cyan untuk kesan futuristik santai) */
-                0 0 5px #ffffff,       /* Inti cahaya putih */
-                0 0 15px #00aaff,      /* Glow biru muda kencang */
-                0 0 30px #00aaff,      /* Glow biru muda luas */
-                0 0 50px #0044ff;      /* Glow biru tua terdalam */
-        }
-
-        @keyframes wadahMuncul {
-            0% { opacity: 0; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes lunturLayar {
-            0% { opacity: 1; visibility: visible; }
-            99% { opacity: 0; visibility: hidden; }
-            100% { opacity: 0; visibility: hidden; display: none !important; z-index: -1; }
-        }
-
-        /* --- TATA LETAK UTAMA MENYAMPING --- */
-        .wrapper {
-            display: flex;
-            width: 100%;
-        }
-
-        /* --- SIDEBAR KIRI FIX --- */
-        nav {
-            width: 120px;
+        .logo-img-placeholder {
             background: #ffffff;
-            padding: 15px 5px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-right: 2px solid #eaeaea;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            z-index: 99;
-        }
-
-        .logo-box {
-            text-align: center;
+            padding: 15px 30px;
+            display: inline-block;
+            border-radius: 8px;
             margin-bottom: 15px;
         }
 
-        .logo-box img {
-            width: 50px;
-            height: auto;
-            border-radius: 50%;
-            border: 2px solid #4a148c;
-            padding: 2px;
+        .logo-img-placeholder h1 {
+            color: #ff0000;
+            font-size: 1.5rem;
+            font-weight: 900;
+            font-style: italic;
         }
 
-        .logo-box h2 {
-            font-size: 0.75rem;
-            color: #333333;
-            margin-top: 5px;
+        .logo-img-placeholder span {
+            color: #222222;
+            font-style: normal;
+        }
+
+        .company-title {
+            font-size: 1.8rem;
             font-weight: 800;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff;
         }
 
-        .menu-group {
+        .company-desc {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        /* --- BUTTON JADWAL NEON --- */
+        .btn-jadwal-blue {
+            display: block;
+            width: 100%;
+            background: linear-gradient(90deg, #0044ff, #0066ff);
+            color: #ffffff;
+            text-align: center;
+            padding: 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1rem;
+            margin: 20px 0;
+            border: 2px solid #00d2ff;
+            box-shadow: 0 0 15px rgba(0, 110, 255, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .btn-jadwal-red {
+            display: block;
+            width: 100%;
+            background: #d32f2f;
+            color: #ffffff;
+            text-align: center;
+            padding: 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1rem;
+            margin: 25px 0;
+            box-shadow: 0 0 20px rgba(211, 47, 47, 0.7);
+        }
+
+        /* --- VISI & MISI --- */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: 2px;
+            margin: 30px 0 15px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .visi-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-style: italic;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .misi-list {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            width: 100%;
+            gap: 10px;
         }
 
-        nav a {
-            background: #764ba2;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 10px 3px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            transition: all 0.3s ease;
-            width: 100%;
-            text-align: center;
-        }
-
-        nav a:hover, nav a:active {
-            background: #4a148c;
-        }
-
-        /* --- AREA UTAMA KONTEN KANAN --- */
-        .main-container {
-            margin-left: 120px;
-            flex-grow: 1;
-            min-width: 0;
+        .misi-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid #0066ff;
             padding: 15px;
-            background: #ffffff;
+            border-radius: 4px 12px 12px 4px;
+            font-size: 0.95rem;
+            color: #e2e8f0;
         }
 
-        /* --- LOGIKA PERPINDAHAN CSS :TARGET --- */
-        .page-content {
-            display: none;
-            width: 100%;
-            animation: efekPudar 0.4s ease-in-out forwards;
-        }
-
-        #beranda {
-            display: block;
-        }
-
-        :target {
-            display: block !important;
-        }
-        :target ~ #beranda {
-            display: none !important;
-        }
-        #beranda:target {
-            display: block !important;
-        }
-
-        @keyframes efekPudar {
-            0% { opacity: 0; transform: translateY(8px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- STYLING ISI TEKS UTAMA --- */
-        .title-main {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #111111;
-            margin-bottom: 5px;
-            border-bottom: 2px solid #764ba2;
-            padding-bottom: 4px;
-        }
-
-        .subtitle-sec {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #4a148c;
-            margin-top: 10px;
-            margin-bottom: 6px;
-        }
-
-        .text-desc {
-            font-size: 0.8rem;
-            line-height: 1.5;
-            color: #444444;
-            text-align: justify;
-            margin-bottom: 8px;
-        }
-
-        /* Grid Item Box Kegiatan */
-        .kegiatan-grid {
+        /* --- KENAPA MEMILIH KAMI (GRID) --- */
+        .grid-reasons {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 6px;
-            margin-top: 6px;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 15px;
         }
 
-        .kegiatan-card {
-            background: #f9f9f9;
-            border: 1px solid #eeeeee;
-            padding: 8px 4px;
-            border-radius: 6px;
+        .reason-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
             text-align: center;
-        }
-
-        .kegiatan-card i {
-            font-size: 1.1rem;
-            color: #4a148c;
-            margin-bottom: 3px;
-        }
-
-        .kegiatan-card p {
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: #333333;
-        }
-
-        /* Kotak Gelap */
-        .dark-box {
-            background: #1e1b29;
-            color: #ffffff;
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 8px;
-        }
-
-        .dark-box h3 {
-            color: #ffffff;
-            font-size: 0.9rem;
-            margin-bottom: 6px;
-            border-left: 3px solid #764ba2;
-            padding-left: 6px;
-        }
-
-        .dark-box ul {
-            padding-left: 12px;
-            font-size: 0.75rem;
-            line-height: 1.5;
-            list-style: square;
-        }
-
-        .dark-box li {
-            margin-bottom: 4px;
-        }
-
-        /* List Nilai */
-        .list-nilai {
-            list-style: none;
-        }
-
-        .list-nilai li {
             position: relative;
-            padding-left: 12px;
-            margin-bottom: 4px;
-            font-size: 0.8rem;
-            color: #444444;
+            overflow: hidden;
         }
 
-        .list-nilai li::before {
-            content: "•";
-            color: #4a148c;
-            font-weight: bold;
+        /* Garis hiasan atas kartu kecil */
+        .reason-card::before {
+            content: '';
             position: absolute;
+            top: 0;
             left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff5500, #00d2ff);
         }
 
-        .footer-info {
-            margin-top: 12px;
-            padding-top: 8px;
-            border-top: 1px solid #eeeeee;
+        .reason-card i {
+            font-size: 2rem;
+            color: #00aaff;
+            margin-bottom: 12px;
         }
 
-        .contact-item {
+        .reason-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .reason-card p {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .badge-nib {
+            display: inline-block;
+            background: #271c19;
+            color: #ff7655;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 10px;
+            border: 1px solid rgba(255, 118, 85, 0.2);
+        }
+
+        /* --- STRUKTUR DIREKSI BARU --- */
+        .management-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .member-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 15px;
             display: flex;
             align-items: center;
-            gap: 6px;
-            margin-bottom: 6px;
-            font-size: 0.75rem;
-            color: #333333;
-            font-weight: 600;
+            gap: 15px;
         }
 
-        .contact-item i {
-            color: #4a148c;
+        .member-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #00aaff;
+            font-size: 1.2rem;
         }
 
-        .event-badge {
-            background: #e53935;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.65rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 4px;
+        .member-info h4 {
+            font-size: 0.8rem;
+            color: #00aaff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
         }
 
-        /* --- RESPONSIVE DESKTOP LAPTOP --- */
-        @media (min-width: 768px) {
-            nav {
-                width: 240px;
-                padding: 25px 15px;
+        .member-info p {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* Responsive Breakpoint ke Laptop/Tablet */
+        @media (min-width: 600px) {
+            .grid-reasons {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .logo-box img { width: 85px; }
-            .logo-box h2 { font-size: 1.2rem; }
-            nav a {
-                font-size: 1rem;
-                padding: 12px 15px;
-                justify-content: flex-start;
-                gap: 12px;
+            .management-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .main-container {
-                margin-left: 240px;
-                padding: 40px;
+            /* Pemilik PT dan Penasehat biar full width di atas */
+            .management-grid .full-width {
+                grid-column: span 2;
             }
-            .grid-layout {
-                display: grid;
-                grid-template-columns: 1.2fr 1fr;
-                gap: 30px;
-            }
-            .kegiatan-grid { grid-template-columns: repeat(4, 1fr); }
-            .title-main { font-size: 1.8rem; }
-            .subtitle-sec { font-size: 1.3rem; }
-            .text-desc { font-size: 0.95rem; }
-            .dark-box h3 { font-size: 1.1rem; }
-            .dark-box ul { font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
 
-    <div id="splash-screen">
-        <div class="welcome-box">
-            <div class="welcome-text">WELCOME DI WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
-        </div>
-    </div>
-
-    <div class="wrapper">
+    <div class="container">
         
-        <nav>
-            <div class="logo-box">
-                <img src="logo.png" alt="Logo">
-                <h2>SPECTRA EO</h2>
+        <div class="header-logo">
+            <div class="logo-img-placeholder">
+                <h1>Penolong Terampil <span>Indonesia.</span></h1>
             </div>
-            <div class="menu-group">
-                <a href="#beranda"><i class="fa-solid fa-house"></i> Beranda</a>
-                <a href="#tentang"><i class="fa-solid fa-building-user"></i> Tentang</a>
-                <a href="#event"><i class="fa-solid fa-calendar-days"></i> Event</a>
-                <a href="#kontak"><i class="fa-solid fa-address-book"></i> Kontak</a>
-            </div>
-        </nav>
+            <h2 class="company-title">PT Penolong Terampil Indonesia</h2>
+            <p class="company-desc">
+                PT Penolong Terampil Indonesia adalah perusahaan yang berdedikasi tinggi dalam bidang edukasi keselamatan dan kesehatan kerja, khususnya pada pelatihan pertolongan pertama (First Aid) serta kesiapsiagaan darurat. Kami hadir sebagai solusi bagi individu, komunitas, maupun sektor industri untuk membangun lingkungan yang lebih aman dan responsif terhadap situasi darurat medis. Dengan dukungan instruktur bersertifikasi internasional (seperti GFARC) dan nasional (BNSP), kami menjamin kualitas pelatihan yang aplikatif dan sesuai standar medis terkini.
+            </p>
+        </div>
 
-        <div class="main-container">
+        <a href="#" class="btn-jadwal-blue">🚨 Jadwal Pelatihan 2026</a>
+
+        <h3 class="section-title">Visi</h3>
+        <div class="visi-box">
+            "Menjadi penyedia pelatihan dan layanan pertolongan pertama terkemuka di Indonesia yang menciptakan masyarakat tangguh dan siap siaga."
+        </div>
+
+        <h3 class="section-title">Misi</h3>
+        <div class="misi-list">
+            <div class="misi-item">Pelatihan berkualitas tinggi dan mudah dipahami.</div>
+            <div class="misi-item">Edukasi efektif keselamatan kerja dan bencana.</div>
+            <div class="misi-item">Mitra strategis peningkatan kompetensi P3K.</div>
+            <div class="misi-item">Meningkatkan kesadaran tindakan cepat kondisi Gawat Darurat.</div>
+        </div>
+
+        <a href="#" class="btn-jadwal-red">🚨 Jadwal Pelatihan 2026</a>
+
+        <h3 class="section-title">Kenapa Memilih Kami</h3>
+        <div class="grid-reasons">
+            <div class="reason-card">
+                <i class="fa-solid fa-user-tie"></i>
+                <h3>Instruktur Berpengalaman</h3>
+                <p>Tim kami terdiri dari para praktisi dan ahli yang memiliki pengalaman lapangan nyata.</p>
+            </div>
+            <div class="reason-card">
+                <i class="fa-solid fa-gears"></i>
+                <h3>Metode Interaktif</h3>
+                <p>Kami mengedepankan simulasi praktis (hands-on) yang memastikan peserta menguasai teknik.</p>
+            </div>
+            <div class="reason-card">
+                <i class="fa-solid fa-book-open"></i>
+                <h3>Materi Terbaru</h3>
+                <p>Kurikulum kami mengacu pada panduan internasional dan regulasi nasional terkini.</p>
+            </div>
+            <div class="reason-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Legalitas Jelas</h3>
+                <p>Kami beroperasi dengan legalitas lengkap untuk rasa aman mitra bisnis.</p>
+                <div class="badge-nib">NIB: 1309240001491</div>
+            </div>
+        </div>
+
+        <h3 class="section-title">Susunan Direksi dan Manajemen</h3>
+        <div class="management-grid">
             
-            <div id="tentang" class="page-content">
-                <h1 class="title-main">Tentang Kami</h1>
-                <h2 class="subtitle-sec">Sejarah Singkat</h2>
-                <p class="text-desc">PT Spectra Jaya Abadi didirikan atas dasar komitmen dan semangat kolaborasi untuk menghadirkan layanan manajemen acara (Event Organizer) terbaik di wilayah Ogan Ilir dan sekitarnya.</p>
-                <p class="text-desc">Perusahaan ini didirikan oleh dua orang founder inovatif pada tahun 2024, yang kemudian berkembang menjadi tiga orang anggota inti manajemen demi mengoptimalkan pelayanan operasional.</p>
-                
-                <div class="dark-box">
-                    <h3>Komitmen Kami</h3>
-                    <p style="font-size:0.75rem;">Kami percaya bahwa setiap detail dalam sebuah acara, baik turnamen game, agenda sosial, maupun festival pendidikan, berhak dikelola dengan transparansi tinggi dan konsep yang matang.</p>
+            <div class="member-card full-width">
+                <div class="member-icon"><i class="fa-solid fa-crown"></i></div>
+                <div class="member-info">
+                    <h4>Pemilik PT / Komisaris</h4>
+                    <p>M. Fauzi A.</p>
                 </div>
             </div>
 
-            <div id="event" class="page-content">
-                <h1 class="title-main">Agenda & Acara</h1>
-                <div class="event-badge">Upcoming Event</div>
-                
-                <h2 class="subtitle-sec" style="margin-top: 5px; color: #d32f2f;">🎉 GEBYAR HARI PMI 2026 🎉</h2>
-                <p class="text-desc" style="font-style: italic; font-weight: bold; color: #e65100;">"Saatnya Tunjukkan Prestasi dan Semangat Kemanusiaanmu!"</p>
-                
-                <p class="text-desc">Bersiaplah menjadi bagian dari salah satu acara paling bergengsi tahun 2026 di Sumatera Selatan! GEBYAR HARI PMI 2026 hadir sebagai ajang kompetisi, kreativitas, dan pengembangan bakat pelajar yang mempertemukan peserta terbaik dari berbagai daerah.</p>
-                
-                <div class="dark-box">
-                    <h3>Detail Informasi Acara:</h3>
-                    <ul>
-                        <li><strong>Tempat:</strong> Sekolah PGRI Indralaya Utara</li>
-                        <li><strong>Tahun Pelaksanaan:</strong> 2026</li>
-                        <li><strong>Tingkat Kompetisi:</strong> Se-Sumatera Selatan</li>
-                    </ul>
-                </div>
-                
-                <p class="text-desc" style="margin-top: 10px; font-weight: bold; text-align: center; color: #d32f2f; background: #ffebee; padding: 8px; border-radius: 6px;">
-                    🚀 Pendaftaran segera dibuka. Kuota peserta terbatas! 🏆
-                </p>
-            </div>
-
-            <div id="kontak" class="page-content">
-                <h1 class="title-main">Hubungi Kami</h1>
-                <h2 class="subtitle-sec">Saluran Resmi Perusahaan</h2>
-                <p class="text-desc">Hubungi kami sekarang untuk berkonsultasi mengenai rencana kemitraan, sponsor, penyusunan anggaran, atau pembuatan konsep acara Anda.</p>
-                
-                <div class="footer-info" style="border-top: none;">
-                    <div class="contact-item"><i class="fa-solid fa-phone"></i> <span>+62 821-8507-8701</span></div>
-                    <div class="contact-item"><i class="fa-solid fa-envelope"></i> <span>spectrajayaabadi@gmail.com</span></div>
-                    <div class="contact-item"><i class="fa-solid fa-location-dot"></i> <span>Jl. Desa Tanjung Baru, Tanjung Baru, Indralaya Utara, Ogan Ilir, Sumatera Selatan</span></div>
+            <div class="member-card full-width">
+                <div class="member-icon"><i class="fa-solid fa-user-shield"></i></div>
+                <div class="member-info">
+                    <h4>Penasehat Perusahaan</h4>
+                    <p>H. Rangga</p>
                 </div>
             </div>
 
-            <div id="beranda" class="page-content">
-                <h1 class="title-main">Profil Perusahaan</h1>
-                <h2 class="subtitle-sec" style="margin-top:0;">PT Spectra Jaya Abadi</h2>
-                
-                <div class="grid-layout">
-                    <div>
-                        <h3 class="subtitle-sec" style="margin-top:0;">Tentang Perusahaan</h3>
-                        <p class="text-desc">PT Spectra Jaya Abadi adalah perusahaan Event Organizer (EO) didirikan tahun 2024 di Indralaya Utara, Ogan Ilir, Sumsel. Slogan kami: <strong>"Mewujudkan Event yang Kreatif, Profesional, dan Berkesan"</strong>.</p>
-                        
-                        <h3 class="subtitle-sec">Bidang Kegiatan</h3>
-                        <div class="kegiatan-grid">
-                            <div class="kegiatan-card"><i class="fa-solid fa-gamepad"></i><p>E-Sports Tournament</p></div>
-                            <div class="kegiatan-card"><i class="fa-solid fa-square-plus"></i><p>PMI/PMR Event</p></div>
-                            <div class="kegiatan-card"><i class="fa-solid fa-utensils"></i><p>Takjil & Catering</p></div>
-                            <div class="kegiatan-card"><i class="fa-solid fa-hand-holding-heart"></i><p>Social Services</p></div>
-                        </div>
+            <div class="member-card">
+                <div class="member-icon"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="member-info">
+                    <h4>Manajer Umum (GM)</h4>
+                    <p>Dr. Sigit, S.Pi., M.Si.</p>
+                </div>
+            </div>
 
-                        <h3 class="subtitle-sec">Nilai Perusahaan</h3>
-                        <ul class="list-nilai">
-                            <li>Pemenuhan perusahaan terpercaya.</li>
-                            <li>Pematangan lini manajemen kerja.</li>
-                            <li>Mengalihkan risiko ketidakpastian.</li>
-                            <li>Memaksimalkan kepuasan konsumen.</li>
-                        </ul>
-                    </div>
+            <div class="member-card">
+                <div class="member-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                <div class="member-info">
+                    <h4>Kabid Perlindungan & Keamanan</h4>
+                    <p>H. Ahmad Shopian</p>
+                </div>
+            </div>
 
-                    <div>
-                        <div class="dark-box">
-                            <h3>Visi & Misi</h3>
-                            <p style="font-size:0.75rem; margin-bottom:5px;"><strong>Visi:</strong> Menjadi EO unggul, kreatif, dan terpercaya di Sumatera Selatan.</p>
-                            <p style="font-size:0.75rem; font-weight:bold; margin-bottom:3px;">Misi:</p>
-                            <ul style="list-style:disc; padding-left:15px;">
-                                <li>Penyelenggaraan acara profesional.</li>
-                                <li>Mengembangkan kegiatan kompetitif.</li>
-                                <li>Hubungan komunitas positif & sosial.</li>
-                            </ul>
-                        </div>
-
-                        <div class="footer-info">
-                            <h3 class="subtitle-sec" style="margin-top:0;">Penutup</h3>
-                            <p class="text-desc">Demikian gambaran umum profesionalisme komitmen kerja PT Spectra Jaya Abadi.</p>
-                        </div>
-                    </div>
+            <div class="member-card full-width">
+                <div class="member-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <div class="member-info">
+                    <h4>Operator & IT Support</h4>
+                    <p>Ahmad Syahrul</p>
                 </div>
             </div>
 
         </div>
+
     </div>
 
 </body>
