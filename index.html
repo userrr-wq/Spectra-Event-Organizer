@@ -14,6 +14,10 @@
             font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth; /* Efek transisi meluncur halus saat tombol diklik */
+        }
+
         body {
             background-color: #0b0e14; /* Latar belakang gelap futuristik premium */
             color: #ffffff;
@@ -27,7 +31,7 @@
         .container {
             max-width: 800px;
             width: 100%;
-            background: rgba(18, 24, 38, 0.8.5); /* Kotak semi-transparan mewah */
+            background: rgba(18, 24, 38, 0.85); /* Kode warna bersih & bebas error GitHub */
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 20px;
             padding: 30px 25px;
@@ -36,7 +40,7 @@
             overflow: hidden;
         }
 
-        /* Garis Gradasi Atas persis seperti di foto (Aksen Warna Baru) */
+        /* Garis Gradasi Atas (Aksen Warna Baru) */
         .container::before {
             content: '';
             position: absolute;
@@ -89,7 +93,7 @@
             text-align: center;
         }
 
-        /* --- TOMBOL NEON MENYALA 2026 --- */
+        /* --- TOMBOL BIRU AKTIF (BISA DIKLIK) --- */
         .btn-neon-schedule {
             display: block;
             width: 100%;
@@ -107,6 +111,7 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            cursor: pointer;
         }
 
         .btn-neon-schedule:hover {
@@ -114,14 +119,14 @@
             transform: translateY(-1px);
         }
 
-        /* --- STRUKTUR DIREKSI & MANAJEMEN VALID + DATA BARU DARI FOTO --- */
+        /* --- STRUKTUR DIREKSI & MANAJEMEN --- */
         .section-heading {
             font-size: 1.3rem;
             font-weight: 800;
             text-align: center;
             letter-spacing: 1.5px;
             margin: 35px 0 15px;
-            color: #00ffaa; /* Aksen warna emerald-aqua menyala */
+            color: #00ffaa; /* Aksen warna emerald-aqua */
             text-transform: uppercase;
         }
 
@@ -142,7 +147,6 @@
             gap: 15px;
         }
 
-        /* Highlight khusus untuk Pimpinan Atas */
         .premium-leader {
             background: rgba(0, 255, 170, 0.03);
             border: 1px solid rgba(0, 255, 170, 0.2) !important;
@@ -186,7 +190,6 @@
             line-height: 1.4;
         }
 
-        /* Utilitas Span Lebar */
         .span-2-cols {
             grid-column: span 1;
         }
@@ -263,7 +266,61 @@
             line-height: 1.5;
         }
 
-        /* RESPONSIVE IPAD & LAPTOP */
+        /* --- STYLE TABEL AGENDA EVENT 2026 --- */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .event-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.88rem;
+            background: rgba(15, 23, 42, 0.4);
+        }
+
+        .event-table th {
+            background: rgba(0, 136, 255, 0.15);
+            color: #00ffaa;
+            padding: 12px 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid rgba(0, 255, 170, 0.3);
+        }
+
+        .event-table td {
+            padding: 14px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            line-height: 1.4;
+        }
+
+        .event-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .badge-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .status-upcoming {
+            background: rgba(0, 255, 170, 0.1);
+            color: #00ffaa;
+            border: 1px solid rgba(0, 255, 170, 0.3);
+        }
+
+        /* RESPONSIVE LAYOUT */
         @media (min-width: 630px) {
             .grid-layout-cards {
                 grid-template-columns: repeat(2, 1fr);
@@ -287,11 +344,11 @@
             </div>
             <h2 class="main-title">PT Spectra Jaya Abadi</h2>
             <p class="main-desc">
-                PT Spectra Jaya Abadi adalah perusahaan Event Organizer (EO) terpercaya yang berbasis di Indralaya Utara, Ogan Ilir, Sumatera Selatan. Kami menghadirkan pengelolaan acara yang kreatif, adaptif, profesional, serta memprioritaskan akuntabilitas tinggi demi pemenuhan kepuasan total klien kami.
+                PT Spectra Jaya Abadi adalah perusahaan Event Organizer (EO) terpercaya yang berbasis di Indralaya Utara, Ogan Ilir, Sumatera Selatan[cite: 5]. Kami menghadirkan pengelolaan acara yang kreatif, adaptif, profesional, serta memprioritaskan akuntabilitas tinggi demi pemenuhan kepuasan total klien kami[cite: 5].
             </p>
         </div>
 
-        <a href="#" class="btn-neon-schedule">🎉 KALENDER & AGENDA EVENT UTAMA 2026</a>
+        <a href="#agenda-section" class="btn-neon-schedule">🎉 KALENDER & AGENDA EVENT UTAMA 2026</a>
 
         <h3 class="section-heading">Susunan Direksi & Manajemen</h3>
         <div class="mgt-tree-grid">
@@ -319,7 +376,7 @@
                 <div class="staff-data">
                     <h4>Direktur Utama</h4>
                     <p>Manajemen Inti Eksekutif</p>
-                    <span>Jobdesk: Menentukan arah kebijakan korporat, mengambil keputusan strategis, menyetujui sirkulasi anggaran, dan memegang kendali penuh operasional perusahaan.</span>
+                    <span>Jobdesk: Menentukan visi, misi, dan strategi perusahaan, mengambil keputusan strategis, menyetujui anggaran, serta mengawasi seluruh jalannya divisi operasional[cite: 6].</span>
                 </div>
             </div>
 
@@ -328,7 +385,7 @@
                 <div class="staff-data">
                     <h4>Sekretaris Direksi</h4>
                     <p>Administrasi Direksi</p>
-                    <span>Jobdesk: Mengatur agenda direktur, mengarsipkan berkas legalitas, dan mengelola korespondensi formal.</span>
+                    <span>Jobdesk: Mengatur jadwal direktur, menyiapkan surat-menyurat perusahaan, mengarsipkan dokumen penting, dan menyiapkan rapat direksi[cite: 7].</span>
                 </div>
             </div>
 
@@ -337,7 +394,7 @@
                 <div class="staff-data">
                     <h4>Manajer Umum (General Manager)</h4>
                     <p>Dr. Sigit, S.Pi., M.Si.</p>
-                    <span>Jobdesk: Memimpin kendali penuh unit bisnis operasional di lapangan, memantau kinerja target manajer divisi, serta mengoordinasikan eksekusi lintas proyek harian.</span>
+                    <span>Jobdesk: Mengelola seluruh unit bisnis, mengawasi pencapaian target divisi, mengkoordinasikan proyek antar divisi, dan melaporkan kinerja langsung kepada Direktur.</span>
                 </div>
             </div>
 
@@ -346,7 +403,7 @@
                 <div class="staff-data">
                     <h4>Kabid Perlindungan & Keamanan</h4>
                     <p>H. Ahmad Shopian</p>
-                    <span>Jobdesk: Bertanggung jawab atas analisis mitigasi risiko, keamanan fisik lokasi acara, perizinan aparat, serta keselamatan seluruh kru dan audiens di area event.</span>
+                    <span>Jobdesk: Bertanggung jawab atas analisis mitigasi risiko, keamanan fisik lokasi acara, koordinasi perizinan aparat, serta keselamatan seluruh kru dan audiens di area event.</span>
                 </div>
             </div>
 
@@ -355,7 +412,7 @@
                 <div class="staff-data">
                     <h4>Divisi Event Organizer</h4>
                     <p>Kru Produksi Acara</p>
-                    <span>Struktur: Manager EO, Supervisor Event, Event Planner, Coordinator, Vendor Officer, Logistik, Stage Production, Crew Event.</span>
+                    <span>Struktur: Manager EO, Supervisor Event, Event Planner, Event Coordinator, Vendor & Partnership Officer, Logistic Officer, Stage & Production Officer, Crew Event.</span>
                 </div>
             </div>
 
@@ -363,8 +420,8 @@
                 <div class="staff-avatar-icon"><i class="fa-solid fa-lightbulb"></i></div>
                 <div class="staff-data">
                     <h4>Divisi Konsultan & SDM</h4>
-                    <p>Riset & Edukasi internal</p>
-                    <span>Struktur: Manager Konsultan, Senior Consultant, HR Consultant, Management Consultant, Training Officer, R&D Staff.</span>
+                    <p>Riset & Edukasi Internal</p>
+                    <span>Struktur: Manager Konsultan, Senior Consultant, HR Consultant, Management Consultant, Training & Development Officer, Research & Development Staff.</span>
                 </div>
             </div>
 
@@ -373,7 +430,7 @@
                 <div class="staff-data">
                     <h4>Divisi PR & Media</h4>
                     <p>Publikasi & Desain Grafis</p>
-                    <span>Struktur: Manager PR, Media Relations, Corporate Comm, Content Creator, Social Media Specialist, Graphic Designer.</span>
+                    <span>Struktur: Manager Public Relations, Media Relations Officer, Corporate Communication Officer, Content Creator, Social Media Specialist, Graphic Designer.</span>
                 </div>
             </div>
 
@@ -382,7 +439,7 @@
                 <div class="staff-data">
                     <h4>Divisi Marketing</h4>
                     <p>Sponsorship & Sales</p>
-                    <span>Struktur: Manager Marketing, Marketing Executive, Business Dev Officer, Sales Executive, Customer Relations.</span>
+                    <span>Struktur: Manager Marketing, Marketing Executive, Business Development Officer, Sales Executive, Customer Relationship Officer.</span>
                 </div>
             </div>
 
@@ -391,7 +448,7 @@
                 <div class="staff-data">
                     <h4>Divisi Keuangan & Pajak</h4>
                     <p>Arus Kas & Kasir Kantor</p>
-                    <span>Struktur: Manager Keuangan, Finance Supervisor, Accounting Staff, Tax Staff, Cashier Perusahaan.</span>
+                    <span>Struktur: Manager Keuangan & Akuntansi, Finance Supervisor, Accounting Staff, Tax Staff, Cashier[cite: 8, 9].</span>
                 </div>
             </div>
 
@@ -400,7 +457,7 @@
                 <div class="staff-data">
                     <h4>Divisi HR & GA</h4>
                     <p>Rekrutmen & Perizinan</p>
-                    <span>Struktur: Manager HR & GA, HR Officer, Recruitment Staff, General Affair, Legal & Licensing, Office Admin.</span>
+                    <span>Struktur: Manager HR & GA, HR Officer, Recruitment Staff, General Affair Staff, Legal & Licensing Staff, Office Administrator[cite: 8, 9].</span>
                 </div>
             </div>
 
@@ -409,7 +466,7 @@
                 <div class="staff-data">
                     <h4>Divisi Pengadaan & Logistik</h4>
                     <p>Aset Gudang & Transportasi</p>
-                    <span>Struktur: Manager Pengadaan, Procurement Officer, Warehouse Staff, Asset Management, Supir Operasional.</span>
+                    <span>Struktur: Manager Pengadaan & Operasional, Procurement Officer, Warehouse Staff, Asset Management Staff, Driver/Operational Support[cite: 8, 9].</span>
                 </div>
             </div>
 
@@ -418,7 +475,7 @@
                 <div class="staff-data">
                     <h4>Internal Audit</h4>
                     <p>Pengawas Regulasi SOP</p>
-                    <span>Jobdesk: Mengawasi kepatuhan SOP divisi, melakukan audit berkala, dan melaporkan temuan langsung ke Direktur Utama.</span>
+                    <span>Jobdesk: Mengawasi kepatuhan SOP, melakukan audit internal, mengidentifikasi risiko perusahaan, dan melaporkan hasil audit langsung ke Direktur Utama[cite: 9].</span>
                 </div>
             </div>
 
@@ -475,6 +532,41 @@
             <div class="misi-card-item" style="border-left-color: #00ffaa;">• Pematangan lini manajemen kerja di setiap divisi operasional.</div>
             <div class="misi-card-item" style="border-left-color: #00ffaa;">• Mengalihkan risiko ketidakpastian melalui perencanaan matang.</div>
             <div class="misi-card-item" style="border-left-color: #00ffaa;">• Memaksimalkan kepuasan konsumen sebagai tolok ukur kesuksesan.</div>
+        </div>
+
+        <h3 class="section-heading" id="agenda-section">Agenda & Event Mendatang 2026</h3>
+        <div class="table-responsive">
+            <table class="event-table">
+                <thead>
+                    <tr>
+                        <th>Nama Kegiatan / Event</th>
+                        <th>Jadwal Pelaksanaan</th>
+                        <th>Keterangan / Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Spectra E-Sports Championship 2026</strong></td>
+                        <td>Maret 2026</td>
+                        <td><span class="badge-status status-upcoming">Upcoming</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ajang Kreativitas & Simulasi Medis PMR-PMI</strong></td>
+                        <td>Mei 2026</td>
+                        <td><span class="badge-status status-upcoming">Upcoming</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bakti Sosial & Pembagian Takjil Ramadan</strong></td>
+                        <td>September 2026</td>
+                        <td><span class="badge-status status-upcoming">Upcoming</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Spectra Social Services: Pengabdian Masyarakat</strong></td>
+                        <td>November 2026</td>
+                        <td><span class="badge-status status-upcoming">Upcoming</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <a href="#" class="btn-neon-schedule" style="margin-top: 25px; background: #ff0055; border-color: #ff0055; box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);">📧 HUBUNGI HUBUNGAN KEMITRAAN & SPONSORSHIPS</a>
