@@ -14,10 +14,6 @@
             font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
         }
 
-        html {
-            scroll-behavior: smooth; /* Efek transisi meluncur halus saat tombol diklik */
-        }
-
         body {
             background-color: #0b0e14; /* Latar belakang gelap futuristik premium */
             color: #ffffff;
@@ -54,7 +50,7 @@
         /* --- HEADER BRANDING --- */
         .header-branding {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .logo-box-white {
@@ -93,7 +89,34 @@
             text-align: center;
         }
 
-        /* --- TOMBOL BIRU AKTIF (BISA DIKLIK) --- */
+        /* --- NAVIGASI TAB MENU --- */
+        .tab-navigation {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .tab-btn.active {
+            color: #00ffaa;
+            background: rgba(0, 255, 170, 0.08);
+            border: 1px solid rgba(0, 255, 170, 0.2);
+        }
+
+        /* --- TOMBOL NEON UTAMA --- */
         .btn-neon-schedule {
             display: block;
             width: 100%;
@@ -119,6 +142,15 @@
             transform: translateY(-1px);
         }
 
+        /* --- KONTROL TAMPILAN TAB (HIDDEN / VISIBLE) --- */
+        .tab-content {
+            display: none; /* Sembunyikan semua konten secara default */
+        }
+
+        .tab-content.active {
+            display: block; /* Hanya tampilkan tab yang sedang aktif */
+        }
+
         /* --- STRUKTUR DIREKSI & MANAJEMEN --- */
         .section-heading {
             font-size: 1.3rem;
@@ -126,7 +158,7 @@
             text-align: center;
             letter-spacing: 1.5px;
             margin: 35px 0 15px;
-            color: #00ffaa; /* Aksen warna emerald-aqua */
+            color: #00ffaa;
             text-transform: uppercase;
         }
 
@@ -344,234 +376,271 @@
             </div>
             <h2 class="main-title">PT Spectra Jaya Abadi</h2>
             <p class="main-desc">
-                PT Spectra Jaya Abadi adalah perusahaan Event Organizer (EO) terpercaya yang berbasis di Indralaya Utara, Ogan Ilir, Sumatera Selatan[cite: 5]. Kami menghadirkan pengelolaan acara yang kreatif, adaptif, profesional, serta memprioritaskan akuntabilitas tinggi demi pemenuhan kepuasan total klien kami[cite: 5].
+                PT Spectra Jaya Abadi adalah perusahaan Event Organizer (EO) terpercaya yang berbasis di Indralaya Utara, Ogan Ilir, Sumatera Selatan. Kami menghadirkan pengelolaan acara yang kreatif, adaptif, profesional, serta memprioritaskan akuntabilitas tinggi demi pemenuhan kepuasan total klien kami.
             </p>
         </div>
 
-        <a href="#agenda-section" class="btn-neon-schedule">🎉 KALENDER & AGENDA EVENT UTAMA 2026</a>
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab('profile-tab')"><i class="fa-solid fa-id-card"></i> Profil & Struktur</button>
+            <button class="tab-btn" id="agenda-nav-btn" onclick="switchTab('agenda-tab')"><i class="fa-solid fa-calendar-days"></i> Agenda Event</button>
+        </div>
 
-        <h3 class="section-heading">Susunan Direksi & Manajemen</h3>
-        <div class="mgt-tree-grid">
+        <div id="profile-tab" class="tab-content active">
             
-            <div class="staff-profile-card span-2-cols premium-leader">
-                <div class="staff-avatar-icon" style="color: #ffd700; border-color: rgba(255,215,0,0.4);"><i class="fa-solid fa-crown"></i></div>
-                <div class="staff-data">
-                    <h4>Pemilik PT / Komisaris Utama</h4>
-                    <p>M. Fauzi A.</p>
-                    <span>Posisi pemegang saham tertinggi dan pengawas eksekutif jalannya stabilitas modal perusahaan.</span>
+            <button class="btn-neon-schedule" onclick="triggerAgendaTab()">🎉 KALENDER & AGENDA EVENT UTAMA 2026</button>
+
+            <h3 class="section-heading">Susunan Direksi & Manajemen</h3>
+            <div class="mgt-tree-grid">
+                
+                <div class="staff-profile-card span-2-cols premium-leader">
+                    <div class="staff-avatar-icon" style="color: #ffd700; border-color: rgba(255,215,0,0.4);"><i class="fa-solid fa-crown"></i></div>
+                    <div class="staff-data">
+                        <h4>Pemilik PT / Komisaris Utama</h4>
+                        <p>M. Fauzi A.</p>
+                        <span>Posisi pemegang saham tertinggi dan pengawas eksekutif jalannya stabilitas modal perusahaan.</span>
+                    </div>
                 </div>
+
+                <div class="staff-profile-card span-2-cols">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-user-shield"></i></div>
+                    <div class="staff-data">
+                        <h4>Penasehat Perusahaan</h4>
+                        <p>H. Rangga</p>
+                        <span>Memberikan panduan strategis hukum, relasi, serta pertimbangan bisnis jangka panjang.</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card span-2-cols" style="border-left: 3px solid #00ffaa;">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="staff-data">
+                        <h4>Direktur Utama</h4>
+                        <p>Manajemen Inti Eksekutif</p>
+                        <span>Jobdesk: Menentukan visi, misi, dan strategi perusahaan [cite: 6], mengambil keputusan strategis [cite: 6], menyetujui anggaran [cite: 6], serta mengawasi seluruh jalannya divisi operasional[cite: 6].</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-folder-open"></i></div>
+                    <div class="staff-data">
+                        <h4>Sekretaris Direksi</h4>
+                        <p>Administrasi Direksi</p>
+                        <span>Jobdesk: Mengatur jadwal direktur [cite: 7], menyiapkan surat-menyurat perusahaan [cite: 7], mengarsipkan dokumen penting [cite: 7], dan menyiapkan rapat direksi[cite: 7].</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card" style="border-left: 3px solid #0088ff;">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-users-gear"></i></div>
+                    <div class="staff-data">
+                        <h4>Manajer Umum (General Manager)</h4>
+                        <p>Dr. Sigit, S.Pi., M.Si.</p>
+                        <span>Jobdesk: Mengelola seluruh unit bisnis [cite: 8], mengawasi pencapaian target divisi [cite: 8], mengkoordinasikan proyek antar divisi [cite: 8], dan melaporkan kinerja langsung kepada Direktur[cite: 8].</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card span-2-cols" style="background: rgba(255, 0, 85, 0.02); border-color: rgba(255, 0, 85, 0.15);">
+                    <div class="staff-avatar-icon" style="color: #ff0055;"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="staff-data">
+                        <h4>Kabid Perlindungan & Keamanan</h4>
+                        <p>H. Ahmad Shopian</p>
+                        <span>Jobdesk: Bertanggung jawab atas analisis mitigasi risiko, keamanan fisik lokasi acara, koordinasi perizinan aparat, serta keselamatan seluruh kru dan audiens di area event.</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                    <div class="staff-data">
+                        <h4>Divisi Event Organizer [cite: 5]</h4>
+                        <p>Kru Production Acara</p>
+                        <span>Struktur: Manager Event Organizer, Supervisor Event, Event Planner, Event Coordinator, Vendor & Partnership Officer, Logistic Officer, Stage & Production Officer, Crew Event[cite: 8].</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <div class="staff-data">
+                        <h4>Divisi Konsultan & SDM [cite: 5]</h4>
+                        <p>Riset & Edukasi Internal</p>
+                        <span>Struktur: Manager Konsultan, Senior Consultant, HR Consultant, Management Consultant, Training & Development Officer, Research & Development Staff[cite: 8].</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                    <div class="staff-data">
+                        <h4>Divisi PR & Media [cite: 5]</h4>
+                        <p>Publikasi & Desain Grafis</p>
+                        <span>Struktur: Manager Public Relations, Media Relations Officer, Corporate Communication Officer, Content Creator, Social Media Specialist, Graphic Designer[cite: 8].</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="staff-data">
+                        <h4>Divisi Marketing [cite: 5]</h4>
+                        <p>Sponsorship & Sales</p>
+                        <span>Struktur: Manager Marketing, Marketing Executive, Business Development Officer, Sales Executive, Customer Relationship Officer[cite: 8].</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-wallet"></i></div>
+                    <div class="staff-data">
+                        <h4>Divisi Keuangan & Pajak</h4>
+                        <p>Arus Kas & Kasir Kantor</p>
+                        <span>Struktur: Manager Keuangan & Akuntansi, Finance Supervisor, Accounting Staff, Tax Staff, Cashier[cite: 8, 9].</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <div class="staff-data">
+                        <h4>Divisi HR & GA [cite: 5]</h4>
+                        <p>Rekrutmen & Perizinan</p>
+                        <span>Struktur: Manager HR & GA, HR Officer, Recruitment Staff, General Affair Staff, Legal & Licensing Staff, Office Administrator[cite: 9].</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                    <div class="staff-data">
+                        <h4>Divisi Pengadaan & Logistik</h4>
+                        <p>Aset Gudang & Transportasi</p>
+                        <span>Struktur: Manager Pengadaan & Operasional, Procurement Officer, Warehouse Staff, Asset Management Staff, Driver/Operational Support[cite: 9].</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <div class="staff-data">
+                        <h4>Internal Audit [cite: 5]</h4>
+                        <p>Pengawas Regulasi SOP</p>
+                        <span>Jobdesk: Mengawasi kepatuhan SOP, melakukan audit internal, mengidentifikasi risiko perusahaan, dan melaporkan hasil audit kepada Direktur Utama[cite: 9].</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card span-2-cols" style="border-top: 1px dashed rgba(0, 255, 170, 0.3);">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <div class="staff-data">
+                        <h4>Operator & IT Support Perusahaan</h4>
+                        <p>Ahmad Syahrul</p>
+                        <span>Jobdesk: Mengelola infrastruktur digital, maintenance sistem data internal kantor, keamanan server website, serta dukungan teknis operasional TI harian.</span>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="staff-profile-card span-2-cols">
-                <div class="staff-avatar-icon"><i class="fa-solid fa-user-shield"></i></div>
-                <div class="staff-data">
-                    <h4>Penasehat Perusahaan</h4>
-                    <p>H. Rangga</p>
-                    <span>Memberikan panduan strategis hukum, relasi, serta pertimbangan bisnis jangka panjang.</span>
-                </div>
+            <h3 class="section-heading">Visi Perusahaan</h3>
+            <div class="content-card-dark" style="font-style: italic;">
+                "Menjadi penyedia layanan Event Organizer yang unggul, kreatif, inovatif, dan terpercaya di wilayah Sumatera Selatan."
             </div>
 
-            <div class="staff-profile-card span-2-cols" style="border-left: 3px solid #00ffaa;">
-                <div class="staff-avatar-icon"><i class="fa-solid fa-user-tie"></i></div>
-                <div class="staff-data">
-                    <h4>Direktur Utama</h4>
-                    <p>Manajemen Inti Eksekutif</p>
-                    <span>Jobdesk: Menentukan visi, misi, dan strategi perusahaan, mengambil keputusan strategis, menyetujui anggaran, serta mengawasi seluruh jalannya divisi operasional[cite: 6].</span>
-                </div>
+            <h3 class="section-heading">Misi Perusahaan</h3>
+            <div class="misi-list-group">
+                <div class="misi-card-item">Menyelenggarakan kegiatan acara secara profesional dan terstruktur.</div>
+                <div class="misi-card-item">Mengembangkan konsep kegiatan yang kreatif, edukatif, dan kompetitif.</div>
+                <div class="misi-card-item">Membangun hubungan kemitraan yang positif dengan komunitas dan lingkungan sosial.</div>
             </div>
 
-            <div class="staff-profile-card">
-                <div class="staff-avatar-icon"><i class="fa-solid fa-folder-open"></i></div>
-                <div class="staff-data">
-                    <h4>Sekretaris Direksi</h4>
-                    <p>Administrasi Direksi</p>
-                    <span>Jobdesk: Mengatur jadwal direktur, menyiapkan surat-menyurat perusahaan, mengarsipkan dokumen penting, dan menyiapkan rapat direksi[cite: 7].</span>
+            <h3 class="section-heading">Bidang Layanan & Kegiatan</h3>
+            <div class="grid-layout-cards">
+                <div class="feature-item-card">
+                    <i class="fa-solid fa-trophy"></i>
+                    <h3>E-Sports Tournament</h3>
+                    <p>Manajemen kompetisi game elektronik profesional dari penyusunan bagan hingga eksekusi panggung.</p>
+                </div>
+                <div class="feature-item-card">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    <h3>PMI & PMR Event</h3>
+                    <p>Pengorganisasian ajang kreativitas, simulasi kemanusiaan, dan bakti sosial kepalangmerahan.</p>
+                </div>
+                <div class="feature-item-card">
+                    <i class="fa-solid fa-box-tissue"></i>
+                    <h3>Takjil & Catering Supply</h3>
+                    <p>Penyediaan logistik konsumsi berkualitas tinggi untuk kebutuhan internal maupun eksternal acara.</p>
+                </div>
+                <div class="feature-item-card">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    <h3>Social Services</h3>
+                    <p>Fasilitator program pengabdian masyarakat, penyaluran donasi, dan aksi tanggap lingkungan.</p>
                 </div>
             </div>
-
-            <div class="staff-profile-card" style="border-left: 3px solid #0088ff;">
-                <div class="staff-avatar-icon"><i class="fa-solid fa-users-gear"></i></div>
-                <div class="staff-data">
-                    <h4>Manajer Umum (General Manager)</h4>
-                    <p>Dr. Sigit, S.Pi., M.Si.</p>
-                    <span>Jobdesk: Mengelola seluruh unit bisnis, mengawasi pencapaian target divisi, mengkoordinasikan proyek antar divisi, dan melaporkan kinerja langsung kepada Direktur.</span>
-                </div>
-            </div>
-
-            <div class="staff-profile-card span-2-cols" style="background: rgba(255, 0, 85, 0.02); border-color: rgba(255, 0, 85, 0.15);">
-                <div class="staff-avatar-icon" style="color: #ff0055;"><i class="fa-solid fa-shield-halved"></i></div>
-                <div class="staff-data">
-                    <h4>Kabid Perlindungan & Keamanan</h4>
-                    <p>H. Ahmad Shopian</p>
-                    <span>Jobdesk: Bertanggung jawab atas analisis mitigasi risiko, keamanan fisik lokasi acara, koordinasi perizinan aparat, serta keselamatan seluruh kru dan audiens di area event.</span>
-                </div>
-            </div>
-
-            <div class="staff-profile-card">
-                <div class="staff-avatar-icon"><i class="fa-solid fa-calendar-check"></i></div>
-                <div class="staff-data">
-                    <h4>Divisi Event Organizer</h4>
-                    <p>Kru Produksi Acara</p>
-                    <span>Struktur: Manager EO, Supervisor Event, Event Planner, Event Coordinator, Vendor & Partnership Officer, Logistic Officer, Stage & Production Officer, Crew Event.</span>
-                </div>
-            </div>
-
-            <div class="staff-profile-card">
-                <div class="staff-avatar-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                <div class="staff-data">
-                    <h4>Divisi Konsultan & SDM</h4>
-                    <p>Riset & Edukasi Internal</p>
-                    <span>Struktur: Manager Konsultan, Senior Consultant, HR Consultant, Management Consultant, Training & Development Officer, Research & Development Staff.</span>
-                </div>
-            </div>
-
-            <div class="staff-profile-card">
-                <div class="staff-avatar-icon"><i class="fa-solid fa-bullhorn"></i></div>
-                <div class="staff-data">
-                    <h4>Divisi PR & Media</h4>
-                    <p>Publikasi & Desain Grafis</p>
-                    <span>Struktur: Manager Public Relations, Media Relations Officer, Corporate Communication Officer, Content Creator, Social Media Specialist, Graphic Designer.</span>
-                </div>
-            </div>
-
-            <div class="staff-profile-card">
-                <div class="staff-avatar-icon"><i class="fa-solid fa-chart-line"></i></div>
-                <div class="staff-data">
-                    <h4>Divisi Marketing</h4>
-                    <p>Sponsorship & Sales</p>
-                    <span>Struktur: Manager Marketing, Marketing Executive, Business Development Officer, Sales Executive, Customer Relationship Officer.</span>
-                </div>
-            </div>
-
-            <div class="staff-profile-card">
-                <div class="staff-avatar-icon"><i class="fa-solid fa-wallet"></i></div>
-                <div class="staff-data">
-                    <h4>Divisi Keuangan & Pajak</h4>
-                    <p>Arus Kas & Kasir Kantor</p>
-                    <span>Struktur: Manager Keuangan & Akuntansi, Finance Supervisor, Accounting Staff, Tax Staff, Cashier[cite: 8, 9].</span>
-                </div>
-            </div>
-
-            <div class="staff-profile-card">
-                <div class="staff-avatar-icon"><i class="fa-solid fa-handshake"></i></div>
-                <div class="staff-data">
-                    <h4>Divisi HR & GA</h4>
-                    <p>Rekrutmen & Perizinan</p>
-                    <span>Struktur: Manager HR & GA, HR Officer, Recruitment Staff, General Affair Staff, Legal & Licensing Staff, Office Administrator[cite: 8, 9].</span>
-                </div>
-            </div>
-
-            <div class="staff-profile-card">
-                <div class="staff-avatar-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
-                <div class="staff-data">
-                    <h4>Divisi Pengadaan & Logistik</h4>
-                    <p>Aset Gudang & Transportasi</p>
-                    <span>Struktur: Manager Pengadaan & Operasional, Procurement Officer, Warehouse Staff, Asset Management Staff, Driver/Operational Support[cite: 8, 9].</span>
-                </div>
-            </div>
-
-            <div class="staff-profile-card">
-                <div class="staff-avatar-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-                <div class="staff-data">
-                    <h4>Internal Audit</h4>
-                    <p>Pengawas Regulasi SOP</p>
-                    <span>Jobdesk: Mengawasi kepatuhan SOP, melakukan audit internal, mengidentifikasi risiko perusahaan, dan melaporkan hasil audit langsung ke Direktur Utama[cite: 9].</span>
-                </div>
-            </div>
-
-            <div class="staff-profile-card span-2-cols" style="border-top: 1px dashed rgba(0, 255, 170, 0.3);">
-                <div class="staff-avatar-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                <div class="staff-data">
-                    <h4>Operator & IT Support Perusahaan</h4>
-                    <p>Ahmad Syahrul</p>
-                    <span>Jobdesk: Mengelola infrastruktur digital, maintenance sistem data internal kantor, keamanan server website, serta dukungan teknis operasional TI harian.</span>
-                </div>
-            </div>
-
         </div>
 
-        <h3 class="section-heading">Visi Perusahaan</h3>
-        <div class="content-card-dark" style="font-style: italic;">
-            "Menjadi penyedia layanan Event Organizer yang unggul, kreatif, inovatif, dan terpercaya di wilayah Sumatera Selatan."
-        </div>
-
-        <h3 class="section-heading">Misi Perusahaan</h3>
-        <div class="misi-list-group">
-            <div class="misi-card-item">Menyelenggarakan kegiatan acara secara profesional dan terstruktur.</div>
-            <div class="misi-card-item">Mengembangkan konsep kegiatan yang kreatif, edukatif, dan kompetitif.</div>
-            <div class="misi-card-item">Membangun hubungan kemitraan yang positif dengan komunitas dan lingkungan sosial.</div>
-        </div>
-
-        <h3 class="section-heading">Bidang Layanan & Kegiatan</h3>
-        <div class="grid-layout-cards">
-            <div class="feature-item-card">
-                <i class="fa-solid fa-trophy"></i>
-                <h3>E-Sports Tournament</h3>
-                <p>Manajemen kompetisi game elektronik profesional dari penyusunan bagan hingga eksekusi panggung.</p>
+        <div id="agenda-tab" class="tab-content">
+            <h3 class="section-heading">Agenda & Event Mendatang 2026</h3>
+            <div class="table-responsive">
+                <table class="event-table">
+                    <thead>
+                        <tr>
+                            <th>Nama Kegiatan / Event</th>
+                            <th>Jadwal Pelaksanaan</th>
+                            <th>Keterangan / Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Spectra E-Sports Championship 2026</strong></td>
+                            <td>Maret 2026</td>
+                            <td><span class="badge-status status-upcoming">Upcoming</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ajang Kreativitas & Simulasi Medis PMR-PMI</strong></td>
+                            <td>Mei 2026</td>
+                            <td><span class="badge-status status-upcoming">Upcoming</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bakti Sosial & Pembagian Takjil Ramadan</strong></td>
+                            <td>September 2026</td>
+                            <td><span class="badge-status status-upcoming">Upcoming</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Spectra Social Services: Pengabdian Masyarakat</strong></td>
+                            <td>November 2026</td>
+                            <td><span class="badge-status status-upcoming">Upcoming</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="feature-item-card">
-                <i class="fa-solid fa-heart-pulse"></i>
-                <h3>PMI & PMR Event</h3>
-                <p>Pengorganisasian ajang kreativitas, simulasi kemanusiaan, dan bakti sosial kepalangmerahan.</p>
-            </div>
-            <div class="feature-item-card">
-                <i class="fa-solid fa-box-tissue"></i>
-                <h3>Takjil & Catering Supply</h3>
-                <p>Penyediaan logistik konsumsi berkualitas tinggi untuk kebutuhan internal maupun eksternal acara.</p>
-            </div>
-            <div class="feature-item-card">
-                <i class="fa-solid fa-hand-holding-dollar"></i>
-                <h3>Social Services</h3>
-                <p>Fasilitator program pengabdian masyarakat, penyaluran donasi, dan aksi tanggap lingkungan.</p>
-            </div>
-        </div>
 
-        <h3 class="section-heading">Nilai Inti Perusahaan</h3>
-        <div class="misi-list-group">
-            <div class="misi-card-item" style="border-left-color: #00ffaa;">• Menjadi mitra pemenuhan perusahaan yang jujur dan terpercaya.</div>
-            <div class="misi-card-item" style="border-left-color: #00ffaa;">• Pematangan lini manajemen kerja di setiap divisi operasional.</div>
-            <div class="misi-card-item" style="border-left-color: #00ffaa;">• Mengalihkan risiko ketidakpastian melalui perencanaan matang.</div>
-            <div class="misi-card-item" style="border-left-color: #00ffaa;">• Memaksimalkan kepuasan konsumen sebagai tolok ukur kesuksesan.</div>
-        </div>
-
-        <h3 class="section-heading" id="agenda-section">Agenda & Event Mendatang 2026</h3>
-        <div class="table-responsive">
-            <table class="event-table">
-                <thead>
-                    <tr>
-                        <th>Nama Kegiatan / Event</th>
-                        <th>Jadwal Pelaksanaan</th>
-                        <th>Keterangan / Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Spectra E-Sports Championship 2026</strong></td>
-                        <td>Maret 2026</td>
-                        <td><span class="badge-status status-upcoming">Upcoming</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Ajang Kreativitas & Simulasi Medis PMR-PMI</strong></td>
-                        <td>Mei 2026</td>
-                        <td><span class="badge-status status-upcoming">Upcoming</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Bakti Sosial & Pembagian Takjil Ramadan</strong></td>
-                        <td>September 2026</td>
-                        <td><span class="badge-status status-upcoming">Upcoming</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Spectra Social Services: Pengabdian Masyarakat</strong></td>
-                        <td>November 2026</td>
-                        <td><span class="badge-status status-upcoming">Upcoming</span></td>
-                    </tr>
-                </tbody>
-            </table>
+            <h3 class="section-heading">Nilai Inti Perusahaan</h3>
+            <div class="misi-list-group">
+                <div class="misi-card-item" style="border-left-color: #00ffaa;">• Menjadi mitra pemenuhan perusahaan yang jujur dan terpercaya.</div>
+                <div class="misi-card-item" style="border-left-color: #00ffaa;">• Pematangan lini manajemen kerja di setiap divisi operasional.</div>
+                <div class="misi-card-item" style="border-left-color: #00ffaa;">• Mengalihkan risiko ketidakpastian melalui perencanaan matang.</div>
+                <div class="misi-card-item" style="border-left-color: #00ffaa;">• Memaksimalkan kepuasan konsumen sebagai tolok ukur kesuksesan.</div>
+            </div>
         </div>
 
         <a href="#" class="btn-neon-schedule" style="margin-top: 25px; background: #ff0055; border-color: #ff0055; box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);">📧 HUBUNGI HUBUNGAN KEMITRAAN & SPONSORSHIPS</a>
 
     </div>
+
+    <script>
+        function switchTab(tabId) {
+            // Sembunyikan semua konten tab
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Nonaktifkan semua tombol navigasi tab
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Tampilkan tab yang dipilih & beri status active pada tombolnya
+            document.getElementById(tabId).classList.add('active');
+            
+            // Cari tombol navigasi mana yang cocok untuk diaktifkan highlight-nya
+            if (tabId === 'profile-tab') {
+                buttons[0].classList.add('active');
+            } else if (tabId === 'agenda-tab') {
+                document.getElementById('agenda-nav-btn').classList.add('active');
+            }
+        }
+
+        // Fungsi khusus agar tombol biru di dalam tab profil bisa mengaktifkan tab agenda
+        function triggerAgendaTab() {
+            switchTab('agenda-tab');
+        }
+    </script>
 
 </body>
 </html>
