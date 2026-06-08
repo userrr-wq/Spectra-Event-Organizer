@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PT Penolong Terampil Indonesia - Official Website</title>
+    <title>PT Spectra Jaya Abadi - Official Profil</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* --- UTILITY RESET & DASAR --- */
+        /* --- RESET & ROOT STYLE --- */
         * {
             margin: 0;
             padding: 0;
@@ -15,563 +15,429 @@
         }
 
         body {
-            background-color: #f8fafc;
-            color: #1e293b;
+            background-color: #0d111a; /* Latar belakang gelap futuristik premium */
+            color: #ffffff;
             min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* --- SPLASH SCREEN BLACK NEON (Lampu Biru Adem) --- */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: #090d16; /* Hitam kebiruan malam */
+            padding: 25px 15px;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 99999;
-            padding: 20px;
-            animation: lunturLayar 0.6s ease 2.5s forwards;
         }
 
-        .welcome-box {
-            text-align: center;
-            padding: 30px 50px;
-            background: rgba(9, 13, 22, 0.6);
-            border-radius: 12px;
-            box-shadow: 0 0 25px rgba(0, 170, 255, 0.45), inset 0 0 12px rgba(0, 170, 255, 0.2);
-            animation: wadahMuncul 1s ease-out forwards;
-        }
-
-        .welcome-text {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: #ffffff; 
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            line-height: 1.4;
-            text-shadow: 
-                /* Efek Teks 3D Tebal */
-                1px 1px 0px #94a3b8,
-                2px 2px 0px #64748b,
-                3px 3px 0px #475569,
-                4px 4px 0px #1e293b,
-                /* Cahaya Lampu Biru Kalem */
-                0 0 6px #ffffff,       
-                0 0 18px #00aaff,      
-                0 0 35px #00aaff,      
-                0 0 55px #0044ff;      
-        }
-
-        @keyframes wadahMuncul {
-            0% { opacity: 0; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes lunturLayar {
-            0% { opacity: 1; visibility: visible; }
-            99% { opacity: 0; visibility: hidden; }
-            100% { opacity: 0; visibility: hidden; display: none !important; z-index: -1; }
-        }
-
-        /* --- TATA LETAK MENYAMPING --- */
-        .wrapper {
-            display: flex;
+        .container {
+            max-width: 800px;
             width: 100%;
+            background: rgba(20, 27, 45, 0.7); /* Kotak semi-transparan mewah */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* --- SIDEBAR KIRI (Ganti Warna Jadi Deep Navy) --- */
-        nav {
-            width: 120px;
-            background: #0f172a; /* Deep Navy Premium */
-            padding: 15px 5px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-right: 1px solid #1e293b;
-            position: fixed;
+        /* Garis Gradasi Atas persis seperti di foto (Aksen Warna Baru) */
+        .container::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
-            height: 100vh;
-            z-index: 99;
-        }
-
-        .logo-box {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .logo-box i {
-            font-size: 2rem;
-            color: #00e5ff; /* Biru Neon terang */
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .logo-box h2 {
-            font-size: 0.7rem;
-            color: #f1f5f9;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-        }
-
-        .menu-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
             width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #00ffcc, #0077ff, #ff0077);
         }
 
-        nav a {
-            background: #1e293b;
-            color: #94a3b8;
-            text-decoration: none;
-            padding: 12px 3px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: all 0.3s ease;
-            width: 100%;
+        /* --- HEADER BRANDING --- */
+        .header-branding {
             text-align: center;
+            margin-bottom: 30px;
         }
 
-        nav a i {
-            font-size: 1.1rem;
-        }
-
-        nav a:hover, nav a:active {
-            background: #0066ff; /* Aksen Electric Blue */
-            color: #ffffff;
-        }
-
-        /* --- AREA UTAMA KONTEN KANAN --- */
-        .main-container {
-            margin-left: 120px;
-            flex-grow: 1;
-            min-width: 0;
-            padding: 20px;
-            background: #f8fafc;
-        }
-
-        /* --- LOGIKA NAVIGASI CSS :TARGET --- */
-        .page-content {
-            display: none;
-            width: 100%;
-            animation: efekPudar 0.4s ease-in-out forwards;
-        }
-
-        #beranda {
-            display: block;
-        }
-
-        :target {
-            display: block !important;
-        }
-        :target ~ #beranda {
-            display: none !important;
-        }
-        #beranda:target {
-            display: block !important;
-        }
-
-        @keyframes efekPudar {
-            0% { opacity: 0; transform: translateY(8px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- STYLING ISI TEKS UTAMA --- */
-        .title-main {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 8px;
-            border-bottom: 2px solid #0066ff;
-            padding-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .subtitle-sec {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #0066ff;
-            margin-top: 15px;
-            margin-bottom: 8px;
-        }
-
-        .text-desc {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            color: #475569;
-            text-align: justify;
-            margin-bottom: 12px;
-        }
-
-        /* Tombol Jadwal Pelatihan Aksen Neon Biru */
-        .btn-jadwal-link {
-            display: block;
-            background: #0066ff;
-            color: #ffffff;
-            text-align: center;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 0.85rem;
-            margin: 15px 0;
-            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
-            transition: all 0.3s;
-        }
-        .btn-jadwal-link:hover {
-            background: #0052cc;
-            box-shadow: 0 4px 16px rgba(0, 102, 255, 0.4);
-        }
-
-        /* Grid Kotak Fitur / Kenapa Memilih Kami */
-        .fitur-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .fitur-card {
+        .logo-box-white {
             background: #ffffff;
-            border: 1px solid #e2e8f0;
-            padding: 12px 8px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-
-        .fitur-card i {
-            font-size: 1.3rem;
-            color: #0066ff;
-            margin-bottom: 5px;
-        }
-
-        .fitur-card h4 {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 4px;
-        }
-
-        .fitur-card p {
-            font-size: 0.65rem;
-            color: #64748b;
-            line-height: 1.4;
-        }
-
-        .badge-nib-code {
+            padding: 12px 25px;
             display: inline-block;
-            background: #f0fdfa;
-            color: #0d9488;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.6rem;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.2);
+        }
+
+        .logo-box-white h1 {
+            color: #0f172a;
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-box-white h1 span {
+            color: #0077ff;
+        }
+
+        .main-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .main-desc {
+            font-size: 0.92rem;
+            line-height: 1.7;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        /* --- TOMBOL NEON MENYALA 2026 --- */
+        .btn-neon-schedule {
+            display: block;
+            width: 100%;
+            background: linear-gradient(90deg, #0052cc, #0077ff);
+            color: #ffffff;
+            text-align: center;
+            padding: 14px;
+            border-radius: 35px;
             font-weight: 700;
-            margin-top: 4px;
-            border: 1px solid #ccfbf1;
-        }
-
-        /* Kotak Visi Misi Elegan */
-        .info-box-custom {
-            background: #0f172a;
-            color: #ffffff;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 12px;
-            border-left: 4px solid #00e5ff;
-        }
-
-        .info-box-custom h3 {
-            color: #ffffff;
+            text-decoration: none;
             font-size: 0.95rem;
-            margin-bottom: 8px;
+            margin: 22px 0;
+            border: 1px solid #00ffcc;
+            box-shadow: 0 0 18px rgba(0, 119, 255, 0.5);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .info-box-custom ul {
-            padding-left: 15px;
-            font-size: 0.8rem;
-            line-height: 1.6;
-            list-style: square;
+        .btn-neon-schedule:hover {
+            box-shadow: 0 0 25px rgba(0, 255, 204, 0.7);
+            transform: translateY(-1px);
+        }
+
+        /* --- VISI, MISI & NILAI --- */
+        .section-heading {
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: 1.5px;
+            margin: 35px 0 15px;
+            color: #00ffcc; /* Aksen warna cyan menyala */
+            text-transform: uppercase;
+        }
+
+        .content-card-dark {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
             color: #cbd5e1;
+            line-height: 1.6;
+            font-size: 0.92rem;
         }
 
-        .info-box-custom li {
-            margin-bottom: 5px;
-        }
-
-        /* --- MANAGEMENT LIST (Gaya Grid Modern Baru) --- */
-        .mgt-container {
+        .misi-list-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            margin-top: 12px;
+            gap: 10px;
         }
 
-        .mgt-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 12px 15px;
+        .misi-card-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid #0077ff;
+            padding: 14px 18px;
+            border-radius: 4px 12px 12px 4px;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            text-align: left;
+        }
+
+        /* --- BIDANG KEGIATAN (GRID FLUID) --- */
+        .grid-layout-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .feature-item-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .feature-item-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00ffcc, #0077ff);
+        }
+
+        .feature-item-card i {
+            font-size: 1.8rem;
+            color: #00ffcc;
+            margin-bottom: 10px;
+        }
+
+        .feature-item-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        .feature-item-card p {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        /* --- STRUKTUR DIREKSI & MANAJEMEN VALID (PT SPECTRA JAYA ABADI) --- */
+        .mgt-tree-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .staff-profile-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.04) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 15px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
-        .mgt-icon-box {
-            width: 38px;
-            height: 38px;
-            background: #f0f6ff;
+        .staff-avatar-icon {
+            width: 42px;
+            height: 42px;
+            background: rgba(0, 119, 255, 0.12);
+            border: 1px solid rgba(0, 119, 255, 0.3);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #0066ff;
-            font-size: 1rem;
+            color: #00ffcc;
+            font-size: 1.1rem;
             flex-shrink: 0;
         }
 
-        .mgt-details h4 {
-            font-size: 0.7rem;
-            color: #0066ff;
+        .staff-data h4 {
+            font-size: 0.72rem;
+            color: #0077ff;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 1px;
+            margin-bottom: 2px;
         }
 
-        .mgt-details p {
-            font-size: 0.9rem;
+        .staff-data p {
+            font-size: 0.95rem;
             font-weight: 700;
-            color: #1e293b;
+            color: #ffffff;
+            line-height: 1.3;
         }
 
-        /* Kontak & Footer */
-        .footer-info {
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 1px solid #e2e8f0;
+        .staff-data span {
+            display: block;
+            font-size: 0.78rem;
+            color: #94a3b8;
+            margin-top: 3px;
+            font-weight: 400;
+            line-height: 1.4;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-            font-size: 0.8rem;
-            color: #334155;
-            font-weight: 600;
+        /* Utilitas Span Lebar */
+        .span-2-cols {
+            grid-column: span 1;
         }
 
-        .contact-item i {
-            color: #0066ff;
-            width: 15px;
-        }
-
-        /* --- RESPONSIVE UNTUK LAYAR LEBAR LAPTOP --- */
-        @media (min-width: 768px) {
-            nav {
-                width: 220px;
-                padding: 25px 15px;
-            }
-            .logo-box i { font-size: 3rem; }
-            .logo-box h2 { font-size: 1.1rem; }
-            nav a {
-                font-size: 0.95rem;
-                padding: 12px 15px;
-                flex-direction: row;
-                justify-content: flex-start;
-                gap: 12px;
-            }
-            .main-container {
-                margin-left: 220px;
-                padding: 35px 50px;
-            }
-            .grid-layout-split {
-                display: grid;
-                grid-template-columns: 1.2fr 1fr;
-                gap: 25px;
-            }
-            .fitur-grid { grid-template-columns: repeat(4, 1fr); }
-            .title-main { font-size: 1.7rem; }
-            .subtitle-sec { font-size: 1.2rem; }
-            .text-desc { font-size: 0.95rem; }
-            .info-box-custom h3 { font-size: 1.05rem; }
-            .info-box-custom ul { font-size: 0.88rem; }
-            .mgt-container {
-                display: grid;
+        /* RESPONSIVE IPAD & LAPTOP */
+        @media (min-width: 600px) {
+            .grid-layout-cards {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
+            }
+            .mgt-tree-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .span-2-cols {
+                grid-column: span 2;
             }
         }
     </style>
 </head>
 <body>
 
-    <div id="splash-screen">
-        <div class="welcome-box">
-            <div class="welcome-text">WELCOME DI WEBSITE RESMI<br>PT PENOLONG TERAMPIL INDONESIA</div>
-        </div>
-    </div>
-
-    <div class="wrapper">
+    <div class="container">
         
-        <nav>
-            <div class="logo-box">
-                <i class="fa-solid fa-user-doctor"></i>
-                <h2>PENOLONG<br>TERAMPIL</h2>
+        <div class="header-branding">
+            <div class="logo-box-white">
+                <h1>Spectra <span>Management.</span></h1>
             </div>
-            <div class="menu-group">
-                <a href="#beranda"><i class="fa-solid fa-house"></i> Beranda</a>
-                <a href="#tentang"><i class="fa-solid fa-id-card"></i> Tentang</a>
-                <a href="#layanan"><i class="fa-solid fa-handshake-angle"></i> Layanan</a>
-                <a href="#kontak"><i class="fa-solid fa-address-book"></i> Kontak</a>
-            </div>
-        </nav>
+            <h2 class="main-title">PT Spectra Jaya Abadi</h2>
+            <p class="main-desc">
+                PT Spectra Jaya Abadi adalah perusahaan Event Organizer (EO) tepercaya yang didirikan di Indralaya Utara, Ogan Ilir, Sumatera Selatan. Kami berdedikasi untuk menciptakan tata kelola manajemen acara yang inovatif, berdaya saing tinggi, serta memprioritaskan pemenuhan kepuasan konsumen secara profesional dan transparan.
+            </p>
+        </div>
 
-        <div class="main-container">
+        <a href="#" class="btn-neon-schedule">🎉 Agenda Event Terdekat 2026</a>
+
+        <h3 class="section-heading">Visi Kami</h3>
+        <div class="content-card-dark" style="font-style: italic;">
+            "Menjadi penyedia layanan Event Organizer yang unggul, kreatif, inovatif, dan terpercaya di wilayah Sumatera Selatan."
+        </div>
+
+        <h3 class="section-heading">Misi Kami</h3>
+        <div class="misi-list-group">
+            <div class="misi-card-item">Menyelenggarakan kegiatan acara secara profesional dan terstruktur.</div>
+            <div class="misi-card-item">Mengembangkan konsep kegiatan yang kreatif, edukatif, dan kompetitif.</div>
+            <div class="misi-card-item">Membangun hubungan kemitraan yang positif dengan komunitas dan lingkungan sosial.</div>
+        </div>
+
+        <h3 class="section-heading">Bidang Layanan & Kegiatan</h3>
+        <div class="grid-layout-cards">
+            <div class="feature-item-card">
+                <i class="fa-solid fa-trophy"></i>
+                <h3>E-Sports Tournament</h3>
+                <p>Manajemen kompetisi game elektronik profesional dari penyusunan bagan hingga eksekusi panggung.</p>
+            </div>
+            <div class="feature-item-card">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <h3>PMI & PMR Event</h3>
+                <p>Pengorganisasian ajang kreativitas, simulasi kemanusiaan, dan bakti sosial kepalangmerahan.</p>
+            </div>
+            <div class="feature-item-card">
+                <i class="fa-solid fa-box-tissue"></i>
+                <h3>Takjil & Catering Supply</h3>
+                <p>Penyediaan logistik konsumsi berkualitas tinggi untuk kebutuhan internal maupun eksternal acara.</p>
+            </div>
+            <div class="feature-item-card">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <h3>Social Services</h3>
+                <p>Fasilitator program pengabdian masyarakat, penyaluran donasi, dan aksi tanggap lingkungan.</p>
+            </div>
+        </div>
+
+        <h3 class="section-heading">Nilai Inti Perusahaan</h3>
+        <div class="misi-list-group">
+            <div class="misi-card-item" style="border-left-color: #00ffcc;">• Menjadi mitra pemenuhan perusahaan yang jujur dan terpercaya.</div>
+            <div class="misi-card-item" style="border-left-color: #00ffcc;">• Pematangan lini manajemen kerja di setiap divisi operasional.</div>
+            <div class="misi-card-item" style="border-left-color: #00ffcc;">• Mengalihkan risiko ketidakpastian melalui perencanaan matang.</div>
+            <div class="misi-card-item" style="border-left-color: #00ffcc;">• Memaksimalkan kepuasan konsumen sebagai tolok ukur kesuksesan.</div>
+        </div>
+
+        <h3 class="section-heading">Susunan Direksi & Divisi</h3>
+        <div class="mgt-tree-grid">
             
-            <div id="tentang" class="page-content">
-                <h1 class="title-main">Susunan Direksi & Manajemen</h1>
-                <p class="text-desc">Berikut adalah susunan kepemimpinan, penasehat resmi, serta jajaran manajemen operasional utama yang mengawal integritas dan profesionalisme PT Penolong Terampil Indonesia:</p>
-                
-                <div class="mgt-container">
-                    <div class="mgt-card" style="grid-column: span 2; border-left: 4px solid #00e5ff;">
-                        <div class="mgt-icon-box"><i class="fa-solid fa-crown"></i></div>
-                        <div class="mgt-details">
-                            <h4>Pemilik PT / Komisaris</h4>
-                            <p>M. Fauzi A.</p>
-                        </div>
-                    </div>
-
-                    <div class="mgt-card" style="grid-column: span 2; border-left: 4px solid #64748b;">
-                        <div class="mgt-icon-box"><i class="fa-solid fa-user-shield"></i></div>
-                        <div class="mgt-details">
-                            <h4>Penasehat Perusahaan</h4>
-                            <p>H. Rangga</p>
-                        </div>
-                    </div>
-
-                    <div class="mgt-card">
-                        <div class="mgt-icon-box"><i class="fa-solid fa-user-tie"></i></div>
-                        <div class="mgt-details">
-                            <h4>Manajer Umum (GM)</h4>
-                            <p>Dr. Sigit, S.Pi., M.Si.</p>
-                        </div>
-                    </div>
-
-                    <div class="mgt-card">
-                        <div class="mgt-icon-box"><i class="fa-solid fa-shield-heart"></i></div>
-                        <div class="mgt-details">
-                            <h4>Kabid Perlindungan & Keamanan</h4>
-                            <p>H. Ahmad Shopian</p>
-                        </div>
-                    </div>
-
-                    <div class="mgt-card" style="grid-column: span 2;">
-                        <div class="mgt-icon-box"><i class="fa-solid fa-laptop-code"></i></div>
-                        <div class="mgt-details">
-                            <h4>Operator & IT Support</h4>
-                            <p>Ahmad Syahrul</p>
-                        </div>
-                    </div>
+            <div class="staff-profile-card span-2-cols" style="border-left: 3px solid #00ffcc;">
+                <div class="staff-avatar-icon"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="staff-data">
+                    <h4>1. Direktur Utama</h4>
+                    <p>Manajemen Inti Direksi</p>
+                    <span>Jobdesk: Menentukan visi, misi, strategi, menyetujui anggaran, dan mengawasi seluruh jalannya divisi perusahaan.</span>
                 </div>
             </div>
 
-            <div id="layanan" class="page-content">
-                <h1 class="title-main">Layanan & Program Pelatihan</h1>
-                <p class="text-desc">Kami menyediakan program edukasi keselamatan kerja khusus yang dirancang interaktif untuk kebutuhan industri maupun perorangan.</p>
-                
-                <a href="#" class="btn-jadwal-link">🚨 Jadwal Pelatihan Resmi 2026</a>
-
-                <div class="info-box-custom" style="background: #1e293b;">
-                    <h3>Kurikulum Sertifikasi Utama:</h3>
-                    <ul style="list-style: disc;">
-                        <li>Pelatihan Kesiapsiagaan Gawat Darurat Medis.</li>
-                        <li>Sertifikasi Kompetensi P3K Tingkat Nasional (BNSP).</li>
-                        <li>Edukasi Keselamatan dan Penanggulangan Bencana Sektoral.</li>
-                        <li>Simulasi Hands-on Panduan Internasional (GFARC).</li>
-                    </ul>
+            <div class="staff-profile-card span-2-cols">
+                <div class="staff-avatar-icon"><i class="fa-solid fa-folder-open"></i></div>
+                <div class="staff-data">
+                    <h4>2. Sekretaris Direksi</h4>
+                    <p>Administrasi Eksekutif</p>
+                    <span>Jobdesk: Mengatur jadwal direktur, surat-menyurat resmi, pengarsipan dokumen penting, dan menyiapkan agenda rapat.</span>
                 </div>
             </div>
 
-            <div id="kontak" class="page-content">
-                <h1 class="title-main">Hubungi Kami</h1>
-                <h2 class="subtitle-sec">Saluran Komunikasi Resmi</h2>
-                <p class="text-desc">Silakan hubungi pusat informasi kami untuk pendaftaran kelas, kerja sama instansi, koordinasi jadwal pelatihan, atau konsultasi legalitas perusahaan.</p>
-                
-                <div class="footer-info">
-                    <div class="contact-item"><i class="fa-solid fa-phone"></i> <span>Layanan Informasi Hubungan Kemitraan</span></div>
-                    <div class="contact-item"><i class="fa-solid fa-envelope"></i> <span>info@penolongterampil.com</span></div>
-                    <div class="contact-item"><i class="fa-solid fa-circle-check"></i> <span>Tahun Operasional Aktif: 2026</span></div>
+            <div class="staff-profile-card span-2-cols" style="border-left: 3px solid #0077ff;">
+                <div class="staff-avatar-icon"><i class="fa-solid fa-users-gear"></i></div>
+                <div class="staff-data">
+                    <h4>3. General Manager (GM)</h4>
+                    <p>Operasional Bisnis</p>
+                    <span>Jobdesk: Mengelola seluruh unit bisnis, mengawasi target divisi, serta mengkoordinasikan lintas proyek.</span>
                 </div>
             </div>
 
-            <div id="beranda" class="page-content">
-                <h1 class="title-main">Profil Perusahaan</h1>
-                <h2 class="subtitle-sec" style="margin-top:0;">PT Penolong Terampil Indonesia</h2>
-                
-                <div class="grid-layout-split">
-                    <div>
-                        <p class="text-desc">PT Penolong Terampil Indonesia adalah perusahaan yang berdedikasi tinggi dalam bidang edukasi keselamatan dan kesehatan kerja, khususnya pada pelatihan pertolongan pertama (First Aid) serta kesiapsiagaan darurat. Kami hadir sebagai solusi bagi individu, komunitas, maupun sektor industri untuk membangun lingkungan yang lebih aman dan responsif terhadap situasi darurat medis. Dengan dukungan instruktur bersertifikasi internasional (seperti GFARC) dan nasional (BNSP), kami menjamin kualitas pelatihan yang aplikatif dan sesuai standar medis terkini.</p>
-                        
-                        <h3 class="subtitle-sec">Keunggulan Utama</h3>
-                        <div class="fitur-grid">
-                            <div class="fitur-card">
-                                <i class="fa-solid fa-user-graduate"></i>
-                                <h4>Instruktur Ahli</h4>
-                                <p>Tim praktisi lapangan berpengalaman nyata.</p>
-                            </div>
-                            <div class="fitur-card">
-                                <i class="fa-solid fa-people-arrows"></i>
-                                <h4>Metode Interaktif</h4>
-                                <p>Simulasi langsung (hands-on) sampai menguasai teknik.</p>
-                            </div>
-                            <div class="fitur-card">
-                                <i class="fa-solid fa-file-shield"></i>
-                                <h4>Materi Terkini</h4>
-                                <p>Mengacu penuh regulasi nasional terbaru.</p>
-                            </div>
-                            <div class="fitur-card">
-                                <i class="fa-solid fa-scale-balanced"></i>
-                                <h4>Legalitas Jelas</h4>
-                                <p>Operasional resmi tepercaya bisnis.</p>
-                                <span class="badge-nib-code">NIB: 1309240001491</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="info-box-custom">
-                            <h3>Visi Perusahaan</h3>
-                            <p style="font-size:0.78rem; font-style:italic; color:#94a3b8; line-height:1.5;">"Menjadi penyedia pelatihan dan layanan pertolongan pertama terkemuka di Indonesia yang menciptakan masyarakat tangguh dan siap siaga."</p>
-                            
-                            <h3 style="margin-top:12px; font-size:0.95rem;">Misi Perusahaan</h3>
-                            <ul>
-                                <li>Pelatihan berkualitas tinggi dan mudah dipahami.</li>
-                                <li>Edukasi efektif keselamatan kerja dan bencana.</li>
-                                <li>Mitra strategis peningkatan kompetensi P3K.</li>
-                                <li>Meningkatkan kesadaran tindakan cepat kondisi Gawat Darurat.</li>
-                            </ul>
-                        </div>
-                    </div>
+            <div class="staff-profile-card">
+                <div class="staff-avatar-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                <div class="staff-data">
+                    <h4>4. Divisi Event Organizer</h4>
+                    <p>Tim Teknis Acara</p>
+                    <span>Manager, Supervisor, Event Planner, Coordinator, Vendor Officer, Logistic, Stage Production, Crew Event.</span>
                 </div>
+            </div>
 
-                <a href="#" class="btn-jadwal-link" style="margin-top: 20px;">🚨 Kalender & Jadwal Pelatihan Baru 2026</a>
+            <div class="staff-profile-card">
+                <div class="staff-avatar-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <div class="staff-data">
+                    <h4>5. Divisi Konsultan & SDM</h4>
+                    <p>Riset & Pengembangan</p>
+                    <span>Manager, Senior Consultant, HR Consultant, Management Consultant, Training Officer, R&D Staff.</span>
+                </div>
+            </div>
+
+            <div class="staff-profile-card">
+                <div class="staff-avatar-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                <div class="staff-data">
+                    <h4>6. Divisi PR & Media</h4>
+                    <p>Branding & Publikasi</p>
+                    <span>Manager, Media Relations, Corporate Comm, Content Creator, Social Media Specialist, Graphic Designer.</span>
+                </div>
+            </div>
+
+            <div class="staff-profile-card">
+                <div class="staff-avatar-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="staff-data">
+                    <h4>7. Divisi Marketing</h4>
+                    <p>Kemitraan & Sponsorship</p>
+                    <span>Manager, Marketing Executive, Business Development Officer, Sales Executive, Customer Relation.</span>
+                </div>
+            </div>
+
+            <div class="staff-profile-card">
+                <div class="staff-avatar-icon"><i class="fa-solid fa-wallet"></i></div>
+                <div class="staff-data">
+                    <h4>8. Divisi Keuangan & Pajak</h4>
+                    <p>Arus Kas & Administrasi</p>
+                    <span>Manager Keuangan, Finance Supervisor, Accounting Staff, Tax Staff, Cashier Perusahaan.</span>
+                </div>
+            </div>
+
+            <div class="staff-profile-card">
+                <div class="staff-avatar-icon"><i class="fa-solid fa-handshake"></i></div>
+                <div class="staff-data">
+                    <h4>9. Divisi HR & GA</h4>
+                    <p>Rekrutmen & Legalitas</p>
+                    <span>Manager HR & GA, HR Officer, Recruitment Staff, General Affair, Legal & Licensing, Office Admin.</span>
+                </div>
+            </div>
+
+            <div class="staff-profile-card">
+                <div class="staff-avatar-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                <div class="staff-data">
+                    <h4>10. Divisi Pengadaan</h4>
+                    <p>Logistik & Aset Kantor</p>
+                    <span>Manager Pengadaan, Procurement Officer, Warehouse Staff, Asset Management, Driver/Support.</span>
+                </div>
+            </div>
+
+            <div class="staff-profile-card">
+                <div class="staff-avatar-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                <div class="staff-data">
+                    <h4>11. Internal Audit</h4>
+                    <p>Pengawas Regulasi SOP</p>
+                    <span>Mengidentifikasi risiko internal, audit berkala, dan melaporkan temuan langsung ke Direktur Utama.</span>
+                </div>
             </div>
 
         </div>
+
+        <a href="#" class="btn-neon-schedule" style="margin-top: 25px; background: #ff0077; border-color: #ff0077; box-shadow: 0 0 15px rgba(255, 0, 119, 0.4);">📧 Hubungi Hubungan Kemitraan</a>
+
     </div>
 
 </body>
