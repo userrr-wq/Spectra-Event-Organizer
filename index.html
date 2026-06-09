@@ -22,21 +22,92 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow-x: hidden;
         }
 
+        /* --- STYLE LOADING SCREEN PREMIUM + CANVAS --- */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000; /* Hitam pekat solid sesuai request */
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        /* Canvas untuk animasi pusaran angin huruf S */
+        #wind-canvas {
+            width: 300px;
+            height: 300px;
+            margin-bottom: 10px;
+        }
+
+        /* Teks Welcome dengan animasi fade-in delay */
+        .welcome-text {
+            font-size: 1.1rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            font-weight: 700;
+            text-align: center;
+            max-width: 80%;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            text-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
+        }
+
+        /* Highlight khusus untuk nama PT */
+        .welcome-text span {
+            color: #00ffaa;
+            display: block;
+            font-size: 1.25rem;
+            margin-top: 5px;
+            letter-spacing: 1.5px;
+            font-weight: 900;
+        }
+
+        /* Kelas aktif untuk memicu kemunculan teks */
+        .welcome-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Kelas untuk menghilangkan loading screen total */
+        #loading-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* --- KONTEN UTAMA CONTAINER WEBSITE --- */
         .container {
             max-width: 850px;
             width: 100%;
-            background: rgba(18, 24, 38, 0.85); /* Kode warna bersih bebas error GitHub */
+            background: rgba(18, 24, 38, 0.85); 
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 20px;
             padding: 30px 25px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
         }
 
-        /* Garis Gradasi Atas (Aksen Warna Premium) */
+        /* Memunculkan konten web dengan efek halus setelah loading selesai */
+        body.loaded .container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Garis Gradasi Atas Container */
         .container::before {
             content: '';
             position: absolute;
@@ -82,18 +153,17 @@
             margin-bottom: 15px;
         }
 
-        /* --- NAVIGASI TAB MENU GAYA BARU --- */
+        /* --- NAVIGASI TAB MENU --- */
         .tab-navigation {
             display: flex;
             gap: 8px;
             margin-bottom: 25px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 10px;
-            overflow-x: auto; /* Agar menu scrollable di HP tanpa merusak layout */
+            overflow-x: auto;
             white-space: nowrap;
         }
 
-        /* Sembunyikan scrollbar bawaan browser untuk estetika navigasi */
         .tab-navigation::-webkit-scrollbar {
             display: none;
         }
@@ -245,18 +315,7 @@
             grid-column: span 1;
         }
 
-        /* --- KARTU VISI, MISI, & KEMITRAAN --- */
-        .content-card-dark {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            color: #cbd5e1;
-            line-height: 1.6;
-            font-size: 0.92rem;
-        }
-
+        /* --- KARTU KEMITRAAN & LAYANAN --- */
         .misi-list-group {
             display: flex;
             flex-direction: column;
@@ -380,6 +439,14 @@
     </style>
 </head>
 <body>
+
+    <div id="loading-screen">
+        <canvas id="wind-canvas"></canvas>
+        <div class="welcome-text" id="welcome-message">
+            Welcome to Website Resmi
+            <span>PT SPECTRA JAYA ABADI</span>
+        </div>
+    </div>
 
     <div class="container">
         
@@ -616,19 +683,124 @@
     </div>
 
     <script>
+        // --- DATA & LOGIK MATH CANVAS UNTUK PUSARAN ANGIN HURUF "S" ---
+        const canvas = document.getElementById('wind-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Mengeset ukuran pixel internal canvas agar tajam
+        canvas.width = 300;
+        canvas.height = 300;
+
+        const numParticles = 120;
+        const particles = [];
+        let animationStep = 0; // Mengontrol fase pergerakan animasi
+
+        // Inisialisasi partikel angin acak
+        for (let i = 0; i < numParticles; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                angle: Math.random() * Math.PI * 2,
+                speed: 2 + Math.random() * 3,
+                radius: 1 + Math.random() * 1.5,
+                color: Math.random() > 0.5 ? '#00ffaa' : '#0088ff' // Gradasi warna angin neon hijau & biru
+            });
+        }
+
+        // Fungsi matematika untuk menghitung titik koordinat pola huruf "S"
+        function getTargetS(t) {
+            // t berjalan dari 0 sampai 1
+            let angle = t * Math.PI * 2;
+            let cx = canvas.width / 2;
+            let cy = canvas.height / 2;
+            let scaleX = 45;
+            let scaleY = 70;
+
+            let x, y;
+            if (t < 0.5) {
+                // Lengkungan atas huruf S
+                let alpha = (t / 0.5) * Math.PI * 1.5 - Math.PI * 0.5;
+                x = cx + Math.cos(alpha) * scaleX;
+                y = cy - scaleY / 2 + Math.sin(alpha) * scaleY * 0.5;
+            } else {
+                // Lengkungan bawah huruf S
+                let alpha = ((t - 0.5) / 0.5) * Math.PI * 1.5 + Math.PI * 0.5;
+                x = cx - Math.cos(alpha) * scaleX;
+                y = cy + scaleY / 2 - Math.sin(alpha) * scaleY * 0.5;
+            }
+            return { x, y };
+        }
+
+        // Loop animasi menggambar partikel angin ke canvas
+        function animateWind() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            animationStep++;
+
+            particles.forEach((p, index) => {
+                // Fase 1: 0 - 90 frame -> Efek pusaran angin tornado acak berputar cepat
+                if (animationStep < 90) {
+                    p.angle += 0.08;
+                    p.x += Math.cos(p.angle) * p.speed;
+                    p.y += Math.sin(p.angle) * p.speed;
+
+                    // Mengunci posisi agar tetap memutar di dalam area pusat canvas
+                    let dx = p.x - canvas.width / 2;
+                    let dy = p.y - canvas.height / 2;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist > 130) {
+                        p.x = canvas.width / 2 + Math.cos(p.angle) * 30;
+                        p.y = canvas.height / 2 + Math.sin(p.angle) * 30;
+                    }
+                } 
+                // Fase 2: frame 90+ -> Angin meliuk datang menyusun diri dengan magnetis menjadi Huruf "S"
+                else {
+                    let targetIndex = index / numParticles;
+                    let target = getTargetS(targetIndex);
+
+                    // Interpolasi posisi (mendekat perlahan ke titik target S)
+                    p.x += (target.x - p.x) * 0.08;
+                    p.y += (target.y - p.y) * 0.08;
+                }
+
+                // Menggambar lingkaran kecil partikel angin neon
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = p.color;
+                ctx.fill();
+            });
+
+            // Jalankan animasi berkelanjutan
+            if (animationStep < 200) {
+                requestAnimationFrame(animateWind);
+            } else {
+                // Begitu formasi huruf S selesai sempurna, munculkan teks Welcome secara elegan
+                document.getElementById('welcome-message').classList.add('show');
+                
+                // Berikan jeda membaca 1.8 detik sebelum loading screen menutup memudar
+                setTimeout(() => {
+                    document.getElementById('loading-screen').classList.add('fade-out');
+                    document.body.classList.add('loaded');
+                }, 1800);
+            }
+        }
+
+        // Jalankan sistem canvas langsung saat halaman diakses browser
+        window.addEventListener('DOMContentLoaded', () => {
+            animateWind();
+        });
+
+        // --- SISTEM NAVIGASI PERPINDAHAN TAB ---
         function switchTab(tabId) {
-            // Sembunyikan semua konten tab
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // Nonaktifkan semua status aktif tombol navigasi tab
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(button => button.classList.remove('active'));
 
-            // Tampilkan tab yang dipilih & beri status active pada tombolnya
             document.getElementById(tabId).classList.add('active');
             
-            // Memberikan highlight hijau pada tombol navigasi yang sesuai
             if (tabId === 'home-tab') {
                 document.getElementById('btn-home').classList.add('active');
             } else if (tabId === 'profile-tab') {
@@ -642,7 +814,7 @@
             }
         }
 
-        // Fungsi pemicu khusus agar tombol biru di beranda otomatis membuka tab agenda
+        // Pemicu tombol biru otomatis mengalihkan layar ke tab agenda
         function triggerAgendaTab() {
             switchTab('agenda-tab');
         }
