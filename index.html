@@ -15,7 +15,7 @@
         }
 
         body {
-            background-color: #0b0e14; /* Latar belakang gelap futuristik premium */
+            background-color: #0b0e14;
             color: #ffffff;
             min-height: 100vh;
             padding: 25px 15px;
@@ -25,14 +25,14 @@
             overflow-x: hidden;
         }
 
-        /* --- STYLE LOADING SCREEN PREMIUM + CANVAS --- */
+        /* --- STYLE LOADING SCREEN PREMIUM --- */
         #loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #000000; /* Hitam pekat solid sesuai request */
+            background-color: #000000;
             z-index: 9999;
             display: flex;
             flex-direction: column;
@@ -41,45 +41,40 @@
             transition: opacity 1s ease, visibility 1s ease;
         }
 
-        /* Canvas untuk animasi pusaran angin huruf S */
         #wind-canvas {
-            width: 300px;
-            height: 300px;
-            margin-bottom: 10px;
+            width: 320px;
+            height: 380px;
+            margin-bottom: 15px;
         }
 
-        /* Teks Welcome dengan animasi fade-in delay */
         .welcome-text {
             font-size: 1.1rem;
             color: #ffffff;
             letter-spacing: 1px;
             font-weight: 700;
             text-align: center;
-            max-width: 80%;
-            line-height: 1.5;
+            max-width: 85%;
+            line-height: 1.6;
             opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            text-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
+            transform: translateY(15px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+            text-shadow: 0 0 12px rgba(255, 0, 85, 0.4);
         }
 
-        /* Highlight khusus untuk nama PT */
         .welcome-text span {
-            color: #00ffaa;
+            color: #ff3366; 
             display: block;
-            font-size: 1.25rem;
-            margin-top: 5px;
+            font-size: 1.35rem;
+            margin-top: 6px;
             letter-spacing: 1.5px;
             font-weight: 900;
         }
 
-        /* Kelas aktif untuk memicu kemunculan teks */
         .welcome-text.show {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Kelas untuk menghilangkan loading screen total */
         #loading-screen.fade-out {
             opacity: 0;
             visibility: hidden;
@@ -87,7 +82,7 @@
 
         /* --- KONTEN UTAMA CONTAINER WEBSITE --- */
         .container {
-            max-width: 850px;
+            max-width: 900px;
             width: 100%;
             background: rgba(18, 24, 38, 0.85); 
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -101,13 +96,11 @@
             transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
         }
 
-        /* Memunculkan konten web dengan efek halus setelah loading selesai */
         body.loaded .container {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Garis Gradasi Atas Container */
         .container::before {
             content: '';
             position: absolute;
@@ -115,34 +108,32 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, #00ffaa, #0088ff, #ff0055);
+            background: linear-gradient(90deg, #ff3366, #00ffaa, #0088ff);
         }
 
-        /* --- HEADER BRANDING --- */
+        /* --- HEADER BRANDING DENGAN LOGO IMAGE --- */
         .header-branding {
             text-align: center;
             margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .logo-box-white {
-            background: #ffffff;
-            padding: 12px 25px;
-            display: inline-block;
-            border-radius: 8px;
+        .brand-logo-container {
+            max-width: 160px;
+            width: 100%;
             margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(0, 255, 170, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .logo-box-white h1 {
-            color: #0b0e14;
-            font-size: 1.4rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .logo-box-white h1 span {
-            color: #0088ff;
+        .brand-logo-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 10px rgba(255, 51, 102, 0.15));
         }
 
         .main-title {
@@ -189,7 +180,6 @@
             border: 1px solid rgba(0, 255, 170, 0.2);
         }
 
-        /* --- KONTROL TAMPILAN TAB --- */
         .tab-content {
             display: none;
         }
@@ -198,7 +188,6 @@
             display: block;
         }
 
-        /* --- TOMBOL NEON UTAMA --- */
         .btn-neon-schedule {
             display: block;
             width: 100%;
@@ -224,7 +213,6 @@
             transform: translateY(-1px);
         }
 
-        /* --- TEKS PENJELASAN PANJANG (BERANDA) --- */
         .rich-text-block {
             font-size: 0.95rem;
             line-height: 1.8;
@@ -241,7 +229,6 @@
             font-weight: 600;
         }
 
-        /* --- SUB-HEADING ELEMEN --- */
         .section-heading {
             font-size: 1.25rem;
             font-weight: 800;
@@ -252,7 +239,7 @@
             text-transform: uppercase;
         }
 
-        /* --- STRUKTUR STRUKTUR ORGANISASI --- */
+        /* --- STRUKTUR ORGANISASI --- */
         .mgt-tree-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -271,8 +258,8 @@
         }
 
         .premium-leader {
-            background: rgba(0, 255, 170, 0.03);
-            border: 1px solid rgba(0, 255, 170, 0.2) !important;
+            background: rgba(255, 51, 102, 0.03);
+            border: 1px solid rgba(255, 51, 102, 0.25) !important;
         }
 
         .staff-avatar-icon {
@@ -315,7 +302,6 @@
             grid-column: span 1;
         }
 
-        /* --- KARTU KEMITRAAN & LAYANAN --- */
         .misi-list-group {
             display: flex;
             flex-direction: column;
@@ -355,7 +341,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, #00ffaa, #0088ff);
+            background: linear-gradient(90deg, #ff3366, #00ffaa);
         }
 
         .feature-item-card i {
@@ -376,7 +362,6 @@
             line-height: 1.5;
         }
 
-        /* --- STYLE TABEL AGENDA --- */
         .table-responsive {
             width: 100%;
             overflow-x: auto;
@@ -424,17 +409,10 @@
             border: 1px solid rgba(0, 255, 170, 0.3);
         }
 
-        /* RESPONSIVE LAPTOP / TABLET */
         @media (min-width: 630px) {
-            .grid-layout-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .mgt-tree-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .span-2-cols {
-                grid-column: span 2;
-            }
+            .grid-layout-cards { grid-template-columns: repeat(2, 1fr); }
+            .mgt-tree-grid { grid-template-columns: repeat(2, 1fr); }
+            .span-2-cols { grid-column: span 2; }
         }
     </style>
 </head>
@@ -451,8 +429,8 @@
     <div class="container">
         
         <div class="header-branding">
-            <div class="logo-box-white">
-                <h1>Spectra <span>Management.</span></h1>
+            <div class="brand-logo-container">
+                <img src="LOGO.png" alt="Logo PT Spectra Jaya Abadi" class="brand-logo-img">
             </div>
             <h2 class="main-title">PT Spectra Jaya Abadi</h2>
         </div>
@@ -472,9 +450,6 @@
                 </p>
                 <p>
                     Di tengah ketatnya persaingan industri kreatif nasional, PT Spectra Jaya Abadi tidak hanya sekadar bertindak sebagai pelaksana teknis operasional lapangan. Lebih jauh dari itu, kami memosisikan diri sebagai <span class="highlight-text">mitra strategis jangka panjang</span> yang siap menerjemahkan visi, nilai, dan mimpi unik para klien ke dalam konsep acara nyata yang spektakuler, terstruktur, serta berkesan mendalam bagi seluruh audiens yang hadir. 
-                </p>
-                <p>
-                    Kami percaya bahwa kunci dari sebuah keberhasilan *event* didasari oleh perencanaan taktis hulu-hilir yang matang serta mitigasi risiko yang komprehensif. Oleh karena itu, PT Spectra Jaya Abadi didukung oleh sirkulasi manajemen profesional yang mencakup divisi-divisi esensial, mulai dari tim kreasi visual, manajemen logistik, strategi kehumasan perizinan, tata audit anggaran kas, hingga unit proteksi pengamanan khusus yang siaga penuh menjamin berjalannya acara demi kenyamanan total para konsumen.
                 </p>
             </div>
 
@@ -496,33 +471,15 @@
         </div>
 
         <div id="profile-tab" class="tab-content">
-            <h3 class="section-heading">Susunan Direksi & Manajemen</h3>
+            <h3 class="section-heading">Susunan Direksi & Divisi Resmi</h3>
             <div class="mgt-tree-grid">
                 
                 <div class="staff-profile-card span-2-cols premium-leader">
-                    <div class="staff-avatar-icon" style="color: #ffd700; border-color: rgba(255,215,0,0.4);"><i class="fa-solid fa-crown"></i></div>
-                    <div class="staff-data">
-                        <h4>Pemilik PT / Komisaris Utama</h4>
-                        <p>M. Fauzi A.</p>
-                        <span>Posisi pemegang saham tertinggi dan pengawas eksekutif jalannya stabilitas bisnis perusahaan.</span>
-                    </div>
-                </div>
-
-                <div class="staff-profile-card span-2-cols">
-                    <div class="staff-avatar-icon"><i class="fa-solid fa-user-shield"></i></div>
-                    <div class="staff-data">
-                        <h4>Penasehat Perusahaan</h4>
-                        <p>H. Rangga</p>
-                        <span>Memberikan pertimbangan strategis, penguatan hukum, relasi instansi, serta visi bisnis jangka panjang.</span>
-                    </div>
-                </div>
-
-                <div class="staff-profile-card span-2-cols" style="border-left: 3px solid #00ffaa;">
-                    <div class="staff-avatar-icon"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="staff-avatar-icon" style="color: #ff3366; border-color: #ff3366;"><i class="fa-solid fa-crown"></i></div>
                     <div class="staff-data">
                         <h4>Direktur Utama</h4>
                         <p>Manajemen Inti Eksekutif</p>
-                        <span>Jobdesk: Menentukan visi-misi korporasi, menyetujui sirkulasi pengadaan kas anggaran besar, dan memegang otoritas kendali regulasi eksekutif.</span>
+                        <span>Tugas: Menentukan visi, misi, strategi perusahaan, mengambil keputusan strategis, menyetujui anggaran, serta mengawasi seluruh divisi.</span>
                     </div>
                 </div>
 
@@ -530,26 +487,17 @@
                     <div class="staff-avatar-icon"><i class="fa-solid fa-folder-open"></i></div>
                     <div class="staff-data">
                         <h4>Sekretaris Direksi</h4>
-                        <p>Administrasi Direksi</p>
-                        <span>Jobdesk: Mengatur jadwal direktur, merapikan arsip legalitas perusahaan, serta surat-menyurat operasional formal.</span>
+                        <p>Unit Administrasi</p>
+                        <span>Tugas: Mengatur jadwal direktur, menyiapkan surat-menyurat perusahaan, mengarsipkan dokumen, dan menyiapkan rapat.</span>
                     </div>
                 </div>
 
-                <div class="staff-profile-card" style="border-left: 3px solid #0088ff;">
-                    <div class="staff-avatar-icon"><i class="fa-solid fa-users-gear"></i></div>
+                <div class="staff-profile-card" style="border-left: 3px solid #00ffaa;">
+                    <div class="staff-avatar-icon" style="color: #00ffaa;"><i class="fa-solid fa-users-gear"></i></div>
                     <div class="staff-data">
-                        <h4>Manajer Umum (General Manager)</h4>
-                        <p>Dr. Sigit, S.Pi., M.Si.</p>
-                        <span>Jobdesk: Memimpin kendali penuh unit operasional lapangan, mengontrol target lintas manajer divisi, serta menjaga stabilitas proyek harian.</span>
-                    </div>
-                </div>
-
-                <div class="staff-profile-card span-2-cols" style="background: rgba(255, 0, 85, 0.02); border-color: rgba(255, 0, 85, 0.15);">
-                    <div class="staff-avatar-icon" style="color: #ff0055;"><i class="fa-solid fa-shield-halved"></i></div>
-                    <div class="staff-data">
-                        <h4>Kabid Perlindungan & Keamanan</h4>
-                        <p>H. Ahmad Shopian</p>
-                        <span>Jobdesk: Mitigasi risiko lapangan, mengurus izin kepolisian/aparat setempat, serta menjaga ketat kondusivitas area event berlangsung.</span>
+                        <h4>General Manager (GM)</h4>
+                        <p>Pengawas Operasional</p>
+                        <span>Tugas: Mengelola seluruh unit bisnis, mengawasi pencapaian target, koordinasi proyek antar divisi, dan lapor ke Direktur.</span>
                     </div>
                 </div>
 
@@ -557,53 +505,71 @@
                     <div class="staff-avatar-icon"><i class="fa-solid fa-calendar-check"></i></div>
                     <div class="staff-data">
                         <h4>Divisi Event Organizer</h4>
-                        <p>Kru Produksi Acara</p>
-                        <span>Struktur: Planner, Coordinator, Vendor & Logistic Officer, Stage Production, Crew Event.</span>
+                        <p>Kru Produksi Lapangan</p>
+                        <span>Komponen: Manager, Supervisor, Event Planner, Coordinator, Vendor Officer, Logistic, Stage, Crew.</span>
                     </div>
                 </div>
 
                 <div class="staff-profile-card">
                     <div class="staff-avatar-icon"><i class="fa-solid fa-lightbulb"></i></div>
                     <div class="staff-data">
-                        <h4>Divisi Konsultan & SDM</h4>
-                        <p>Riset & Edukasi Internal</p>
-                        <span>Struktur: HR Consultant, Management Consultant, Training & Development, R&D Staff.</span>
+                        <h4>Divisi Konsultan Manajemen & SDM</h4>
+                        <p>Riset & Pengembangan</p>
+                        <span>Komponen: Manager Konsultan, Senior Consultant, HR Consultant, Management Consultant, Training & R&D Staff.</span>
                     </div>
                 </div>
 
                 <div class="staff-profile-card">
                     <div class="staff-avatar-icon"><i class="fa-solid fa-bullhorn"></i></div>
                     <div class="staff-data">
-                        <h4>Divisi PR & Media</h4>
-                        <p>Publikasi & Desain Grafis</p>
-                        <span>Struktur: Media Relations, Content Creator, Social Media Specialist, Graphic Designer.</span>
+                        <h4>Divisi Public Relations & Media</h4>
+                        <p>Publikasi & Desain Kreatif</p>
+                        <span>Komponen: Manager PR, Media Relations, Corporate Communication, Content Creator, Social Media, Graphic Designer.</span>
                     </div>
                 </div>
 
                 <div class="staff-profile-card">
                     <div class="staff-avatar-icon"><i class="fa-solid fa-chart-line"></i></div>
                     <div class="staff-data">
-                        <h4>Divisi Marketing</h4>
-                        <p>Sponsorship & Sales</p>
-                        <span>Struktur: Marketing Executive, Business Development, Sales, Customer Relationship.</span>
+                        <h4>Divisi Marketing & Business Dev.</h4>
+                        <p>Kemitraan & Penjualan Proyek</p>
+                        <span>Komponen: Manager Marketing, Marketing Executive, Business Development, Sales, Customer Relationship Officer.</span>
                     </div>
                 </div>
 
                 <div class="staff-profile-card">
                     <div class="staff-avatar-icon"><i class="fa-solid fa-wallet"></i></div>
                     <div class="staff-data">
-                        <h4>Divisi Keuangan & Pajak</h4>
-                        <p>Arus Kas Perusahaan</p>
-                        <span>Struktur: Finance Supervisor, Accounting Staff, Tax Staff, Kasir Kantor.</span>
+                        <h4>Manager Keuangan & Akuntansi</h4>
+                        <p>Sirkulasi Finansial</p>
+                        <span>Struktur internal divisi: Finance Supervisor, Accounting Staff, Tax Staff, dan Kasir Perusahaan.</span>
                     </div>
                 </div>
 
                 <div class="staff-profile-card">
-                    <div class="staff-avatar-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-user-shield"></i></div>
                     <div class="staff-data">
-                        <h4>IT Support & Operator</h4>
-                        <p>Ahmad Syahrul</p>
-                        <span>Jobdesk: Pengelolaan ekosistem digital, keamanan basis server data perusahaan, dan maintenance TI harian.</span>
+                        <h4>Manager HR & General Affair</h4>
+                        <p>Legalitas & Pengelolaan SDM</p>
+                        <span>Struktur internal divisi: HR Officer, Recruitment, General Affair, Legal & Licensing, Office Administrator.</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card">
+                    <div class="staff-avatar-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                    <div class="staff-data">
+                        <h4>Manager Pengadaan & Operasional</h4>
+                        <p>Logistik & Aset Kantor</p>
+                        <span>Struktur internal divisi: Procurement Officer, Warehouse Staff, Asset Management, dan Driver Support.</span>
+                    </div>
+                </div>
+
+                <div class="staff-profile-card" style="background: rgba(0, 136, 255, 0.02); border-color: rgba(0, 136, 255, 0.2);">
+                    <div class="staff-avatar-icon" style="color: #0088ff;"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="staff-data">
+                        <h4>Internal Audit</h4>
+                        <p>SOP & Manajemen Risiko</p>
+                        <span>Tugas: Mengawasi kepatuhan SOP, audit internal, identifikasi risiko, serta melaporkan hasil langsung ke Direktur Utama.</span>
                     </div>
                 </div>
 
@@ -632,16 +598,6 @@
                             <td>Mei 2026</td>
                             <td><span class="badge-status status-upcoming">Upcoming</span></td>
                         </tr>
-                        <tr>
-                            <td><strong>Bakti Sosial & Pembagian Takjil Ramadan</strong></td>
-                            <td>September 2026</td>
-                            <td><span class="badge-status status-upcoming">Upcoming</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Spectra Social Services: Pengabdian Masyarakat</strong></td>
-                            <td>November 2026</td>
-                            <td><span class="badge-status status-upcoming">Upcoming</span></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -649,149 +605,125 @@
 
         <div id="sponsor-tab" class="tab-content">
             <h3 class="section-heading">Hubungan Kemitraan & Sponsor</h3>
-            <div class="rich-text-block" style="text-align: center; margin-bottom: 20px;">
-                <p>Kami membuka pintu kolaborasi selebar-lebarnya bagi perusahaan, *brand*, maupun instansi komersial yang ingin memperluas eksposur pasar mereka melalui program *event* berskala regional maupun nasional yang kami selenggarakan.</p>
-            </div>
             <div class="misi-list-group">
-                <div class="misi-card-item" style="border-left-color: #ffd700;"><strong>🏆 Paket Platinum Sponsor:</strong> Eksekutif penempatan logo utama di seluruh media publikasi digital, umbul-umbul fisik panggung, serta hak penyebutan nama korporasi oleh MC sepanjang jalannya event.</div>
-                <div class="misi-card-item" style="border-left-color: #cbd5e1;"><strong>🥈 Paket Gold Sponsor:</strong> Penempatan logo eksklusif di spanduk utama, promosi via konten media sosial perusahaan, serta stan promosi (*booth*) khusus di lokasi acara.</div>
-                <div class="misi-card-item" style="border-left-color: #cd7f32;"><strong>🥉 Paket Perlengkapan & Logistik:</strong> Dukungan kerja sama berupa penyediaan fasilitas operasional, konsumsi catering takjil, maupun media publikasi cetak.</div>
+                <div class="misi-card-item" style="border-left-color: #ffd700;"><strong>🏆 Paket Platinum Sponsor:</strong> Eksekutif penempatan logo utama di seluruh media publikasi digital.</div>
+                <div class="misi-card-item" style="border-left-color: #cbd5e1;"><strong>🥈 Paket Gold Sponsor:</strong> Penempatan logo khusus di spanduk utama dan promosi medsos.</div>
             </div>
         </div>
 
         <div id="school-tab" class="tab-content">
             <h3 class="section-heading">Mitra Sekolah & Institusi Pendidikan</h3>
-            <div class="rich-text-block" style="text-align: center; margin-bottom: 20px;">
-                <p>PT Spectra Jaya Abadi bangga telah dipercaya sebagai fasilitator utama dan penyedia kebutuhan manajemen kegiatan bagi berbagai sekolah dan organisasi kesiswaan (*PMR, OSIS, Pramuka*) di wilayah Sumatera Selatan:</p>
-            </div>
             <div class="grid-layout-cards">
                 <div class="feature-item-card" style="padding: 15px;">
-                    <i class="fa-solid fa-graduation-cap" style="font-size: 1.4rem; color: #00ffaa;"></i>
-                    <h3 style="font-size: 1rem; margin-top: 5px;">SMA / MA Sederajat</h3>
-                    <p style="font-size: 0.8rem;">Kolaborasi pelaksanaan ajang kompetisi kepemudaan, simulasi kesehatan darurat, dan bakti sosial.</p>
-                </div>
-                <div class="feature-item-card" style="padding: 15px;">
-                    <i class="fa-solid fa-school-flag" style="font-size: 1.4rem; color: #00ffaa;"></i>
-                    <h3 style="font-size: 1rem; margin-top: 5px;">SMP / MTs Sederajat</h3>
-                    <p style="font-size: 0.8rem;">Pendampingan pelatihan manajemen organisasi dasar (LDKS) serta festival kreativitas seni kesiswaan.</p>
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>SMA / MA Sederajat</h3>
+                    <p>Kolaborasi pelaksanaan ajang kompetisi kepemudaan dan simulasi kesehatan darurat.</p>
                 </div>
             </div>
         </div>
 
-        <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="btn-neon-schedule" style="margin-top: 25px; background: #ff0055; border-color: #ff0055; box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);">📧 HUBUNGI HUBUNGAN KEMITRAAN & SPONSORSHIPS VIA WA</a>
+        <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="btn-neon-schedule" style="margin-top: 25px; background: #ff3366; border-color: #ff3366; box-shadow: 0 0 15px rgba(255, 51, 102, 0.4);">📧 HUBUNGI HUBUNGAN KEMITRAAN & SPONSORSHIPS VIA WA</a>
 
     </div>
 
     <script>
-        // --- DATA & LOGIK MATH CANVAS UNTUK PUSARAN ANGIN HURUF "S" ---
         const canvas = document.getElementById('wind-canvas');
         const ctx = canvas.getContext('2d');
 
-        // Mengeset ukuran pixel internal canvas agar tajam
-        canvas.width = 300;
-        canvas.height = 300;
+        canvas.width = 320;
+        canvas.height = 380;
 
-        const numParticles = 120;
+        const numParticles = 250;
         const particles = [];
-        let animationStep = 0; // Mengontrol fase pergerakan animasi
+        let frameCount = 0;
 
-        // Inisialisasi partikel angin acak
+        const colors = ['#ff3366', '#00ffaa', '#0088ff', '#ff5533'];
         for (let i = 0; i < numParticles; i++) {
             particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 angle: Math.random() * Math.PI * 2,
-                speed: 2 + Math.random() * 3,
+                speed: 3 + Math.random() * 4,
                 radius: 1 + Math.random() * 1.5,
-                color: Math.random() > 0.5 ? '#00ffaa' : '#0088ff' // Gradasi warna angin neon hijau & biru
+                color: colors[i % colors.length]
             });
         }
 
-        // Fungsi matematika untuk menghitung titik koordinat pola huruf "S"
-        function getTargetS(t) {
-            // t berjalan dari 0 sampai 1
-            let angle = t * Math.PI * 2;
+        function getSRibbonPoint(t) {
             let cx = canvas.width / 2;
             let cy = canvas.height / 2;
-            let scaleX = 45;
-            let scaleY = 70;
-
             let x, y;
-            if (t < 0.5) {
-                // Lengkungan atas huruf S
-                let alpha = (t / 0.5) * Math.PI * 1.5 - Math.PI * 0.5;
-                x = cx + Math.cos(alpha) * scaleX;
-                y = cy - scaleY / 2 + Math.sin(alpha) * scaleY * 0.5;
+
+            if (t < 0.35) {
+                let theta = (t / 0.35) * Math.PI * 1.3 - Math.PI * 0.3;
+                x = cx + Math.cos(theta) * 55;
+                y = cy - 85 + Math.sin(theta) * 35;
+            } else if (t < 0.7) {
+                let ratio = (t - 0.35) / 0.35;
+                let startX = cx + Math.cos(Math.PI * 1) * 55;
+                let startY = cy - 85 + Math.sin(Math.PI * 1) * 35;
+                let endX = cx + Math.cos(0) * 55;
+                let endY = cy + 85 + Math.sin(0) * 35;
+                
+                x = startX + (endX - startX) * ratio + Math.sin(ratio * Math.PI) * 15;
+                y = startY + (endY - startY) * ratio;
             } else {
-                // Lengkungan bawah huruf S
-                let alpha = ((t - 0.5) / 0.5) * Math.PI * 1.5 + Math.PI * 0.5;
-                x = cx - Math.cos(alpha) * scaleX;
-                y = cy + scaleY / 2 - Math.sin(alpha) * scaleY * 0.5;
+                let theta = ((t - 0.7) / 0.3) * Math.PI * 1.3 + Math.PI * 0.7;
+                x = cx - Math.cos(theta) * 55;
+                y = cy + 85 - Math.sin(theta) * 35;
             }
             return { x, y };
         }
 
-        // Loop animasi menggambar partikel angin ke canvas
-        function animateWind() {
+        function drawLoop() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            animationStep++;
+            frameCount++;
 
             particles.forEach((p, index) => {
-                // Fase 1: 0 - 90 frame -> Efek pusaran angin tornado acak berputar cepat
-                if (animationStep < 90) {
-                    p.angle += 0.08;
+                if (frameCount < 80) {
+                    p.angle += 0.09;
                     p.x += Math.cos(p.angle) * p.speed;
                     p.y += Math.sin(p.angle) * p.speed;
 
-                    // Mengunci posisi agar tetap memutar di dalam area pusat canvas
                     let dx = p.x - canvas.width / 2;
                     let dy = p.y - canvas.height / 2;
-                    let dist = Math.sqrt(dx*dx + dy*dy);
-                    if (dist > 130) {
-                        p.x = canvas.width / 2 + Math.cos(p.angle) * 30;
-                        p.y = canvas.height / 2 + Math.sin(p.angle) * 30;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist > 140) {
+                        p.x = canvas.width / 2 + Math.cos(p.angle) * 20;
+                        p.y = canvas.height / 2 + Math.sin(p.angle) * 20;
                     }
-                } 
-                // Fase 2: frame 90+ -> Angin meliuk datang menyusun diri dengan magnetis menjadi Huruf "S"
-                else {
-                    let targetIndex = index / numParticles;
-                    let target = getTargetS(targetIndex);
+                } else {
+                    let targetT = index / numParticles;
+                    let target = getSRibbonPoint(targetT);
+                    let wave = Math.sin(frameCount * 0.05 + index * 0.1) * 2.5;
 
-                    // Interpolasi posisi (mendekat perlahan ke titik target S)
-                    p.x += (target.x - p.x) * 0.08;
-                    p.y += (target.y - p.y) * 0.08;
+                    p.x += (target.x + wave - p.x) * 0.07;
+                    p.y += (target.y - p.y) * 0.07;
                 }
 
-                // Menggambar lingkaran kecil partikel angin neon
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                 ctx.fillStyle = p.color;
-                ctx.shadowBlur = 8;
+                ctx.shadowBlur = 10;
                 ctx.shadowColor = p.color;
                 ctx.fill();
             });
 
-            // Jalankan animasi berkelanjutan
-            if (animationStep < 200) {
-                requestAnimationFrame(animateWind);
+            if (frameCount < 190) {
+                requestAnimationFrame(drawLoop);
             } else {
-                // Begitu formasi huruf S selesai sempurna, munculkan teks Welcome secara elegan
                 document.getElementById('welcome-message').classList.add('show');
-                
-                // Berikan jeda membaca 1.8 detik sebelum loading screen menutup memudar
                 setTimeout(() => {
                     document.getElementById('loading-screen').classList.add('fade-out');
                     document.body.classList.add('loaded');
-                }, 1800);
+                }, 2000);
             }
         }
 
-        // Jalankan sistem canvas langsung saat halaman diakses browser
         window.addEventListener('DOMContentLoaded', () => {
-            animateWind();
+            drawLoop();
         });
 
-        // --- SISTEM NAVIGASI PERPINDAHAN TAB ---
         function switchTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
@@ -801,24 +733,16 @@
 
             document.getElementById(tabId).classList.add('active');
             
-            if (tabId === 'home-tab') {
-                document.getElementById('btn-home').classList.add('active');
-            } else if (tabId === 'profile-tab') {
-                document.getElementById('btn-profile').classList.add('active');
-            } else if (tabId === 'agenda-tab') {
-                document.getElementById('btn-agenda').classList.add('active');
-            } else if (tabId === 'sponsor-tab') {
-                document.getElementById('btn-sponsor').classList.add('active');
-            } else if (tabId === 'school-tab') {
-                document.getElementById('btn-school').classList.add('active');
-            }
+            if (tabId === 'home-tab') document.getElementById('btn-home').classList.add('active');
+            else if (tabId === 'profile-tab') document.getElementById('btn-profile').classList.add('active');
+            else if (tabId === 'agenda-tab') document.getElementById('btn-agenda').classList.add('active');
+            else if (tabId === 'sponsor-tab') document.getElementById('btn-sponsor').classList.add('active');
+            else if (tabId === 'school-tab') document.getElementById('btn-school').classList.add('active');
         }
 
-        // Pemicu tombol biru otomatis mengalihkan layar ke tab agenda
         function triggerAgendaTab() {
             switchTab('agenda-tab');
         }
     </script>
-
 </body>
 </html>
