@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PT Spectra Jaya Abadi - Profil & Struktur</title>
+    <title>PT Spectra Jaya Abadi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
@@ -22,7 +22,7 @@
             overflow-x: hidden;
         }
 
-        /* 1. CINEMATIC LOADING SCREEN (HURUF S RIBBON) */
+        /* ================= 1. LOADING SCREEN (S-RIBBON CONCEPT 2) ================= */
         #loading-screen {
             position: fixed;
             top: 0;
@@ -35,237 +35,243 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: opacity 1s ease;
+            transition: opacity 0.8s ease;
         }
 
         #s-canvas {
-            width: 450px;
-            height: 450px;
+            width: 400px;
+            height: 400px;
         }
 
-        .welcome-text {
-            font-family: 'Comfortaa', cursive;
-            font-size: 1.1rem;
-            color: #ffffff;
-            margin-top: 30px;
-            text-align: center;
-            letter-spacing: 2px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-        }
-
-        .welcome-text span {
-            display: block;
-            font-weight: 700;
-            color: #ff3366;
-            font-size: 1.5rem;
-            margin-top: 10px;
-            text-shadow: 0 0 15px rgba(255, 51, 102, 0.5);
-        }
-
-        .welcome-text.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 2. MAIN WEBSITE WEBAPP INTERFACE */
-        #main-content {
-            display: none;
-            max-width: 480px;
-            margin: 0 auto;
-            background: #070a0f;
-            min-height: 100vh;
-            padding-bottom: 90px;
-            border-left: 1px solid rgba(255, 255, 255, 0.05);
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        }
-
-        /* Top Header Glow Bar */
-        .top-glow-bar {
-            height: 4px;
-            background: linear-gradient(90deg, #ff3366, #0088ff);
-            width: 100%;
-            box-shadow: 0 2px 20px rgba(255, 51, 102, 0.5);
-        }
-
-        .brand-container {
-            padding: 25px 20px 15px;
-            text-align: center;
-        }
-
-        .brand-badge {
+        .welcome-box {
             background: #ffffff;
             color: #000000;
-            font-family: 'Urbanist', sans-serif;
+            padding: 5px 15px;
             font-weight: 800;
-            padding: 6px 16px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            border-radius: 3px;
+            margin-top: 25px;
+            text-transform: uppercase;
+        }
+
+        .welcome-subtext {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 15px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* ================= 2. MAIN CONTAINER APPS (PERSIS GAMBAR 1) ================= */
+        #main-app {
+            display: none;
+            max-width: 450px;
+            margin: 0 auto;
+            background: #0a0d14;
+            min-height: 100vh;
+            padding-bottom: 180px; /* Space untuk bottom menu ganda */
+            position: relative;
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Garis Glow Atas Ringan */
+        .top-neon-line {
+            height: 4px;
+            background: linear-gradient(90deg, #ff3366, #3b82f6);
+            width: 92%;
+            margin: 0 auto;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            box-shadow: 0 2px 15px rgba(255, 51, 102, 0.3);
+        }
+
+        /* Header Brand */
+        .header-brand {
+            text-align: center;
+            padding: 30px 20px 15px;
+        }
+
+        .badge-spectra {
+            background: #ffffff;
+            color: #000000;
+            font-weight: 800;
+            padding: 5px 14px;
             font-size: 0.75rem;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             display: inline-block;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            box-shadow: 0 0 15px rgba(255,255,255,0.8);
+            margin-bottom: 12px;
+            border-radius: 2px;
         }
 
-        .brand-title {
-            font-size: 1.6rem;
+        .title-spectra {
+            font-size: 1.5rem;
             font-weight: 800;
-            letter-spacing: 0.5px;
             margin-bottom: 8px;
-        }
-
-        .brand-desc {
-            font-size: 0.85rem;
-            color: #8492a6;
-            line-height: 1.5;
-            padding: 0 10px;
-        }
-
-        /* Action Button */
-        .action-btn {
-            background: linear-gradient(90deg, #1d4ed8, #2563eb);
-            color: white;
-            margin: 15px 20px;
-            padding: 14px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.9rem;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(29, 78, 216, 0.4);
-            cursor: pointer;
         }
 
-        .action-btn i {
-            margin-right: 8px;
+        .desc-spectra {
+            font-size: 0.8rem;
+            color: #64748b;
+            line-height: 1.5;
+            padding: 0 15px;
         }
 
-        /* Navigation Tabs */
-        .nav-tabs {
-            display: flex;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            margin: 10px 10px 20px;
-        }
-
-        .tab-item {
-            flex: 1;
+        /* Tombol Biru Utama */
+        .btn-agenda-utama {
+            background: #1d4ed8;
+            color: #ffffff;
+            margin: 15px 20px;
+            padding: 12px;
+            border-radius: 20px;
             text-align: center;
-            padding: 12px 0;
-            font-size: 0.85rem;
-            color: #8492a6;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+        }
+
+        /* Sistem Tab Atas */
+        .top-tabs {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 20px;
+        }
+
+        .tab-link {
+            padding: 12px 10px;
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: 700;
             cursor: pointer;
             position: relative;
+            text-align: center;
+            flex: 1;
         }
 
-        .tab-item.active {
+        .tab-link.active {
             color: #ffffff;
         }
 
-        .tab-item.active::after {
+        .tab-link.active::after {
             content: '';
             position: absolute;
             bottom: -1px;
-            left: 15%;
-            width: 70%;
+            left: 10%;
+            width: 80%;
             height: 2px;
             background: #2563eb;
-            box-shadow: 0 -2px 10px #2563eb;
         }
 
-        /* Structure Org Cards Tree */
-        .structure-box {
+        /* Konten Halaman (Bisa Berganti Saat Diklik) */
+        .page-content {
+            display: none;
             padding: 0 20px;
         }
 
-        .org-node {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 15px;
+        .page-content.active {
+            display: block;
+        }
+
+        /* ================= 3. STRUKTUR PENGURUS (BERANDA) ================= */
+        .tree-container {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            gap: 12px;
             position: relative;
         }
 
-        .org-node::before {
+        .card-member {
+            background: #111520;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Garis Penghubung Struktur */
+        .card-member:not(:last-child)::after {
             content: '';
             position: absolute;
-            left: 30px;
-            bottom: -16px;
-            width: 2px;
-            height: 16px;
-            background: rgba(255, 255, 255, 0.1);
+            bottom: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.15);
         }
 
-        .org-node:last-child::before {
-            display: none;
-        }
-
-        .node-name {
-            font-size: 1.1rem;
+        .member-name {
+            font-size: 0.95rem;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
-        .node-role {
-            font-size: 0.8rem;
-            color: #8492a6;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .member-role {
+            font-size: 0.7rem;
+            color: #64748b;
             font-weight: 600;
         }
 
-        /* Custom Specific Node Accents */
-        .node-owner {
-            border-left: 4px solid #ff3366;
-            background: linear-gradient(90deg, rgba(255,51,102,0.05), transparent);
-        }
-        .node-owner .node-role { color: #ff3366; }
+        /* Accent Khusus untuk Pemilik & GM */
+        .card-member.boss { border-left: 3px solid #ff3366; }
+        .card-member.gm { border-left: 3px solid #3b82f6; }
 
-        .node-gm {
-            border-left: 4px solid #0088ff;
-            background: linear-gradient(90deg, rgba(0,136,255,0.05), transparent);
-        }
-        .node-gm .node-role { color: #0088ff; }
-
-        /* Bottom Fixed Navbar Grid */
-        .bottom-nav {
+        /* ================= 4. MENU BOTTOM GRID GANDA (8 TOMBOL AKTIF) ================= */
+        .bottom-grid-nav {
             position: fixed;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
-            max-width: 480px;
-            background: rgba(7, 10, 15, 0.95);
-            backdrop-filter: blur(10px);
+            max-width: 450px;
+            background: #07090e;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            padding: 10px 0;
+            gap: 10px;
             z-index: 999;
         }
 
-        .nav-icon-btn {
+        .grid-icon-btn {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            padding: 10px 5px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: #8492a6;
-            font-size: 0.75rem;
+            gap: 6px;
+            color: #64748b;
+            font-size: 0.7rem;
+            font-weight: 600;
             cursor: pointer;
-            gap: 5px;
+            transition: all 0.2s;
         }
 
-        .nav-icon-btn.active {
-            color: #2563eb;
+        .grid-icon-btn i {
+            font-size: 1.1rem;
         }
 
-        .nav-icon-btn i {
-            font-size: 1.25rem;
+        .grid-icon-btn.active {
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.05);
+            border-color: rgba(59, 130, 246, 0.2);
         }
     </style>
 </head>
@@ -273,182 +279,205 @@
 
     <div id="loading-screen">
         <canvas id="s-canvas"></canvas>
-        <div class="welcome-text" id="welcome-msg">
-            Welcome to Website Resmi
-            <span>PT SPECTRA JAYA ABADI</span>
-        </div>
+        <div class="welcome-box">SPECTRA MANAGEMENT.</div>
+        <div class="welcome-subtext">WELCOME TO WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
     </div>
 
-    <div id="main-content">
-        <div class="top-glow-bar"></div>
+    <div id="main-app">
+        <div class="top-neon-line"></div>
 
-        <div class="brand-container">
-            <div class="brand-badge">SPECTRA MANAGEMENT.</div>
-            <h1 class="brand-title">PT Spectra Jaya Abadi</h1>
-            <p class="brand-desc">PT Spectra Jaya Abadi adalah perusahaan Event Organizer (EO) terpercaya yang berbasis di Indralaya. Kami menghadirkan pengelolaan acara yang profesional, kreatif, serta mengutamakan kepuasan total klien kami.</p>
+        <div class="header-brand">
+            <div class="badge-spectra">SPECTRA MANAGEMENT.</div>
+            <h1 class="title-spectra">PT Spectra Jaya Abadi</h1>
+            <p class="desc-spectra">PT Spectra Jaya Abadi adalah perusahaan Event Organizer (EO) terpercaya yang berbasis di Indralaya. Kami menghadirkan pengelolaan acara yang teknis, profesional, serta memprioritaskan akuntabilitas demi kepuasan klien.</p>
         </div>
 
-        <div class="action-btn">
-            <i class="fa-regular fa-calendar-days"></i> KALENDER & AGENDA EVENT UTAMA 2026
+        <div class="btn-agenda-utama">
+            <i class="fa-solid fa-calendar-days"></i> KALENDER & AGENDA EVENT UTAMA 2026
         </div>
 
-        <div class="nav-tabs">
-            <div class="tab-item active">Beranda</div>
-            <div class="tab-item">Agenda Event</div>
-            <div class="tab-item">Sponsor</div>
-            <div class="tab-item">Mitra Sekolah</div>
+        <div class="top-tabs">
+            <div class="tab-link active" onclick="switchPage('beranda', this)">Beranda</div>
+            <div class="tab-link" onclick="switchPage('agenda', this)">Agenda Event</div>
+            <div class="tab-link" onclick="switchPage('sponsor', this)">Sponsor</div>
+            <div class="tab-link" onclick="switchPage('mitra', this)">Mitra Sekolah</div>
         </div>
 
-        <div class="structure-box">
-            
-            <div class="org-node node-owner">
-                <div class="node-name">M. Fauzi A.</div>
-                <div class="node-role">Pemilik PT</div>
-            </div>
-
-            <div class="org-node">
-                <div class="node-name">H. Rangga</div>
-                <div class="node-role">Penasehat Perusahaan</div>
-            </div>
-
-            <div class="org-node node-gm">
-                <div class="node-name">Dr. Sigit, S.Pi., M.Si.</div>
-                <div class="node-role">Manajer Umum</div>
-            </div>
-
-            <div class="org-node">
-                <div class="node-name">H. Ahmad Shopian</div>
-                <div class="node-role">Kepala Bidang Perlindungan dan Keamanan</div>
-            </div>
-
-            <div class="org-node">
-                <div class="node-name">Ahmad Syahrul</div>
-                <div class="node-role">Operator</div>
-            </div>
-
-        </div>
-
-        <div class="bottom-nav">
-            <div class="nav-icon-btn active">
-                <i class="fa-solid fa-house"></i>
-                <span>Beranda</span>
-            </div>
-            <div class="nav-icon-btn">
-                <i class="fa-regular fa-calendar"></i>
-                <span>Agenda Event</span>
-            </div>
-            <div class="nav-icon-btn">
-                <i class="fa-solid fa-award"></i>
-                <span>Sponsor</span>
-            </div>
-            <div class="nav-icon-btn">
-                <i class="fa-solid fa-school"></i>
-                <span>Mitra Sekolah</span>
+        <div id="page-beranda" class="page-content active">
+            <div class="tree-container">
+                <div class="card-member boss">
+                    <div class="member-name">M. Fauzi A.</div>
+                    <div class="member-role">Pemilik PT</div>
+                </div>
+                <div class="card-member">
+                    <div class="member-name">H. Rangga</div>
+                    <div class="member-role">Penasehat</div>
+                </div>
+                <div class="card-member">
+                    <div class="member-name">Dr. Sigit, S.Pi., M.Si.</div>
+                    <div class="member-role">Manajer Umum</div>
+                </div>
+                <div class="card-member">
+                    <div class="member-name">H. Ahmad Shopian</div>
+                    <div class="member-role">Kepala Bidang Perlindungan dan Keamanan</div>
+                </div>
+                <div class="card-member">
+                    <div class="member-name">Ahmad Syahrul</div>
+                    <div class="member-role">Operator</div>
+                </div>
             </div>
         </div>
+
+        <div id="page-agenda" class="page-content">
+            <h3 style="color:#3b82f6; font-size:1rem; margin-bottom:10px;">Agenda Event 2026</h3>
+            <p style="font-size:0.8rem; color:#64748b;">Daftar rancangan agenda dan kompetisi digital regional terdekat.</p>
+        </div>
+
+        <div id="page-sponsor" class="page-content">
+            <h3 style="color:#3b82f6; font-size:1rem; margin-bottom:10px;">Kemitraan Sponsor</h3>
+            <p style="font-size:0.8rem; color:#64748b;">Informasi slot promosi logo perusahaan dan kerja sama komersial.</p>
+        </div>
+
+        <div id="page-mitra" class="page-content">
+            <h3 style="color:#3b82f6; font-size:1rem; margin-bottom:10px;">Hubungan Institusi</h3>
+            <p style="font-size:0.8rem; color:#64748b;">Daftar sekolah mitra OSIS dan PMR se-Sumatera Selatan.</p>
+        </div>
+
+        <div id="page-fitur" class="page-content">
+            <h3 style="color:#3b82f6; font-size:1rem; margin-bottom:10px;">Fitur Sistem</h3>
+            <p style="font-size:0.8rem; color:#64748b;">Pengaturan modul penunjang operasional event manajemen.</p>
+        </div>
+
+        <div class="bottom-grid-nav">
+            <div class="grid-icon-btn active" onclick="switchPage('beranda', this)">
+                <i class="fa-solid fa-house"></i><span>Beranda</span>
+            </div>
+            <div class="grid-icon-btn" onclick="switchPage('agenda', this)">
+                <i class="fa-regular fa-calendar-check"></i><span>Agenda Event</span>
+            </div>
+            <div class="grid-icon-btn" onclick="switchPage('sponsor', this)">
+                <i class="fa-solid fa-award"></i><span>Sponsor</span>
+            </div>
+            <div class="grid-icon-btn" onclick="switchPage('mitra', this)">
+                <i class="fa-solid fa-school"></i><span>Mitra Sekolah</span>
+            </div>
+            <div class="grid-icon-btn" onclick="switchPage('fitur', this)">
+                <i class="fa-solid fa-wand-magic-sparkles"></i><span>Featuress</span>
+            </div>
+            <div class="grid-icon-btn" onclick="switchPage('fitur', this)">
+                <i class="fa-solid fa-clapperboard"></i><span>Features</span>
+            </div>
+            <div class="grid-icon-btn" onclick="switchPage('sponsor', this)">
+                <i class="fa-solid fa-鋪"></i><span>Sponsor</span>
+            </div>
+            <div class="grid-icon-btn" onclick="switchPage('beranda', this)">
+                <i class="fa-solid fa-table-cells-large"></i><span>Featurng</span>
+            </div>
+        </div>
+
     </div>
 
     <script>
-        // --- ANIMASI MATEMATIKA STRUKTUR S-RIBBON (GAMBAR KE-2) ---
+        // --- ANIMASI S-RIBBON MATEMATIKA PRESISI ---
         const canvas = document.getElementById('s-canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = 450;
-        canvas.height = 450;
+        canvas.width = 400;
+        canvas.height = 400;
 
-        const particles = [];
-        const maxParticles = 500;
-        let timeline = 0;
+        const dots = [];
+        const maxDots = 450;
+        let clock = 0;
+        const colorPalette = ['#ff3366', '#00ffaa', '#0088ff', '#ff8c00'];
 
-        // Variasi warna neon (Pita Merah-Hijau-Biru Berkilau)
-        const colors = ['#ff3366', '#00ffaa', '#0088ff', '#ff8c00'];
-
-        for(let i = 0; i < maxParticles; i++) {
-            particles.push({
+        for(let i=0; i<maxDots; i++) {
+            dots.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                size: Math.random() * 1.8 + 0.6,
-                color: colors[i % colors.length],
-                alpha: Math.random() * 0.8 + 0.2,
-                speedOffset: Math.random() * 2
+                radius: Math.random() * 1.6 + 0.5,
+                color: colorPalette[i % colorPalette.length],
+                alpha: Math.random() * 0.7 + 0.3
             });
         }
 
-        // Rumus matematika meliuk membentuk huruf S
-        function calculateS(indexPercent) {
+        function getSPath(percent) {
             const cx = canvas.width / 2;
             const cy = canvas.height / 2;
-            const verticalHeight = 150;
-            const curveRadius = 65;
+            const h = 130;
+            const r = 55;
 
-            // Memetakan index partikel dari atas ke bawah sepanjang lengkungan S
-            let t = indexPercent * Math.PI * 2; 
-            let x = Math.sin(t) * curveRadius;
-            let y = (indexPercent - 0.5) * verticalHeight * 2;
-
-            // Modifikasi tambahan biar bentuk S nya tebal meliuk seperti pita 3D
-            let ribbonWidth = Math.sin(t * 3) * 12;
-            x += ribbonWidth;
+            let angle = percent * Math.PI * 2;
+            let x = Math.sin(angle) * r;
+            let y = (percent - 0.5) * h * 2;
+            
+            let thickness = Math.sin(angle * 3) * 10;
+            x += thickness;
 
             return { x: cx + x, y: cy + y };
         }
 
-        function playAnimation() {
+        function runEngine() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            timeline++;
+            clock++;
 
-            particles.forEach((p, idx) => {
-                let targetPos = calculateS(idx / maxParticles);
+            dots.forEach((d, idx) => {
+                let target = getSPath(idx / maxDots);
 
-                if (timeline < 90) {
-                    // Tahap 1: Efek Pusaran Angin (Vortex) berputar cepat di tengah
-                    let dx = p.x - canvas.width / 2;
-                    let dy = p.y - canvas.height / 2;
-                    let angle = Math.atan2(dy, dx) + 0.12;
-                    let dist = Math.sqrt(dx*dx + dy*dy) * 0.97;
-                    p.x = canvas.width / 2 + Math.cos(angle) * dist;
-                    p.y = canvas.height / 2 + Math.sin(angle) * dist;
-                } 
-                else if (timeline < 240) {
-                    // Tahap 2: Partikel ditarik masuk membentuk rupa huruf S secara presisi
-                    p.x += (targetPos.x - p.x) * 0.07;
-                    p.y += (targetPos.y - p.y) * 0.07;
-                } 
-                else {
-                    // Tahap 3: S Sempurna yang berdenyut hidup (Sustain Light)
-                    let wave = Math.sin(timeline * 0.04 + idx) * 4;
-                    p.x = targetPos.x + wave;
-                    p.y = targetPos.y + wave;
+                if (clock < 80) {
+                    let dx = d.x - canvas.width/2;
+                    let dy = d.y - canvas.height/2;
+                    let rot = Math.atan2(dy, dx) + 0.14;
+                    let pull = Math.sqrt(dx*dx + dy*dy) * 0.97;
+                    d.x = canvas.width/2 + Math.cos(rot) * pull;
+                    d.y = canvas.height/2 + Math.sin(rot) * pull;
+                } else if (clock < 220) {
+                    d.x += (target.x - d.x) * 0.08;
+                    d.y += (target.y - d.y) * 0.08;
+                } else {
+                    let drift = Math.sin(clock * 0.05 + idx) * 3;
+                    d.x = target.x + drift;
+                    d.y = target.y + drift;
                 }
 
-                // Gambar partikel ke layar dengan efek glow neon
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = p.color;
-                ctx.globalAlpha = p.alpha;
-                ctx.shadowBlur = 12;
-                ctx.shadowColor = p.color;
+                ctx.arc(d.x, d.y, d.radius, 0, Math.PI * 2);
+                ctx.fillStyle = d.color;
+                ctx.globalAlpha = d.alpha;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = d.color;
                 ctx.fill();
             });
 
-            // Tampilkan teks ucapan di bawah logo S setelah formasi selesai
-            if (timeline === 210) {
+            if (clock === 200) {
                 document.getElementById('welcome-msg').classList.add('show');
             }
 
-            if (timeline < 380) {
-                requestAnimationFrame(playAnimation);
+            if (clock < 350) {
+                requestAnimationFrame(runEngine);
             } else {
-                // Transisi halus keluar dari loading screen menuju halaman utama
                 const screen = document.getElementById('loading-screen');
                 screen.style.opacity = '0';
                 setTimeout(() => {
                     screen.style.display = 'none';
-                    document.getElementById('main-content').style.display = 'block';
-                }, 1000);
+                    document.getElementById('main-app').style.display = 'block';
+                }, 800);
             }
         }
 
-        window.onload = playAnimation;
+        window.onload = runEngine;
+
+        // --- SISTEM FUNGSI KLIK PINDAH HALAMAN AKTIF ---
+        function switchPage(pageId, element) {
+            // Sembunyikan semua konten halaman
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            // Tampilkan halaman tujuan
+            document.getElementById('page-' + pageId).classList.add('active');
+
+            // Reset semua status active di tombol tab atas dan grid bawah
+            document.querySelectorAll('.tab-link, .grid-icon-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Beri efek active pada tombol yang diklik
+            element.classList.add('active');
+        }
     </script>
 </body>
 </html>
