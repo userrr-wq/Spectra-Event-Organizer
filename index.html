@@ -22,7 +22,7 @@
             overflow-x: hidden;
         }
 
-        /* ================= 1. LOADING SCREEN (S-RIBBON CONCEPT 2) ================= */
+        /* ================= 1. CINEMATIC LOADING SCREEN (S-RIBBON PREMIUM) ================= */
         #loading-screen {
             position: fixed;
             top: 0;
@@ -35,7 +35,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.8s ease;
+            transition: opacity 0.8s ease, visibility 0.8s;
         }
 
         #s-canvas {
@@ -46,22 +46,34 @@
         .welcome-box {
             background: #ffffff;
             color: #000000;
-            padding: 5px 15px;
+            padding: 6px 18px;
             font-weight: 800;
             font-size: 0.8rem;
-            letter-spacing: 1px;
-            border-radius: 3px;
+            letter-spacing: 1.5px;
+            border-radius: 4px;
             margin-top: 25px;
             text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.6s ease;
         }
 
         .welcome-subtext {
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 800;
             color: #ffffff;
             margin-top: 15px;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-align: center;
+            line-height: 1.4;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.6s ease 0.2s;
+        }
+
+        .welcome-box.show, .welcome-subtext.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* ================= 2. MAIN CONTAINER APPS (PERSIS GAMBAR 1) ================= */
@@ -69,29 +81,27 @@
             display: none;
             max-width: 450px;
             margin: 0 auto;
-            background: #0a0d14;
+            background: #07090e;
             min-height: 100vh;
-            padding-bottom: 180px; /* Space untuk bottom menu ganda */
+            padding-bottom: 180px;
             position: relative;
             border-left: 1px solid rgba(255, 255, 255, 0.05);
             border-right: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
         }
 
-        /* Garis Glow Atas Ringan */
+        /* Garis Glow Neon Ganda */
         .top-neon-line {
             height: 4px;
-            background: linear-gradient(90deg, #ff3366, #3b82f6);
-            width: 92%;
-            margin: 0 auto;
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-            box-shadow: 0 2px 15px rgba(255, 51, 102, 0.3);
+            background: linear-gradient(90deg, #ff3366, #0088ff);
+            width: 100%;
+            box-shadow: 0 2px 20px rgba(255, 51, 102, 0.6);
         }
 
         /* Header Brand */
         .header-brand {
             text-align: center;
-            padding: 30px 20px 15px;
+            padding: 35px 20px 15px;
         }
 
         .badge-spectra {
@@ -102,56 +112,57 @@
             font-size: 0.75rem;
             letter-spacing: 1px;
             display: inline-block;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             border-radius: 2px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.2);
         }
 
         .title-spectra {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             letter-spacing: 0.5px;
         }
 
         .desc-spectra {
             font-size: 0.8rem;
-            color: #64748b;
-            line-height: 1.5;
-            padding: 0 15px;
+            color: #8492a6;
+            line-height: 1.6;
+            padding: 0 10px;
         }
 
         /* Tombol Biru Utama */
         .btn-agenda-utama {
-            background: #1d4ed8;
+            background: linear-gradient(90deg, #1d4ed8, #2563eb);
             color: #ffffff;
             margin: 15px 20px;
-            padding: 12px;
-            border-radius: 20px;
+            padding: 14px;
+            border-radius: 25px;
             text-align: center;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             letter-spacing: 0.5px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+            box-shadow: 0 4px 15px rgba(29, 78, 216, 0.4);
         }
 
         /* Sistem Tab Atas */
         .top-tabs {
             display: flex;
             justify-content: space-between;
-            padding: 0 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            margin-bottom: 20px;
+            padding: 0 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 25px;
         }
 
         .tab-link {
-            padding: 12px 10px;
-            font-size: 0.8rem;
-            color: #64748b;
+            padding: 12px 5px;
+            font-size: 0.85rem;
+            color: #8492a6;
             font-weight: 700;
             cursor: pointer;
             position: relative;
@@ -167,13 +178,14 @@
             content: '';
             position: absolute;
             bottom: -1px;
-            left: 10%;
-            width: 80%;
+            left: 15%;
+            width: 70%;
             height: 2px;
             background: #2563eb;
+            box-shadow: 0 -2px 10px #2563eb;
         }
 
-        /* Konten Halaman (Bisa Berganti Saat Diklik) */
+        /* Konten Halaman */
         .page-content {
             display: none;
             padding: 0 20px;
@@ -188,50 +200,53 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            position: relative;
+            gap: 14px;
         }
 
         .card-member {
-            background: #111520;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             text-align: center;
             position: relative;
         }
 
-        /* Garis Penghubung Struktur */
         .card-member:not(:last-child)::after {
             content: '';
             position: absolute;
-            bottom: -13px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
             width: 1px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.15);
+            height: 14px;
+            background: rgba(255, 255, 255, 0.12);
         }
 
         .member-name {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
 
         .member-role {
-            font-size: 0.7rem;
-            color: #64748b;
+            font-size: 0.75rem;
+            color: #8492a6;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* Accent Khusus untuk Pemilik & GM */
-        .card-member.boss { border-left: 3px solid #ff3366; }
-        .card-member.gm { border-left: 3px solid #3b82f6; }
+        /* Border Glow Aksen */
+        .card-member.boss { border-left: 4px solid #ff3366; background: linear-gradient(90deg, rgba(255,51,102,0.03), transparent); }
+        .card-member.boss .member-role { color: #ff3366; }
+        
+        .card-member.gm { border-left: 4px solid #0088ff; background: linear-gradient(90deg, rgba(0,136,255,0.03), transparent); }
+        .card-member.gm .member-role { color: #0088ff; }
 
-        /* ================= 4. MENU BOTTOM GRID GANDA (8 TOMBOL AKTIF) ================= */
+        /* ================= 4. NAVIGATION GRID DOUBLE BARIS (8 TOMBOL AKTIF) ================= */
         .bottom-grid-nav {
             position: fixed;
             bottom: 0;
@@ -239,7 +254,8 @@
             transform: translateX(-50%);
             width: 100%;
             max-width: 450px;
-            background: #07090e;
+            background: rgba(7, 9, 14, 0.95);
+            backdrop-filter: blur(10px);
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             padding: 12px;
             display: grid;
@@ -249,15 +265,15 @@
         }
 
         .grid-icon-btn {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: 8px;
-            padding: 10px 5px;
+            padding: 10px 2px;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 6px;
-            color: #64748b;
+            color: #8492a6;
             font-size: 0.7rem;
             font-weight: 600;
             cursor: pointer;
@@ -265,13 +281,13 @@
         }
 
         .grid-icon-btn i {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
         }
 
         .grid-icon-btn.active {
-            color: #3b82f6;
-            background: rgba(59, 130, 246, 0.05);
-            border-color: rgba(59, 130, 246, 0.2);
+            color: #2563eb;
+            background: rgba(37, 99, 235, 0.06);
+            border-color: rgba(37, 99, 235, 0.2);
         }
     </style>
 </head>
@@ -279,8 +295,8 @@
 
     <div id="loading-screen">
         <canvas id="s-canvas"></canvas>
-        <div class="welcome-box">SPECTRA MANAGEMENT.</div>
-        <div class="welcome-subtext">WELCOME TO WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
+        <div id="load-b1" class="welcome-box">SPECTRA MANAGEMENT.</div>
+        <div id="load-b2" class="welcome-subtext">WELCOME TO WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
     </div>
 
     <div id="main-app">
@@ -293,7 +309,7 @@
         </div>
 
         <div class="btn-agenda-utama">
-            <i class="fa-solid fa-calendar-days"></i> KALENDER & AGENDA EVENT UTAMA 2026
+            <i class="fa-solid fa-calendar-days"></i> KALENDER & AGENDA EVENT UTAMA 2025
         </div>
 
         <div class="top-tabs">
@@ -311,15 +327,15 @@
                 </div>
                 <div class="card-member">
                     <div class="member-name">H. Rangga</div>
-                    <div class="member-role">Penasehat</div>
+                    <div class="member-role">Penasehat Perusahaan</div>
                 </div>
-                <div class="card-member">
+                <div class="card-member class-gm">
                     <div class="member-name">Dr. Sigit, S.Pi., M.Si.</div>
-                    <div class="member-role">Manajer Umum</div>
+                    <div class="member-role">General Manager</div>
                 </div>
                 <div class="card-member">
                     <div class="member-name">H. Ahmad Shopian</div>
-                    <div class="member-role">Kepala Bidang Perlindungan dan Keamanan</div>
+                    <div class="member-role">Kabid Perlindungan dan Keamanan</div>
                 </div>
                 <div class="card-member">
                     <div class="member-name">Ahmad Syahrul</div>
@@ -329,46 +345,47 @@
         </div>
 
         <div id="page-agenda" class="page-content">
-            <h3 style="color:#3b82f6; font-size:1rem; margin-bottom:10px;">Agenda Event 2026</h3>
-            <p style="font-size:0.8rem; color:#64748b;">Daftar rancangan agenda dan kompetisi digital regional terdekat.</p>
+            <h3 style="font-size:0.95rem; margin-bottom:8px; color:#2563eb;">Agenda Utama</h3>
+            <p style="font-size:0.8rem; color:#8492a6;">Modul Agenda Event Resmi PT Spectra Jaya Abadi Tahun 2025/2026.</p>
         </div>
 
         <div id="page-sponsor" class="page-content">
-            <h3 style="color:#3b82f6; font-size:1rem; margin-bottom:10px;">Kemitraan Sponsor</h3>
-            <p style="font-size:0.8rem; color:#64748b;">Informasi slot promosi logo perusahaan dan kerja sama komersial.</p>
+            <h3 style="font-size:0.95rem; margin-bottom:8px; color:#2563eb;">Daftar Sponsor</h3>
+            <p style="font-size:0.8rem; color:#8492a6;">Manajemen kemitraan dan slot ruang promosi komersial korporasi.</p>
         </div>
 
         <div id="page-mitra" class="page-content">
-            <h3 style="color:#3b82f6; font-size:1rem; margin-bottom:10px;">Hubungan Institusi</h3>
-            <p style="font-size:0.8rem; color:#64748b;">Daftar sekolah mitra OSIS dan PMR se-Sumatera Selatan.</p>
+            <h3 style="font-size:0.95rem; margin-bottom:8px; color:#2563eb;">Mitra Sekolah</h3>
+            <p style="font-size:0.8rem; color:#8492a6;">Daftar kolaborasi program kesiswaan OSIS & Kedatutan PMR regional.</p>
         </div>
 
-        <div id="page-fitur" class="page-content">
-            <h3 style="color:#3b82f6; font-size:1rem; margin-bottom:10px;">Fitur Sistem</h3>
-            <p style="font-size:0.8rem; color:#64748b;">Pengaturan modul penunjang operasional event manajemen.</p>
+        <div id="page-features" class="page-content">
+            <h3 style="font-size:0.95rem; margin-bottom:8px; color:#2563eb;">Modul Ekstensi</h3>
+            <p style="font-size:0.8rem; color:#8492a6;">Halaman konfigurasi utilitas sistem manajemen internal.</p>
         </div>
+
 
         <div class="bottom-grid-nav">
-            <div class="grid-icon-btn active" onclick="switchPage('beranda', this)">
+            <div class="grid-icon-btn active" id="btn-nav-beranda" onclick="switchPage('beranda', this)">
                 <i class="fa-solid fa-house"></i><span>Beranda</span>
             </div>
-            <div class="grid-icon-btn" onclick="switchPage('agenda', this)">
+            <div class="grid-icon-btn" id="btn-nav-agenda" onclick="switchPage('agenda', this)">
                 <i class="fa-regular fa-calendar-check"></i><span>Agenda Event</span>
             </div>
-            <div class="grid-icon-btn" onclick="switchPage('sponsor', this)">
+            <div class="grid-icon-btn" id="btn-nav-sponsor" onclick="switchPage('sponsor', this)">
                 <i class="fa-solid fa-award"></i><span>Sponsor</span>
             </div>
-            <div class="grid-icon-btn" onclick="switchPage('mitra', this)">
+            <div class="grid-icon-btn" id="btn-nav-mitra" onclick="switchPage('mitra', this)">
                 <i class="fa-solid fa-school"></i><span>Mitra Sekolah</span>
             </div>
-            <div class="grid-icon-btn" onclick="switchPage('fitur', this)">
-                <i class="fa-solid fa-wand-magic-sparkles"></i><span>Featuress</span>
+            <div class="grid-icon-btn" onclick="switchPage('features', this)">
+                <i class="fa-solid fa-square-plus"></i><span>Featuress</span>
             </div>
-            <div class="grid-icon-btn" onclick="switchPage('fitur', this)">
-                <i class="fa-solid fa-clapperboard"></i><span>Features</span>
+            <div class="grid-icon-btn" onclick="switchPage('features', this)">
+                <i class="fa-solid fa-video"></i><span>Features</span>
             </div>
             <div class="grid-icon-btn" onclick="switchPage('sponsor', this)">
-                <i class="fa-solid fa-鋪"></i><span>Sponsor</span>
+                <i class="fa-solid fa-chart-pie"></i><span>Sponsor</span>
             </div>
             <div class="grid-icon-btn" onclick="switchPage('beranda', this)">
                 <i class="fa-solid fa-table-cells-large"></i><span>Featurng</span>
@@ -378,105 +395,121 @@
     </div>
 
     <script>
-        // --- ANIMASI S-RIBBON MATEMATIKA PRESISI ---
+        // --- LOGIKA ANIMASI PUSARAN RIBBON S NYATA (GAMBAR KE-2) ---
         const canvas = document.getElementById('s-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = 400;
         canvas.height = 400;
 
-        const dots = [];
-        const maxDots = 450;
-        let clock = 0;
-        const colorPalette = ['#ff3366', '#00ffaa', '#0088ff', '#ff8c00'];
+        const loopDots = [];
+        const totalDots = 600; // Ditambah biar garis S terlihat tebal rapat bercahaya
+        let frameCounter = 0;
+        
+        const neonPalette = ['#ff3366', '#00ffaa', '#0088ff', '#ff8c00', '#e0f2fe'];
 
-        for(let i=0; i<maxDots; i++) {
-            dots.push({
+        for(let i=0; i<totalDots; i++) {
+            loopDots.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                radius: Math.random() * 1.6 + 0.5,
-                color: colorPalette[i % colorPalette.length],
-                alpha: Math.random() * 0.7 + 0.3
+                size: Math.random() * 1.6 + 0.6,
+                color: neonPalette[i % neonPalette.length],
+                alpha: Math.random() * 0.8 + 0.2
             });
         }
 
-        function getSPath(percent) {
+        // Formula Kurva S Melingkar Sempurna dengan ketebalan 3D pita
+        function formulaS(pct) {
             const cx = canvas.width / 2;
             const cy = canvas.height / 2;
-            const h = 130;
-            const r = 55;
-
-            let angle = percent * Math.PI * 2;
-            let x = Math.sin(angle) * r;
-            let y = (percent - 0.5) * h * 2;
             
-            let thickness = Math.sin(angle * 3) * 10;
-            x += thickness;
+            // Menggunakan fungsi sinus ganda untuk menciptakan lekukan memutar melengkung
+            let angle = pct * Math.PI * 2;
+            let x = Math.sin(angle * 1.2) * 65;
+            let y = (pct - 0.5) * 260;
+
+            // Efek memuntir meliuk spiral agar mirip pusaran vortex di gambar 2
+            let twist = Math.cos(angle * 2) * 15;
+            x += twist;
 
             return { x: cx + x, y: cy + y };
         }
 
-        function runEngine() {
+        function animateRibbon() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            clock++;
+            frameCounter++;
 
-            dots.forEach((d, idx) => {
-                let target = getSPath(idx / maxDots);
+            loopDots.forEach((d, idx) => {
+                let sPos = formulaS(idx / totalDots);
 
-                if (clock < 80) {
-                    let dx = d.x - canvas.width/2;
-                    let dy = d.y - canvas.height/2;
-                    let rot = Math.atan2(dy, dx) + 0.14;
-                    let pull = Math.sqrt(dx*dx + dy*dy) * 0.97;
-                    d.x = canvas.width/2 + Math.cos(rot) * pull;
-                    d.y = canvas.height/2 + Math.sin(rot) * pull;
-                } else if (clock < 220) {
-                    d.x += (target.x - d.x) * 0.08;
-                    d.y += (target.y - d.y) * 0.08;
-                } else {
-                    let drift = Math.sin(clock * 0.05 + idx) * 3;
-                    d.x = target.x + drift;
-                    d.y = target.y + drift;
+                if (frameCounter < 90) {
+                    // Step 1: Pusaran Angin Spiral (Vortex Swirl) berputar kencang masuk ke tengah
+                    let dx = d.x - canvas.width / 2;
+                    let dy = d.y - canvas.height / 2;
+                    let currentAngle = Math.atan2(dy, dx) + 0.15;
+                    let currentDist = Math.sqrt(dx*dx + dy*dy) * 0.96;
+                    d.x = canvas.width / 2 + Math.cos(currentAngle) * currentDist;
+                    d.y = canvas.height / 2 + Math.sin(currentAngle) * currentDist;
+                } 
+                else if (frameCounter < 220) {
+                    // Step 2: Partikel magnetis merapat rapi menyusun huruf S Pita 3D
+                    d.x += (sPos.x - d.x) * 0.08;
+                    d.y += (sPos.y - d.y) * 0.08;
+                } 
+                else {
+                    // Step 3: Efek Pendaran Gelombang Hidup Berdenyut (Sustain)
+                    let pulse = Math.sin(frameCounter * 0.05 + idx) * 3;
+                    d.x = sPos.x + pulse;
+                    d.y = sPos.y + pulse;
                 }
 
+                // Render Partikel Glow Neon
                 ctx.beginPath();
-                ctx.arc(d.x, d.y, d.radius, 0, Math.PI * 2);
+                ctx.arc(d.x, d.y, d.size, 0, Math.PI * 2);
                 ctx.fillStyle = d.color;
                 ctx.globalAlpha = d.alpha;
-                ctx.shadowBlur = 10;
+                ctx.shadowBlur = 12;
                 ctx.shadowColor = d.color;
                 ctx.fill();
             });
 
-            if (clock === 200) {
-                document.getElementById('welcome-msg').classList.add('show');
+            // Tampilkan teks di bawah logo setelah huruf S terbentuk
+            if(frameCounter === 180) {
+                document.getElementById('load-b1').classList.add('show');
+                document.getElementById('load-b2').classList.add('show');
             }
 
-            if (clock < 350) {
-                requestAnimationFrame(runEngine);
-            } else {
-                const screen = document.getElementById('loading-screen');
-                screen.style.opacity = '0';
-                setTimeout(() => {
-                    screen.style.display = 'none';
-                    document.getElementById('main-app').style.display = 'block';
-                }, 800);
-            }
+            requestAnimationFrame(animateRibbon);
         }
 
-        window.onload = runEngine;
+        // Jalankan mesin animasi
+        animateRibbon();
 
-        // --- SISTEM FUNGSI KLIK PINDAH HALAMAN AKTIF ---
-        function switchPage(pageId, element) {
-            // Sembunyikan semua konten halaman
+        // --- SOLUSI ANTI-STUCK: Kunci Pengaman Menggunakan Batas Waktu Otomatis ---
+        setTimeout(() => {
+            const lScreen = document.getElementById('loading-screen');
+            lScreen.style.opacity = '0';
+            setTimeout(() => {
+                lScreen.style.display = 'none';
+                document.getElementById('main-app').style.display = 'block';
+            }, 800);
+        }, 3500); // 3,5 Detik langsung buka paksa halaman web utama
+
+        // --- FUNGSI KLIK PERPINDAHAN HALAMAN MENU NAVIGASI ---
+        function switchPage(pageName, element) {
+            // Sembunyikan semua halaman content
             document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
-            // Tampilkan halaman tujuan
-            document.getElementById('page-' + pageId).classList.add('active');
+            // Hidupkan halaman target
+            document.getElementById('page-' + pageName).classList.add('active');
 
-            // Reset semua status active di tombol tab atas dan grid bawah
+            // Lepas status active dari tab atas dan menu grid bawah
             document.querySelectorAll('.tab-link, .grid-icon-btn').forEach(btn => btn.classList.remove('active'));
             
-            // Beri efek active pada tombol yang diklik
+            // Aktifkan visual tombol yang sedang ditekan secara cross-reference
             element.classList.add('active');
+            
+            // Sinkronisasi tombol jika diklik via tab atas agar menu bawah ikut menyala biru
+            const bottomMatch = document.getElementById('btn-nav-' + pageName);
+            if(bottomMatch) bottomMatch.classList.add('active');
         }
     </script>
 </body>
