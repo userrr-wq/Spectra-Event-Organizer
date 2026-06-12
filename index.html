@@ -67,12 +67,12 @@
 
         /* ================= 2. MAIN APP APPS CONTAINER ================= */
         #main-app {
-            display: none; /* Muncul setelah loading selesai */
+            display: none;
             max-width: 460px;
             margin: 0 auto;
             background: #07090e;
             min-height: 100vh;
-            padding-bottom: 190px; /* Jarak aman untuk bottom menu ganda */
+            padding-bottom: 190px;
             position: relative;
             border-left: 1px solid rgba(255, 255, 255, 0.05);
             border-right: 1px solid rgba(255, 255, 255, 0.05);
@@ -117,7 +117,7 @@
             padding: 0 10px;
         }
 
-        /* Tombol Utama Kalender */
+        /* Tombol Utama Agenda Kalender */
         .btn-agenda-utama {
             background: linear-gradient(90deg, #1d4ed8, #2563eb);
             color: #ffffff;
@@ -136,7 +136,7 @@
             box-shadow: 0 4px 15px rgba(29, 78, 216, 0.4);
         }
 
-        /* Navigasi Tab Atas */
+        /* Navigasi Tab Bar Atas */
         .top-tabs {
             display: flex;
             justify-content: space-between;
@@ -231,7 +231,7 @@
         .card-member.gm { border-left: 4px solid #0088ff; background: linear-gradient(90deg, rgba(0,136,255,0.03), transparent); }
         .card-member.gm .member-role { color: #0088ff; }
 
-        /* ================= 4. STYLE ITEM AGENDA & MITRA ================= */
+        /* ================= 4. STYLE ITEM AGENDA ================= */
         .agenda-item {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -248,7 +248,41 @@
             margin-bottom: 4px;
         }
 
-        /* ================= 5. DOUBLE NAVBAR GRID BOTTOM (8 TOMBOL AKTIF) ================= */
+        /* ================= 5. DATA DAN STRUKTUR TABEL PMR (LENGKAP 1-17 DARI FILE) ================= */
+        .spectra-table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .spectra-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        .spectra-table th {
+            background: #111520;
+            color: #00ffaa;
+            padding: 10px;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .spectra-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+        }
+
+        .spectra-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* ================= 6. DOUBLE NAVBAR GRID BOTTOM (8 TOMBOL AKTIF) ================= */
         .bottom-grid-nav {
             position: fixed;
             bottom: 0;
@@ -373,10 +407,44 @@
         </div>
 
         <div id="page-mitra" class="page-content">
-            <h3 style="font-size:0.95rem; margin-bottom:10px; color:#2563eb;"><i class="fa-solid fa-building-columns"></i> Jaringan Hubungan Institusi</h3>
-            <p style="font-size:0.8rem; color:#8492a6; line-height:1.5; margin-bottom:15px;">Daftar kolaborasi program kesiswaan OSIS, unit PMR-PMI, dan ekstrakurikuler sekolah mitra di wilayah Ogan Ilir dan sekitarnya.</p>
-            <div class="agenda-item" style="border-left: 3px solid #00ffaa;">
-                <div style="font-size:0.85rem; font-weight:700;">Dukungan Event Edukatif & Pentas Seni</div>
+            <h3 style="font-size:0.95rem; margin-bottom:4px; color:#00ffaa;"><i class="fa-solid fa-file-signature"></i> REGISTRASI PERLOMBAAN SPECTRA PMR 2026</h3>
+            <p style="font-size:0.75rem; color:#8492a6; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px;">Tingkat Wira dan Madya</p>
+            
+            <div style="background: rgba(37, 99, 235, 0.1); border-left: 3px solid #2563eb; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
+                <span style="font-size:0.85rem; font-weight:700; color:#ffffff; display:block;">Pusat Koordinator Sekolah:</span>
+                <span style="font-size:0.8rem; color:#cbd5e1;">SMP NEGERI 01 TANJUNG BATU</span>
+            </div>
+
+            <div class="spectra-table-container">
+                <table class="spectra-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Asal Sekolah</th>
+                            <th>Jumlah Peserta</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>SMPN 1 Tanjung Batu</td><td>-</td><td>Panitia Pusat</td></tr>
+                        <tr><td>2</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>3</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>4</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>5</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>6</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>7</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>8</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>9</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>10</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>11</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>12</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>13</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>14</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>15</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>16</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>17</td><td>-</td><td>-</td><td>-</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
@@ -438,19 +506,14 @@
             });
         }
 
-        // Formula Matematis Melengkung Sempurna untuk Huruf S 3D Ribbon
         function getSCoordinate(indexFraction) {
             const centerX = canvas.width / 2;
             const centerY = canvas.height / 2;
             
-            // Mengatur tinggi vertikal kurva S
             let t = (indexFraction - 0.5) * 2.4; 
-            
-            // Rumus parametrik lengkungan sinus huruf S meliuk balik
             let x = Math.sin(t * Math.PI) * 55;
             let y = t * 100;
 
-            // Tebal pita meliuk agar menyerupai tumpukan cahaya spiral
             let widthOffset = Math.cos(t * Math.PI * 1.5) * 12;
             x += widthOffset;
 
@@ -465,7 +528,6 @@
                 let targetNode = getSCoordinate(idx / maxPoints);
 
                 if (timeTick < 70) {
-                    // Tahap 1: Efek Pusaran Magnet Spiral Masuk
                     let dx = p.x - canvas.width / 2;
                     let dy = p.y - canvas.height / 2;
                     let angle = Math.atan2(dy, dx) + 0.16;
@@ -474,18 +536,15 @@
                     p.y = canvas.height / 2 + Math.sin(angle) * distance;
                 } 
                 else if (timeTick < 200) {
-                    // Tahap 2: Merapat Presisi ke Jalur Huruf S
                     p.x += (targetNode.x - p.x) * 0.09;
                     p.y += (targetNode.y - p.y) * 0.09;
                 } 
                 else {
-                    // Tahap 3: Berdenyut Berkilau Hidup (Sustain Wave)
                     let wavePulse = Math.sin(timeTick * 0.05 + idx) * 3;
                     p.x = targetNode.x + wavePulse;
                     p.y = targetNode.y + wavePulse;
                 }
 
-                // Render Partikel Glow Neon
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 ctx.fillStyle = p.color;
@@ -498,10 +557,9 @@
             requestAnimationFrame(engineLoop);
         }
 
-        // Memulai Proses Animasi
         engineLoop();
 
-        // --- SISTEM AUTOMATIC SAFETY KUNCI ANTI-STUCK (TEPAT 3 DETIK) ---
+        // --- SISTEM AUTOMATIC SAFETY KUNCI ANTI-STUCK (3 DETIK) ---
         setTimeout(() => {
             const targetScreen = document.getElementById('loading-screen');
             targetScreen.style.opacity = '0';
@@ -513,20 +571,15 @@
 
         // --- FUNGSI ROUTING UTAMA PINDAH HALAMAN TAB DAN BUTTON AKTIF ---
         function switchPage(pageKey, currentElement) {
-            // Sembunyikan seluruh container halaman konten
             document.querySelectorAll('.page-content').forEach(content => content.classList.remove('active'));
             
-            // Tampilkan halaman tujuan
             const targetContentPage = document.getElementById('page-' + pageKey);
             if(targetContentPage) targetContentPage.classList.add('active');
 
-            // Hapus class active lama dari seluruh tombol navigasi
             document.querySelectorAll('.tab-link, .grid-icon-btn').forEach(btn => btn.classList.remove('active'));
             
-            // Nyalakan warna aktif pada elemen yang diklik sekarang
             currentElement.classList.add('active');
             
-            // Sinkronisasi silang antara Tab Menu Atas dan Grid Menu Bawah
             const matchingTopTab = document.getElementById('tab-top-' + pageKey);
             const matchingBottomNav = document.getElementById('btn-nav-' + pageKey);
             
