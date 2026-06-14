@@ -181,54 +181,71 @@
             display: block;
         }
 
-        /* ================= 3. BERANDA (STRUKTUR ORGANISASI) ================= */
-        .tree-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
+        /* ================= 3. BERANDA (KOTAK GRID STRUKTUR ORGANISASI) ================= */
+        .grid-org-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Membuat sistem 2 kolom kotak kecil sejajar */
+            gap: 12px;
+            width: 100%;
+        }
+
+        /* Komisaris Utama dibuat full width di atas agar tetap dominan */
+        .card-member.boss {
+            grid-column: span 2;
+            border-left: 4px solid #ff3366;
+            background: linear-gradient(90deg, rgba(255,51,102,0.04), transparent);
         }
 
         .card-member {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 10px;
-            width: 100%;
-            padding: 14px;
+            border-radius: 12px;
+            padding: 16px 10px;
             text-align: center;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
         }
 
-        .card-member:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1px;
-            height: 14px;
-            background: rgba(255, 255, 255, 0.12);
+        .card-member:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.04);
         }
+
+        .member-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+            background: #111520;
+            border: 2px solid #8492a6;
+        }
+
+        .card-member.boss .member-avatar { border-color: #ff3366; }
+        .card-member.gm { border-left: 3px solid #0088ff; background: linear-gradient(90deg, rgba(0,136,255,0.03), transparent); }
+        .card-member.gm .member-avatar { border-color: #0088ff; }
 
         .member-name {
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
+            line-height: 1.3;
         }
 
         .member-role {
-            font-size: 0.75rem;
+            font-size: 0.68rem;
             color: #8492a6;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
+            line-height: 1.2;
         }
 
-        .card-member.boss { border-left: 4px solid #ff3366; background: linear-gradient(90deg, rgba(255,51,102,0.03), transparent); }
         .card-member.boss .member-role { color: #ff3366; }
-        
-        .card-member.gm { border-left: 4px solid #0088ff; background: linear-gradient(90deg, rgba(0,136,255,0.03), transparent); }
         .card-member.gm .member-role { color: #0088ff; }
 
         /* ================= 4. STYLE ITEM AGENDA ================= */
@@ -248,7 +265,7 @@
             margin-bottom: 4px;
         }
 
-        /* ================= 5. DATA DAN STRUKTUR TABEL PMR (LENGKAP 1-17 DARI FILE) ================= */
+        /* ================= 5. DATA DAN STRUKTUR TABEL PMR ================= */
         .spectra-table-container {
             width: 100%;
             overflow-x: auto;
@@ -356,27 +373,38 @@
         </div>
 
         <div id="page-beranda" class="page-content active">
-            <div class="tree-container">
+            <div class="grid-org-container">
+                
                 <div class="card-member boss">
+                    <img class="member-avatar" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="M. Fauzi A.">
                     <div class="member-name">M. Fauzi A.</div>
                     <div class="member-role">Pemilik PT / Komisaris Utama</div>
                 </div>
+                
                 <div class="card-member">
+                    <img class="member-avatar" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="H. Rangga">
                     <div class="member-name">H. Rangga</div>
                     <div class="member-role">Penasehat Perusahaan</div>
                 </div>
+                
                 <div class="card-member gm">
+                    <img class="member-avatar" src="EO.jpeg" alt="Dr. Sigit, S.Pi., M.Si.">
                     <div class="member-name">Dr. Sigit, S.Pi., M.Si.</div>
                     <div class="member-role">General Manager (GM)</div>
                 </div>
+                
                 <div class="card-member">
+                    <img class="member-avatar" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="H. Ahmad Shopian">
                     <div class="member-name">H. Ahmad Shopian</div>
-                    <div class="member-role">Kabid Perlindungan & Keamanan</div>
+                    <div class="member-role">Kabid Perlindungan</div>
                 </div>
+                
                 <div class="card-member">
+                    <img class="member-avatar" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Ahmad Syahrul">
                     <div class="member-name">Ahmad Syahrul</div>
                     <div class="member-role">Operator & IT Support</div>
                 </div>
+                
             </div>
         </div>
 
@@ -452,7 +480,6 @@
             <h3 style="font-size:0.95rem; margin-bottom:10px; color:#2563eb;"><i class="fa-solid fa-cubes"></i> Modul Ekstensi Fitur</h3>
             <p style="font-size:0.8rem; color:#8492a6; line-height:1.5;">Halaman konfigurasi utilitas sistem manajemen internal, monitoring kepuasan klien, dan rekap arsip dokumentasi pasca-event.</p>
         </div>
-
 
         <div class="bottom-grid-nav">
             <div class="grid-icon-btn active" id="btn-nav-beranda" onclick="switchPage('beranda', this)">
