@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectra Event Organizer</title>
+    <style>
+        /* Mendaftarkan variabel warna agar bisa dianimasikan oleh browser */
+        @property --warna1 {
+            syntax: '<color>';
+            initial-value: #667eea;
+            inherits: false;
+        }
+        @property --warna2 {
+            syntax: '<color>';
+            initial-value: #764ba2;
+            inherits: false;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--warna1) 0%, var(--warna2) 100%);
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: --warna1 2s ease, --warna2 2s ease; 
+        }
+
+        /* --- STYLING MENU NAVIGASI (NAVBAR) --- */
+        nav {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 30px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: 0.3s ease;
+            cursor: pointer;
+        }
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background: white;
+            color: #764ba2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* --- STYLING KONTEN --- */
+        .container {
+            width: 100%;
+            max-width: 650px;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-sizing: border-box;
+        }
+        
+        /* Menyembunyikan halaman yang sedang tidak aktif */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        /* Menampilkan halaman yang aktif */
+        .page-content.active {
+            display: block;
+        }
+
+        /* Animasi muncul halus saat menu diklik */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 1.5rem;
+        }
+        .content-section {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo-spectra {
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        h1 { 
+            margin: 0 0 0.5rem 0; 
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: #f3e5f5;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            border-left: 4px solid #fff;
+            padding-left: 10px;
+        }
+        p { 
+            opacity: 0.9; 
+            line-height: 1.6;
+            margin: 0 0 1rem 0;
+        }
+        ul {
+            margin: 0 0 1rem 0;
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+        .contact-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a onclick="showPage('beranda')" id="nav-beranda" class="active">Beranda</a>
+        <a onclick="showPage('tentang')" id="nav-tentang">Tentang</a>
+        <a onclick="showPage('event')" id="nav-event">Event</a>
+        <a onclick="showPage('kontak')" id="nav-kontak">Kontak</a>
+    </nav>
+
+    <div class="container">
+        
+        <div id="beranda" class="page-content active">
+            <div class="header-section">
+                <img src="logo.png" alt="Logo" class="logo-spectra" style="display:none;">
+                <h1>SPECTRA EVENT ORGANIZER</h1>
+                <p style="font-style: italic; opacity: 0.8;">Mewujudkan event yang kreatif, profesional, dan berkesan.</p>
+            </div>
+            <div class="content-section" style="text-align: center;">
+                <p>Selamat datang di platform resmi Spectra. Kami siap membantu merencanakan dan mengeksekusi berbagai kegiatan penting Anda dengan standar kualitas tertinggi.</p>
+                <p>Silakan gunakan menu di atas untuk menjelajahi profil kami lebih dalam.</p>
+            </div>
+        </div>
+
+        <div id="tentang" class="page-content">
+            <h2>Tentang Kami</h2>
+            <p>Spectra merupakan organisasi profesional yang bergerak di bidang manajemen dan penyelenggaraan berbagai skala kegiatan (Event Management).</p>
+            <p>Fokus utama kami adalah memberikan solusi end-to-end yang inovatif, mulai dari penyusunan konsep kreatif, manajemen produksi, hingga eksekusi di lapangan guna membangun reputasi dan kepuasan maksimal bagi klien kami.</p>
+        </div>
+
+        <div id="event" class="page-content">
+            <h2>Event Terbaru 2026</h2>
+            <p>Berikut adalah beberapa agenda kegiatan besar yang kami kelola dalam waktu dekat:</p>
+            <ul>
+                <li><strong>Seminar Nasional 2026</strong> - Kumpulan inovasi teknologi dan akademik.</li>
+                <li><strong>Festival Seni dan Budaya</strong> - Pameran kolaboratif talenta nusantara.</li>
+                <li><strong>Kompetisi Kreatif Mahasiswa</strong> - Wadah unjuk bakat dan ide bisnis startup.</li>
+            </ul>
+        </div>
+
+        <div id="kontak" class="page-content">
+            <h2>Hubungi Kami</h2>
+            <p>Punya rencana event atau ingin berkolaborasi bersama tim Spectra? Silakan hubungi layanan respons cepat kami melalui info berikut:</p>
+            <div class="contact-info">
+                <strong>Email resmi:</strong> info@spectra.com<br>
+                <strong>Jam Operasional:</strong> Senin - Jumat (09.00 - 17.00 WIB)
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /* --- JAVASCRIPT FITUR PERPINDAHAN MENU --- */
+        function showPage(pageId) {
+            // Hapus kelas 'active' dari semua halaman konten
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Hapus kelas 'active' dari semua tombol navigasi menu
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Tampilkan halaman konten yang dipilih
+            document.getElementById(pageId).classList.add('active');
+
+            // Beri tanda aktif pada tombol navigasi yang sedang dibuka
+            document.getElementById('nav-' + pageId).classList.add('active');
+        }
+
+        /* --- JAVASCRIPT ANIMASI BACKGROUND OTOMATIS --- */
+        const themes = [
+            { w1: '#667eea', w2: '#764ba2' }, // Ungu - Biru
+            { w1: '#ff9a9e', w2: '#fecfef' }, // Pink Lembut
+            { w1: '#a1c4fd', w2: '#c2e9fb' }, // Biru Langit
+            { w1: '#11998e', w2: '#38ef7d' }, // Hijau Tosca
+            { w1: '#ff9a00', w2: '#ff5a00' }  // Oranye Cerah
+        ];
+        
+        let currentThemeIndex = 0;
+
+        function changeBackgroundAutomatically() {
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            document.body.style.setProperty('--warna1', themes[currentThemeIndex].w1);
+            document.body.style.setProperty('--warna2', themes[currentThemeIndex].w2);
+        }
+
+        // Interval transisi otomatis berjalan setiap 4 detik
+        setInterval(changeBackgroundAutomatically, 4000);
+    </script>
+</body>
+</html>
