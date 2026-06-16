@@ -22,7 +22,7 @@
             overflow-x: hidden;
         }
 
-        /* ================= 1. PREMIUM LOADING SCREEN (S-RIBBON CONCEPT) ================= */
+        /* ================= 1. TRUE HACKER MATRIX GOLD LOADING SCREEN ================= */
         #loading-screen {
             position: fixed;
             top: 0;
@@ -32,15 +32,48 @@
             background: #000000;
             z-index: 9999;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.6s ease, visibility 0.6s;
+            transition: opacity 0.8s ease, visibility 0.8s;
         }
 
-        #s-canvas {
-            width: 380px;
-            height: 380px;
+        /* Canvas menutupi seluruh layar latar belakang */
+        #matrix-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Konten Shield & Teks di atas lapisan Matrix */
+        .loading-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            pointer-events: none; /* Supaya klik tidak terganggu */
+        }
+
+        /* Wadah Logo Perisai dengan Efek Glow Emas */
+        .shield-container {
+            width: 190px;
+            height: 190px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: hackerPulse 2s infinite ease-in-out;
+        }
+
+        .shield-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .welcome-box {
@@ -49,23 +82,30 @@
             padding: 6px 18px;
             font-weight: 800;
             font-size: 0.8rem;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             border-radius: 4px;
-            margin-top: 20px;
             text-transform: uppercase;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
         }
 
         .welcome-subtext {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: #ffffff;
-            margin-top: 12px;
+            margin-top: 15px;
             letter-spacing: 1px;
-            text-align: center;
             line-height: 1.4;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
         }
 
-        /* ================= 2. MAIN APP APPS CONTAINER ================= */
+        /* Animasi denyut glowing perisai futuristik */
+        @keyframes hackerPulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4)); }
+        }
+
+        /* ================= 2. MAIN APP CONTAINER ================= */
         #main-app {
             display: none;
             max-width: 460px;
@@ -81,9 +121,9 @@
 
         .top-neon-line {
             height: 4px;
-            background: linear-gradient(90deg, #ff3366, #0088ff);
+            background: linear-gradient(90deg, #d4af37, #0088ff);
             width: 100%;
-            box-shadow: 0 2px 20px rgba(255, 51, 102, 0.6);
+            box-shadow: 0 2px 20px rgba(212, 175, 55, 0.6);
         }
 
         .header-brand {
@@ -117,7 +157,6 @@
             padding: 0 10px;
         }
 
-        /* Tombol Utama Agenda Kalender */
         .btn-agenda-utama {
             background: linear-gradient(90deg, #1d4ed8, #2563eb);
             color: #ffffff;
@@ -136,7 +175,6 @@
             box-shadow: 0 4px 15px rgba(29, 78, 216, 0.4);
         }
 
-        /* Navigasi Tab Bar Atas */
         .top-tabs {
             display: flex;
             justify-content: space-between;
@@ -156,9 +194,7 @@
             flex: 1;
         }
 
-        .tab-link.active {
-            color: #ffffff;
-        }
+        .tab-link.active { color: #ffffff; }
 
         .tab-link.active::after {
             content: '';
@@ -171,17 +207,14 @@
             box-shadow: 0 -2px 10px #2563eb;
         }
 
-        /* Konten Halaman */
         .page-content {
             display: none;
             padding: 0 20px;
         }
 
-        .page-content.active {
-            display: block;
-        }
+        .page-content.active { display: block; }
 
-        /* ================= 3. BERANDA (KOTAK GRID STRUKTUR ORGANISASI) ================= */
+        /* ================= 3. BERANDA (GRID STRUKTUR ORGANISASI) ================= */
         .grid-org-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -191,8 +224,8 @@
 
         .card-member.boss {
             grid-column: span 2;
-            border-left: 4px solid #ff3366;
-            background: linear-gradient(90deg, rgba(255,51,102,0.04), transparent);
+            border-left: 4px solid #d4af37;
+            background: linear-gradient(90deg, rgba(212,175,55,0.04), transparent);
         }
 
         .card-member {
@@ -223,7 +256,7 @@
             border: 2px solid #8492a6;
         }
 
-        .card-member.boss .member-avatar { border-color: #ff3366; }
+        .card-member.boss .member-avatar { border-color: #d4af37; }
         .card-member.gm { border-left: 3px solid #0088ff; background: linear-gradient(90deg, rgba(0,136,255,0.03), transparent); }
         .card-member.gm .member-avatar { border-color: #0088ff; }
 
@@ -244,7 +277,7 @@
             line-height: 1.2;
         }
 
-        .card-member.boss .member-role { color: #ff3366; }
+        .card-member.boss .member-role { color: #d4af37; }
         .card-member.gm .member-role { color: #0088ff; }
 
         /* ================= 4. STYLE ITEM AGENDA ================= */
@@ -259,7 +292,7 @@
             display: flex;
             justify-content: space-between;
             font-size: 0.75rem;
-            color: #ff3366;
+            color: #d4af37;
             font-weight: 700;
             margin-bottom: 4px;
         }
@@ -294,11 +327,7 @@
             color: #cbd5e1;
         }
 
-        .spectra-table tr:hover {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        /* ================= 6. DOUBLE NAVBAR GRID BOTTOM (8 TOMBOL AKTIF) ================= */
+        /* ================= 6. BOTTOM NAVIGATION GRID ================= */
         .bottom-grid-nav {
             position: fixed;
             bottom: 0;
@@ -332,9 +361,7 @@
             transition: all 0.2s;
         }
 
-        .grid-icon-btn i {
-            font-size: 1.15rem;
-        }
+        .grid-icon-btn i { font-size: 1.15rem; }
 
         .grid-icon-btn.active {
             color: #2563eb;
@@ -346,9 +373,15 @@
 <body>
 
     <div id="loading-screen">
-        <canvas id="s-canvas"></canvas>
-        <div class="welcome-box">SPECTRA MANAGEMENT.</div>
-        <div class="welcome-subtext">WELCOME TO WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
+        <canvas id="matrix-canvas"></canvas>
+        
+        <div class="loading-content">
+            <div class="shield-container">
+                <img src="LOGO.png" alt="Spectra Shield Logo">
+            </div>
+            <div class="welcome-box">SPECTRA MANAGEMENT.</div>
+            <div class="welcome-subtext">WELCOME TO WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
+        </div>
     </div>
 
     <div id="main-app">
@@ -357,7 +390,7 @@
         <div class="header-brand">
             <div class="badge-spectra">SPECTRA MANAGEMENT.</div>
             <h1 class="title-spectra">PT Spectra Jaya Abadi</h1>
-            <p class="desc-spectra">PT Spectra Jaya Abadi adalah perusahaan Event Organizer (EO) profesional dan tepercaya yang berbasis di Indralaya Utara, Ogan Ilir, Sumatera Selatan. Kami berfokus pada manajemen event kreatif dan akuntabilitas total.</p>
+            <p class="desc-spectra">PT Spectra Jaya Abadi adalah perusahaan Event Organizer (EO) profesional dan tepercaya yang berbasis di Indralaya Utara, Ogan Ilir, Sumatera Selatan.</p>
         </div>
 
         <div class="btn-agenda-utama" onclick="switchPage('agenda', document.getElementById('btn-nav-agenda'))">
@@ -373,111 +406,48 @@
 
         <div id="page-beranda" class="page-content active">
             <div class="grid-org-container">
-                
                 <div class="card-member boss">
                     <img class="member-avatar" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="M. Fauzi A.">
                     <div class="member-name">M. Fauzi A.</div>
                     <div class="member-role">Pemilik PT / Komisaris Utama</div>
                 </div>
-                
                 <div class="card-member">
                     <img class="member-avatar" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="H. Rangga">
                     <div class="member-name">H. Rangga</div>
                     <div class="member-role">Penasehat Perusahaan</div>
                 </div>
-                
                 <div class="card-member gm">
                     <img class="member-avatar" src="EO.jpeg" alt="Dr. Sigit, S.Pi., M.Si.">
                     <div class="member-name">Dr. Sigit, S.Pi., M.Si.</div>
                     <div class="member-role">General Manager (GM)</div>
                 </div>
-                
                 <div class="card-member">
                     <img class="member-avatar" src="KEAMANAN.png" alt="Sopian">
                     <div class="member-name">Sopian</div>
                     <div class="member-role">Kabid Perlindungan</div>
                 </div>
-                
                 <div class="card-member">
                     <img class="member-avatar" src="OP&amp;&amp;IT.png" alt="M. SYAHRUL RAMADHAN">
                     <div class="member-name">M. SYAHRUL RAMADHAN</div>
                     <div class="member-role">Operator & IT Support</div>
                 </div>
-                
             </div>
         </div>
 
         <div id="page-agenda" class="page-content">
             <h3 style="font-size:0.95rem; margin-bottom:12px; color:#2563eb;"><i class="fa-solid fa-timeline"></i> Roadmap Agenda Resmi 2026</h3>
-            
             <div class="agenda-item">
                 <div class="agenda-meta"><span>Maret 2026</span><span>Planning Phase</span></div>
                 <div style="font-size:0.9rem; font-weight:700;">Spectra E-Sports Championship</div>
-            </div>
-            <div class="agenda-item">
-                <div class="agenda-meta"><span>Mei 2026</span><span>Drafting</span></div>
-                <div style="font-size:0.9rem; font-weight:700;">Simulasi Medis PMR-PMI Regional</div>
-            </div>
-            <div class="agenda-item">
-                <div class="agenda-meta"><span>September 2026</span><span>Scheduled</span></div>
-                <div style="font-size:0.9rem; font-weight:700;">Bakti Sosial Ramadan Spectra</div>
-            </div>
-            <div class="agenda-item">
-                <div class="agenda-meta"><span>November 2026</span><span>Scheduled</span></div>
-                <div style="font-size:0.9rem; font-weight:700;">Social Services Expo & Bazaar</div>
             </div>
         </div>
 
         <div id="page-sponsor" class="page-content">
             <h3 style="font-size:0.95rem; margin-bottom:10px; color:#2563eb;"><i class="fa-solid fa-handshake"></i> Kemitraan Komersial</h3>
-            <p style="font-size:0.8rem; color:#8492a6; line-height:1.5;">Halaman pengelolaan sponsorship, aliansi brand lokal, dan slot penempatan logo komersial pada setiap produksi panggung atau materi promosi media sosial PT Spectra Jaya Abadi.</p>
         </div>
 
         <div id="page-mitra" class="page-content">
             <h3 style="font-size:0.95rem; margin-bottom:4px; color:#00ffaa;"><i class="fa-solid fa-file-signature"></i> REGISTRASI PERLOMBAAN SPECTRA PMR 2026</h3>
-            <p style="font-size:0.75rem; color:#8492a6; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px;">Tingkat Wira dan Madya</p>
-            
-            <div style="background: rgba(37, 99, 235, 0.1); border-left: 3px solid #2563eb; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
-                <span style="font-size:0.85rem; font-weight:700; color:#ffffff; display:block;">Pusat Koordinator Sekolah:</span>
-                <span style="font-size:0.8rem; color:#cbd5e1;">SMP NEGERI 01 TANJUNG BATU</span>
-            </div>
-
-            <div class="spectra-table-container">
-                <table class="spectra-table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Asal Sekolah</th>
-                            <th>Jumlah Peserta</th>
-                            <th>Keterangan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>1</td><td>SMPN 1 Tanjung Batu</td><td>-</td><td>Panitia Pusat</td></tr>
-                        <tr><td>2</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>3</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>4</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>5</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>6</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>7</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>8</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>9</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>10</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>11</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>12</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>13</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>14</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>15</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>16</td><td>-</td><td>-</td><td>-</td></tr>
-                        <tr><td>17</td><td>-</td><td>-</td><td>-</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div id="page-features" class="page-content">
-            <h3 style="font-size:0.95rem; margin-bottom:10px; color:#2563eb;"><i class="fa-solid fa-cubes"></i> Modul Ekstensi Fitur</h3>
-            <p style="font-size:0.8rem; color:#8492a6; line-height:1.5;">Halaman konfigurasi utilitas sistem manajemen internal, monitoring kepuasan klien, dan rekap arsip dokumentasi pasca-event.</p>
         </div>
 
         <div class="bottom-grid-nav">
@@ -493,122 +463,99 @@
             <div class="grid-icon-btn" id="btn-nav-mitra" onclick="switchPage('mitra', this)">
                 <i class="fa-solid fa-school"></i><span>Mitra Sekolah</span>
             </div>
-            <div class="grid-icon-btn" id="btn-nav-f1" onclick="switchPage('features', this)">
-                <i class="fa-solid fa-square-plus"></i><span>Features</span>
-            </div>
-            <div class="grid-icon-btn" id="btn-nav-f2" onclick="switchPage('features', this)">
-                <i class="fa-solid fa-video"></i><span>Features</span>
-            </div>
-            <div class="grid-icon-btn" id="btn-nav-f3" onclick="switchPage('sponsor', this)">
-                <i class="fa-solid fa-chart-pie"></i><span>Sponsor</span>
-            </div>
-            <div class="grid-icon-btn" id="btn-nav-f4" onclick="switchPage('beranda', this)">
-                <i class="fa-solid fa-table-cells-large"></i><span>Featuring</span>
-            </div>
         </div>
-
     </div>
 
     <script>
-        // --- LOGIKA ANIMASI PITA HURUF S REALISTIS ---
-        const canvas = document.getElementById('s-canvas');
+        // ================= ENGINE REAL HACKER DIGITAL RAIN (GOLD EDITION) =================
+        const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = 380;
-        canvas.height = 380;
 
-        const points = [];
-        const maxPoints = 550; 
-        let timeTick = 0;
-        
-        const colors = ['#ff3366', '#00ffaa', '#0088ff', '#ff8c00'];
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
-        for(let i=0; i<maxPoints; i++) {
-            points.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 1.5 + 0.6,
-                color: colors[i % colors.length],
-                alpha: Math.random() * 0.8 + 0.2
-            });
+        // Karakter hacker berupa angka acak biner dan desimal padat
+        const matrixChars = "0123456789X0101101001101";
+        const charArray = matrixChars.split("");
+
+        // Ukuran font kecil agar kolom angka terlihat sangat rapat dan ramai seperti hacker asli
+        const fontSize = 11;
+        let columns = canvas.width / fontSize;
+
+        const dropPositions = [];
+        for (let i = 0; i < columns; i++) {
+            // Memulai posisi y secara acak di atas layar agar ritme jatuhnya berantakan alami
+            dropPositions[i] = Math.random() * -150; 
         }
 
-        function getSCoordinate(indexFraction) {
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            
-            let t = (indexFraction - 0.5) * 2.4; 
-            let x = Math.sin(t * Math.PI) * 55;
-            let y = t * 100;
+        function drawMatrix() {
+            // Opacity 0.04 memberikan efek ekor (trail) pudar panjang khas terminal komputer
+            ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            let widthOffset = Math.cos(t * Math.PI * 1.5) * 12;
-            x += widthOffset;
+            ctx.font = "bold " + fontSize + "px monospace";
 
-            return { x: centerX + x, y: centerY + y };
-        }
+            for (let i = 0; i < dropPositions.length; i++) {
+                const randomChar = charArray[Math.floor(Math.random() * charArray.length)];
+                const xPos = i * fontSize;
+                const yPos = dropPositions[i] * fontSize;
 
-        function engineLoop() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            timeTick++;
-
-            points.forEach((p, idx) => {
-                let targetNode = getSCoordinate(idx / maxPoints);
-
-                if (timeTick < 70) {
-                    let dx = p.x - canvas.width / 2;
-                    let dy = p.y - canvas.height / 2;
-                    let angle = Math.atan2(dy, dx) + 0.16;
-                    let distance = Math.sqrt(dx*dx + dy*dy) * 0.96;
-                    p.x = canvas.width / 2 + Math.cos(angle) * distance;
-                    p.y = canvas.height / 2 + Math.sin(angle) * distance;
-                } 
-                else if (timeTick < 200) {
-                    p.x += (targetNode.x - p.x) * 0.09;
-                    p.y += (targetNode.y - p.y) * 0.09;
-                } 
-                else {
-                    let wavePulse = Math.sin(timeTick * 0.05 + idx) * 3;
-                    p.x = targetNode.x + wavePulse;
-                    p.y = targetNode.y + wavePulse;
+                // --- LOGIKA EMAS GRADASI DIGITAL RAIN ---
+                // Buat kepala baris angka yang baru jatuh berwarna putih/emas neon menyala
+                if (Math.random() > 0.98) {
+                    ctx.fillStyle = "#ffffff"; 
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = "#ffffff";
+                } else {
+                    // Variasi warna tubuh ekor dari emas terang ke emas gelap
+                    const goldColors = ["#ffe57f", "#ffd740", "#ffc107", "#ffb300", "#ffa000", "#b8860b"];
+                    ctx.fillStyle = goldColors[Math.floor(Math.random() * goldColors.length)];
+                    ctx.shadowBlur = 2;
+                    ctx.shadowColor = "#ffc107";
                 }
 
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = p.color;
-                ctx.globalAlpha = p.alpha;
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = p.color;
-                ctx.fill();
-            });
+                ctx.fillText(randomChar, xPos, yPos);
+                ctx.shadowBlur = 0; // Reset bayangan agar performa browser tetap lancar
 
-            requestAnimationFrame(engineLoop);
+                // Jika baris angka menyentuh bawah layar, reset acak ke atas
+                if (yPos > canvas.height && Math.random() * 100 > 98.5) {
+                    dropPositions[i] = 0;
+                }
+
+                // Mengatur kecepatan laju jatuh angka ke bawah
+                dropPositions[i] += 1.5;
+            }
         }
 
-        engineLoop();
+        // Jalankan animasi secara konstan pada kecepatan tinggi (hacker style)
+        const matrixInterval = setInterval(drawMatrix, 22);
 
-        // --- SISTEM AUTOMATIC SAFETY KUNCI ANTI-STUCK (3 DETIK) ---
+        // ================= TIMEOUT AUTO DISMISS LOADING SCREEN (4.5 DETIK) =================
         setTimeout(() => {
+            clearInterval(matrixInterval); 
             const targetScreen = document.getElementById('loading-screen');
             targetScreen.style.opacity = '0';
             setTimeout(() => {
                 targetScreen.style.display = 'none';
                 document.getElementById('main-app').style.display = 'block';
-            }, 600);
-        }, 3000); 
+            }, 800); 
+        }, 4500); 
 
-        // --- FUNGSI ROUTING UTAMA PINDAH HALAMAN TAB DAN BUTTON AKTIF ---
+        // ================= ROUTING NAVIGATION SYSTEM =================
         function switchPage(pageKey, currentElement) {
             document.querySelectorAll('.page-content').forEach(content => content.classList.remove('active'));
-            
             const targetContentPage = document.getElementById('page-' + pageKey);
             if(targetContentPage) targetContentPage.classList.add('active');
 
             document.querySelectorAll('.tab-link, .grid-icon-btn').forEach(btn => btn.classList.remove('active'));
-            
             currentElement.classList.add('active');
             
             const matchingTopTab = document.getElementById('tab-top-' + pageKey);
             const matchingBottomNav = document.getElementById('btn-nav-' + pageKey);
-            
             if(matchingTopTab) matchingTopTab.classList.add('active');
             if(matchingBottomNav) matchingBottomNav.classList.add('active');
         }
