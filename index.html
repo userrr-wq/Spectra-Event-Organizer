@@ -37,7 +37,6 @@
             transition: opacity 0.8s ease, visibility 0.8s;
         }
 
-        /* Canvas Matrix sebagai latar paling belakang */
         #matrix-canvas {
             position: absolute;
             top: 0;
@@ -58,7 +57,6 @@
             z-index: 2;
         }
 
-        /* Konten Shield & Teks berada di lapisan paling depan */
         .loading-content {
             position: relative;
             z-index: 3;
@@ -70,7 +68,6 @@
             pointer-events: none;
         }
 
-        /* Wadah Logo Perisai dengan Animasi Zoom-In Halus */
         .shield-container {
             width: 190px;
             height: 190px;
@@ -111,14 +108,8 @@
         }
 
         @keyframes shieldZoomIn {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         /* ================= 2. MAIN APP CONTAINER ================= */
@@ -301,7 +292,7 @@
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 8px;
-            padding: 12px;
+            padding: 14px;
             margin-bottom: 12px;
         }
         .agenda-meta {
@@ -310,14 +301,14 @@
             font-size: 0.75rem;
             color: #00ffaa;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         /* ================= 5. DATA DAN STRUKTUR TABEL PMR ================= */
         .spectra-table-container {
             width: 100%;
             overflow-x: auto;
-            margin-top: 10px;
+            margin-top: 15px;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -341,6 +332,18 @@
             padding: 10px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             color: #cbd5e1;
+        }
+
+        .btn-daftar-tabel {
+            background: #00ffaa;
+            color: #000000;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
 
         /* ================= 6. BOTTOM NAVIGATION GRID ================= */
@@ -390,7 +393,6 @@
 
     <div id="loading-screen">
         <canvas id="matrix-canvas"></canvas>
-        
         <div class="matrix-mask"></div>
         
         <div class="loading-content">
@@ -456,18 +458,70 @@
 
         <div id="page-agenda" class="page-content">
             <h3 style="font-size:0.95rem; margin-bottom:12px; color:#2563eb;"><i class="fa-solid fa-timeline"></i> Roadmap Agenda Resmi 2026</h3>
+            
             <div class="agenda-item">
                 <div class="agenda-meta"><span>Maret 2026</span><span>Planning Phase</span></div>
                 <div style="font-size:0.9rem; font-weight:700;">Spectra E-Sports Championship</div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-meta"><span>Mei 2026</span><span>Execution Phase</span></div>
+                <div style="font-size:0.9rem; font-weight:700;">Spectra PMR Competition (Madya & Wira)</div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-meta"><span>Agustus 2026</span><span>Special Event</span></div>
+                <div style="font-size:0.9rem; font-weight:700;">Spectra Independence Festival & Pensi</div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-meta"><span>Oktober 2026</span><span>Closing Event</span></div>
+                <div style="font-size:0.9rem; font-weight:700;">Spectra Youth Creative & UMKM Expo</div>
             </div>
         </div>
 
         <div id="page-sponsor" class="page-content">
             <h3 style="font-size:0.95rem; margin-bottom:10px; color:#2563eb;"><i class="fa-solid fa-handshake"></i> Kemitraan Komersial</h3>
+            <p style="font-size:0.8rem; color:#8492a6; line-height:1.5;">Halaman ini menampilkan seluruh mitra logistik, penyedia perlengkapan, serta media partner yang mendukung kelancaran setiap event PT Spectra Jaya Abadi.</p>
         </div>
 
         <div id="page-mitra" class="page-content">
             <h3 style="font-size:0.95rem; margin-bottom:4px; color:#00ffaa;"><i class="fa-solid fa-file-signature"></i> REGISTRASI PERLOMBAAN SPECTRA PMR 2026</h3>
+            <p style="font-size:0.78rem; color:#8492a6; margin-bottom:10px;">Silakan pilih kategori perlombaan resmi tingkat Madya (SMP) dan Wira (SMA) di bawah ini:</p>
+            
+            <div class="spectra-table-container">
+                <table class="spectra-table">
+                    <thead>
+                        <tr>
+                            <th>Cabang Lomba</th>
+                            <th>Tingkat</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pertolongan Pertama (PP)</td>
+                            <td>Madya & Wira</td>
+                            <td><a class="btn-daftar-tabel" href="#">Daftar</a></td>
+                        </tr>
+                        <tr>
+                            <td>Perawatan Keluarga (PK)</td>
+                            <td>Madya & Wira</td>
+                            <td><a class="btn-daftar-tabel" href="#">Daftar</a></td>
+                        </tr>
+                        <tr>
+                            <td>Tandu Darurat (TD)</td>
+                            <td>Madya & Wira</td>
+                            <td><a class="btn-daftar-tabel" href="#">Daftar</a></td>
+                        </tr>
+                        <tr>
+                            <td>Pasang Bongkar Tenda (PBT)</td>
+                            <td>Wira</td>
+                            <td><a class="btn-daftar-tabel" href="#">Daftar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="bottom-grid-nav">
@@ -503,7 +557,6 @@
 
         const fontSize = 11;
         let columns = canvas.width / fontSize;
-
         const dropPositions = [];
 
         for (let i = 0; i < columns; i++) {
@@ -521,13 +574,11 @@
                 const xPos = i * fontSize;
                 const yPos = dropPositions[i] * fontSize;
 
-                // Kepala baris tetap berwarna putih menyala cerah
                 if (Math.random() > 0.98) {
                     ctx.fillStyle = "#ffffff"; 
                     ctx.shadowBlur = 8;
                     ctx.shadowColor = "#ffffff";
                 } else {
-                    // Warna tubuh/ekor murni Hijau Siber Matrix (#00ffaa / #00ff33)
                     ctx.fillStyle = "#00ffaa";
                     ctx.shadowBlur = 3;
                     ctx.shadowColor = "#00ffaa";
@@ -539,14 +590,13 @@
                 if (yPos > canvas.height && Math.random() * 100 > 98.5) {
                     dropPositions[i] = 0;
                 }
-
                 dropPositions[i] += 1.5;
             }
         }
 
         const matrixInterval = setInterval(drawMatrix, 22);
 
-        // ================= TIMEOUT AUTO DISMISS LOADING SCREEN (4.5 DETIK) =================
+        // ================= TIMEOUT LOADING SCREEN DIUBAH MENJADI 8 DETIK (8000ms) =================
         setTimeout(() => {
             clearInterval(matrixInterval); 
             const targetScreen = document.getElementById('loading-screen');
@@ -555,7 +605,7 @@
                 targetScreen.style.display = 'none';
                 document.getElementById('main-app').style.display = 'block';
             }, 800); 
-        }, 4500); 
+        }, 8000); 
 
         // ================= ROUTING NAVIGATION SYSTEM =================
         function switchPage(pageKey, currentElement) {
