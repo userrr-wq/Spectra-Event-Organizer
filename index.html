@@ -22,7 +22,7 @@
             overflow-x: hidden;
         }
 
-        /* ================= 1. TRUE HACKER MATRIX GOLD LOADING SCREEN ================= */
+        /* ================= 1. MULTICOLOR MATRIX HERO LOADING SCREEN ================= */
         #loading-screen {
             position: fixed;
             top: 0;
@@ -37,7 +37,6 @@
             transition: opacity 0.8s ease, visibility 0.8s;
         }
 
-        /* Canvas menutupi seluruh layar latar belakang */
         #matrix-canvas {
             position: absolute;
             top: 0;
@@ -47,7 +46,6 @@
             z-index: 1;
         }
 
-        /* Konten Shield & Teks di atas lapisan Matrix */
         .loading-content {
             position: relative;
             z-index: 2;
@@ -56,10 +54,10 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            pointer-events: none; /* Supaya klik tidak terganggu */
+            pointer-events: none;
         }
 
-        /* Wadah Logo Perisai dengan Efek Glow Emas */
+        /* Wadah Logo Perisai dengan Animasi Zoom-In Sekali Jalan */
         .shield-container {
             width: 190px;
             height: 190px;
@@ -67,7 +65,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            animation: hackerPulse 2s infinite ease-in-out;
+            /* Menggunakan forwards agar ketika animasi selesai, logo tetap berada di ukuran terbesarnya */
+            animation: shieldZoomIn 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.3));
         }
 
         .shield-container img {
@@ -85,7 +85,7 @@
             letter-spacing: 2px;
             border-radius: 4px;
             text-transform: uppercase;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
         }
 
         .welcome-subtext {
@@ -98,11 +98,16 @@
             text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
         }
 
-        /* Animasi denyut glowing perisai futuristik */
-        @keyframes hackerPulse {
-            0% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4)); }
-            50% { transform: scale(1.05); filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8)); }
-            100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4)); }
+        /* Animasi membesar dari kecil ke besar (Mulai dari skala 0% hingga 100% lalu diam) */
+        @keyframes shieldZoomIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         /* ================= 2. MAIN APP CONTAINER ================= */
@@ -121,9 +126,9 @@
 
         .top-neon-line {
             height: 4px;
-            background: linear-gradient(90deg, #d4af37, #0088ff);
+            background: linear-gradient(90deg, #00ffaa, #0088ff);
             width: 100%;
-            box-shadow: 0 2px 20px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 2px 20px rgba(0, 255, 170, 0.6);
         }
 
         .header-brand {
@@ -224,8 +229,8 @@
 
         .card-member.boss {
             grid-column: span 2;
-            border-left: 4px solid #d4af37;
-            background: linear-gradient(90deg, rgba(212,175,55,0.04), transparent);
+            border-left: 4px solid #00ffaa;
+            background: linear-gradient(90deg, rgba(0,255,170,0.04), transparent);
         }
 
         .card-member {
@@ -256,7 +261,7 @@
             border: 2px solid #8492a6;
         }
 
-        .card-member.boss .member-avatar { border-color: #d4af37; }
+        .card-member.boss .member-avatar { border-color: #00ffaa; }
         .card-member.gm { border-left: 3px solid #0088ff; background: linear-gradient(90deg, rgba(0,136,255,0.03), transparent); }
         .card-member.gm .member-avatar { border-color: #0088ff; }
 
@@ -277,7 +282,7 @@
             line-height: 1.2;
         }
 
-        .card-member.boss .member-role { color: #d4af37; }
+        .card-member.boss .member-role { color: #00ffaa; }
         .card-member.gm .member-role { color: #0088ff; }
 
         /* ================= 4. STYLE ITEM AGENDA ================= */
@@ -292,7 +297,7 @@
             display: flex;
             justify-content: space-between;
             font-size: 0.75rem;
-            color: #d4af37;
+            color: #00ffaa;
             font-weight: 700;
             margin-bottom: 4px;
         }
@@ -416,11 +421,13 @@
                     <div class="member-name">H. Rangga</div>
                     <div class="member-role">Penasehat Perusahaan</div>
                 </div>
+                
                 <div class="card-member gm">
-                    <img class="member-avatar" src="EO.jpeg" alt="Dr. Sigit, S.Pi., M.Si.">
-                    <div class="member-name">Dr. Sigit, S.Pi., M.Si.</div>
+                    <img class="member-avatar" src="EO.jpeg" alt="Sigit">
+                    <div class="member-name">Sigit</div>
                     <div class="member-role">General Manager (GM)</div>
                 </div>
+                
                 <div class="card-member">
                     <img class="member-avatar" src="KEAMANAN.png" alt="Sopian">
                     <div class="member-name">Sopian</div>
@@ -467,7 +474,7 @@
     </div>
 
     <script>
-        // ================= ENGINE REAL HACKER DIGITAL RAIN (GOLD EDITION) =================
+        // ================= JAVASCRIPT MULTICOLOR HACKER RAIN ENGINE =================
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -478,22 +485,26 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // Karakter hacker berupa angka acak biner dan desimal padat
         const matrixChars = "0123456789X0101101001101";
         const charArray = matrixChars.split("");
 
-        // Ukuran font kecil agar kolom angka terlihat sangat rapat dan ramai seperti hacker asli
         const fontSize = 11;
         let columns = canvas.width / fontSize;
 
         const dropPositions = [];
+        // Menyimpan warna konstan per kolom agar transisi ekor warna rapi
+        const columnColors = [];
+        
+        // Daftar palet warna hacker siber premium
+        const neonColors = ["#00ffaa", "#00e5ff", "#ff0055", "#9c27b0", "#ffeb3b", "#ff5722"];
+
         for (let i = 0; i < columns; i++) {
-            // Memulai posisi y secara acak di atas layar agar ritme jatuhnya berantakan alami
             dropPositions[i] = Math.random() * -150; 
+            // Pilih satu warna acak untuk kolom ini
+            columnColors[i] = neonColors[Math.floor(Math.random() * neonColors.length)];
         }
 
         function drawMatrix() {
-            // Opacity 0.04 memberikan efek ekor (trail) pudar panjang khas terminal komputer
             ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -504,34 +515,31 @@
                 const xPos = i * fontSize;
                 const yPos = dropPositions[i] * fontSize;
 
-                // --- LOGIKA EMAS GRADASI DIGITAL RAIN ---
-                // Buat kepala baris angka yang baru jatuh berwarna putih/emas neon menyala
+                // Kepala baris tetap putih menyala agar efek jatuhnya tegas
                 if (Math.random() > 0.98) {
                     ctx.fillStyle = "#ffffff"; 
                     ctx.shadowBlur = 8;
                     ctx.shadowColor = "#ffffff";
                 } else {
-                    // Variasi warna tubuh ekor dari emas terang ke emas gelap
-                    const goldColors = ["#ffe57f", "#ffd740", "#ffc107", "#ffb300", "#ffa000", "#b8860b"];
-                    ctx.fillStyle = goldColors[Math.floor(Math.random() * goldColors.length)];
-                    ctx.shadowBlur = 2;
-                    ctx.shadowColor = "#ffc107";
+                    // Menggunakan warna acak kolom yang sudah diatur sebelumnya
+                    ctx.fillStyle = columnColors[i];
+                    ctx.shadowBlur = 3;
+                    ctx.shadowColor = columnColors[i];
                 }
 
                 ctx.fillText(randomChar, xPos, yPos);
-                ctx.shadowBlur = 0; // Reset bayangan agar performa browser tetap lancar
+                ctx.shadowBlur = 0; 
 
-                // Jika baris angka menyentuh bawah layar, reset acak ke atas
                 if (yPos > canvas.height && Math.random() * 100 > 98.5) {
                     dropPositions[i] = 0;
+                    // Ubah warna kolom secara acak lagi saat dia reset ke atas
+                    columnColors[i] = neonColors[Math.floor(Math.random() * neonColors.length)];
                 }
 
-                // Mengatur kecepatan laju jatuh angka ke bawah
                 dropPositions[i] += 1.5;
             }
         }
 
-        // Jalankan animasi secara konstan pada kecepatan tinggi (hacker style)
         const matrixInterval = setInterval(drawMatrix, 22);
 
         // ================= TIMEOUT AUTO DISMISS LOADING SCREEN (4.5 DETIK) =================
