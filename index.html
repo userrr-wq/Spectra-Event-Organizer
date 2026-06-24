@@ -153,7 +153,17 @@
         .title-spectra {
             font-size: 1.6rem;
             font-weight: 800;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Ditambahkan style khusus untuk tagline resmi */
+        .tagline-spectra {
+            font-size: 0.75rem;
+            font-style: italic;
+            color: #00ffaa;
+            margin-bottom: 12px;
+            font-weight: 600;
             letter-spacing: 0.5px;
         }
 
@@ -287,6 +297,41 @@
         .card-member.boss .member-role { color: #00ffaa; }
         .card-member.gm .member-role { color: #0088ff; }
 
+        /* Ditambahkan kontainer informasi tambahan di bagian bawah beranda (Alamat & Kontak Resmi) */
+        .company-info-box {
+            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .info-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #00ffaa;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-item {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .info-item i {
+            margin-top: 3px;
+            color: #2563eb;
+            width: 14px;
+        }
+
         /* ================= 4. STYLE ITEM AGENDA ================= */
         .agenda-item {
             background: rgba(255, 255, 255, 0.02);
@@ -410,7 +455,8 @@
         <div class="header-brand">
             <div class="badge-spectra">SPECTRA MANAGEMENT.</div>
             <h1 class="title-spectra">PT Spectra Jaya Abadi</h1>
-            <p class="desc-spectra">PT Spectra Jaya Abadi adalah perusahaan Event Organizer (EO) profesional dan tepercaya yang berbasis di Indralaya Utara, Ogan Ilir, Sumatera Selatan.</p>
+            <div class="tagline-spectra">"Professional Solutions for Events, People, and Reputation"</div>
+            <p class="desc-spectra">PT Spectra Jaya Abadi adalah perusahaan profesional dan tepercaya yang menyediakan solusi terintegrasi di bidang Event Organizer (EO), Konsultan Manajemen & SDM, serta Hubungan Masyarakat (Public Relations Agency).</p>
         </div>
 
         <div class="btn-agenda-utama" onclick="switchPage('agenda', document.getElementById('btn-nav-agenda'))">
@@ -454,6 +500,22 @@
                     <div class="member-role">Operator & IT Support</div>
                 </div>
             </div>
+
+            <div class="company-info-box">
+                <div class="info-title"><i class="fa-solid fa-circle-info"></i> Informasi Perusahaan</div>
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span><strong>Alamat:</strong> Jl. Desa tanjung baru, Tanjung Baru, Indralaya Utara, Ogan Ilir, Sumatera Selatan</span>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span><strong>Hubungi Kami:</strong> +62 821-8507-8701</span>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span><strong>Email Resmi:</strong> spectrajayaabadi@gmail.com</span>
+                </div>
+            </div>
         </div>
 
         <div id="page-agenda" class="page-content">
@@ -482,7 +544,7 @@
 
         <div id="page-sponsor" class="page-content">
             <h3 style="font-size:0.95rem; margin-bottom:10px; color:#2563eb;"><i class="fa-solid fa-handshake"></i> Kemitraan Komersial</h3>
-            <p style="font-size:0.8rem; color:#8492a6; line-height:1.5;">Halaman ini menampilkan seluruh mitra logistik, penyedia perlengkapan, serta media partner yang mendukung kelancaran setiap event PT Spectra Jaya Abadi.</p>
+            <p style="font-size:0.8rem; color:#8492a6; line-height:1.5;">Halaman ini menampilkan seluruh mitra logistik, penyedia perlengkapan, perusahaan swasta, komunitas, serta media partner yang mendukung kelancaran setiap proyek dan program PT Spectra Jaya Abadi.</p>
         </div>
 
         <div id="page-mitra" class="page-content">
