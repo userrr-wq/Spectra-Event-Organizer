@@ -47,17 +47,13 @@
         }
         
         .audio-hint {
-            margin-top: 20px; font-size: 0.75rem; color: #00ffaa; opacity: 0.8;
-            animation: pulse 1.5s infinite; font-weight: 600; letter-spacing: 1px;
+            margin-top: 20px; font-size: 0.75rem; color: #00ffaa; opacity: 0.7;
+            font-weight: 600; letter-spacing: 1px;
         }
 
         @keyframes shieldZoomIn {
             0% { transform: scale(0); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
         }
 
         /* ================= 2. MAIN APP CONTAINER ================= */
@@ -149,7 +145,7 @@
             <div class="shield-container"><img src="LOGO.png" alt="Spectra Shield Logo"></div>
             <div class="welcome-box">SPECTRA MANAGEMENT.</div>
             <div class="welcome-subtext">WELCOME TO WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
-            <div class="audio-hint"><i class="fa-solid fa-robot"></i> KETUK LAYAR UNTUK MENDENGAR SUARA ROBOT</div>
+            <div class="audio-hint"><i class="fa-solid fa-microchip"></i> INITIALIZING CYBER SYSTEM...</div>
         </div>
     </div>
 
@@ -248,35 +244,42 @@
     </div>
 
     <script>
-        // ================= ENGINE SUARA ROBOT WELCOME (TEXT-TO-SPEECH) =================
+        // ================= ENGINE SUARA ROBOT PANJANG & OTOMATIS BERBASIS INTERAKSI NATURAL =================
         let speechPlayed = false;
 
-        function playRobotWelcome() {
-            // Memastikan suara hanya berputar satu kali saja per sesi pemuatan halaman
+        function triggerRobotSpeech() {
             if (speechPlayed) return;
 
-            // Mengecek ketersediaan fitur SpeechSynthesis di browser
             if ('speechSynthesis' in window) {
-                // Membuat teks instruksi suara robot
-                let speech = new SpeechSynthesisUtterance("Welcome to Spectra Management");
+                // Sapaan panjang fiksi ilmiah / cyber sci-fi kombinasi
+                let longCyberText = "System online. Welcome to P T Spectra Jaya Abadi official network. Loading database. Access granted. Enjoy your transition.";
+                let speech = new SpeechSynthesisUtterance(longCyberText);
                 
-                // Mengatur ke bahasa Inggris agar lafal "Welcome" terdengar alami dan pas
                 speech.lang = 'en-US'; 
-                
-                // KUNCI SUARA ROBOT: Mengatur laju ketukan dan nada datar kaku
-                speech.pitch = 0.4;  // Nada sangat rendah dan berat (efek cyborg robotik)
-                speech.rate = 0.85;  // Berbicara sedikit lambat agar terkesan misterius / kaku
-                speech.volume = 0.8; // Volume suara tinggi (jelas terdengar)
+                speech.pitch = 0.35; // Dibuat sangat rendah agar efek suara robot/komputer AI terasa kaku berat
+                speech.rate = 0.9;   // Kecepatan diatur pas (tidak terlalu cepat)
+                speech.volume = 0.9;
 
-                // Eksekusi pemutaran suara oleh browser
                 window.speechSynthesis.speak(speech);
                 speechPlayed = true;
+
+                // Hapus event listener begitu suara sukses terpicu sekali
+                removeAllTriggerListeners();
             }
         }
 
-        // Jalankan perintah suara robot begitu pengguna melakukan klik/sentuhan pertama di layar loading
-        window.addEventListener('click', playRobotWelcome);
-        window.addEventListener('touchstart', playRobotWelcome);
+        // Trik Otomatis: Memicu suara lewat gerakan mouse, sentuhan, atau scroll pertama kali di website
+        window.addEventListener('mousemove', triggerRobotSpeech);
+        window.addEventListener('touchmove', triggerRobotSpeech);
+        window.addEventListener('click', triggerRobotSpeech);
+        window.addEventListener('scroll', triggerRobotSpeech);
+
+        function removeAllTriggerListeners() {
+            window.removeEventListener('mousemove', triggerRobotSpeech);
+            window.removeEventListener('touchmove', triggerRobotSpeech);
+            window.removeEventListener('click', triggerRobotSpeech);
+            window.removeEventListener('scroll', triggerRobotSpeech);
+        }
 
         // ================= MATRIX ENGINE =================
         const canvas = document.getElementById('matrix-canvas');
