@@ -9,104 +9,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: #0d1117;
-            color: #ffffff;
-            font-family: 'Urbanist', sans-serif;
-            overflow-x: hidden;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #0d1117; color: #ffffff; font-family: 'Urbanist', sans-serif; overflow-x: hidden; }
 
         /* ================= 1. CYBER GREEN MATRIX LOADING SCREEN ================= */
         #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #000000;
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: #000000; z-index: 9999; display: flex;
+            justify-content: center; align-items: center;
             transition: opacity 0.8s ease, visibility 0.8s;
         }
-
-        #matrix-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        /* Lapisan pelindung tengah agar angka tidak menutupi/mengganggu tulisan & logo */
+        #matrix-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .matrix-mask {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 100%);
             z-index: 2;
         }
-
         .loading-content {
-            position: relative;
-            z-index: 3;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            pointer-events: none;
+            position: relative; z-index: 3; display: flex; flex-direction: column;
+            align-items: center; text-align: center; padding: 20px; pointer-events: none;
         }
-
         .shield-container {
-            width: 190px;
-            height: 190px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 190px; height: 190px; margin-bottom: 25px;
+            display: flex; justify-content: center; align-items: center;
             animation: shieldZoomIn 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             filter: drop-shadow(0 0 30px rgba(0, 255, 170, 0.4));
         }
-
-        .shield-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
+        .shield-container img { width: 100%; height: 100%; object-fit: contain; }
         .welcome-box {
-            background: #ffffff;
-            color: #000000;
-            padding: 6px 18px;
-            font-weight: 800;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+            background: #ffffff; color: #000000; padding: 6px 18px; font-weight: 800;
+            font-size: 0.8rem; letter-spacing: 2px; border-radius: 4px;
+            text-transform: uppercase; box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
         }
-
         .welcome-subtext {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-top: 15px;
-            letter-spacing: 1px;
-            line-height: 1.4;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
+            font-size: 1.2rem; font-weight: 800; color: #ffffff; margin-top: 15px;
+            letter-spacing: 1px; line-height: 1.4; text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
         }
-
         @keyframes shieldZoomIn {
             0% { transform: scale(0); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
@@ -114,336 +52,93 @@
 
         /* ================= 2. MAIN APP CONTAINER ================= */
         #main-app {
-            display: none;
-            max-width: 460px;
-            margin: 0 auto;
-            background: #07090e;
-            min-height: 100vh;
-            padding-bottom: 190px;
-            position: relative;
+            display: none; max-width: 460px; margin: 0 auto; background: #07090e;
+            min-height: 100vh; padding-bottom: 190px; position: relative;
             border-left: 1px solid rgba(255, 255, 255, 0.05);
             border-right: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 0 40px rgba(0,0,0,0.8);
         }
-
-        .top-neon-line {
-            height: 4px;
-            background: linear-gradient(90deg, #00ffaa, #0088ff);
-            width: 100%;
-            box-shadow: 0 2px 20px rgba(0, 255, 170, 0.6);
-        }
-
-        .header-brand {
-            text-align: center;
-            padding: 30px 20px 15px;
-        }
-
-        .badge-spectra {
-            background: #ffffff;
-            color: #000000;
-            font-weight: 800;
-            padding: 5px 14px;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            display: inline-block;
-            margin-bottom: 12px;
-            border-radius: 2px;
-        }
-
-        .title-spectra {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 4px;
-            letter-spacing: 0.5px;
-        }
-
-        /* Ditambahkan style khusus untuk tagline resmi */
-        .tagline-spectra {
-            font-size: 0.75rem;
-            font-style: italic;
-            color: #00ffaa;
-            margin-bottom: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .desc-spectra {
-            font-size: 0.8rem;
-            color: #8492a6;
-            line-height: 1.6;
-            padding: 0 10px;
-        }
-
+        .top-neon-line { height: 4px; background: linear-gradient(90deg, #00ffaa, #0088ff); width: 100%; box-shadow: 0 2px 20px rgba(0, 255, 170, 0.6); }
+        .header-brand { text-align: center; padding: 30px 20px 15px; }
+        .badge-spectra { background: #ffffff; color: #000000; font-weight: 800; padding: 5px 14px; font-size: 0.75rem; letter-spacing: 1px; display: inline-block; margin-bottom: 12px; border-radius: 2px; }
+        .title-spectra { font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; letter-spacing: 0.5px; }
+        .tagline-spectra { font-size: 0.75rem; font-style: italic; color: #00ffaa; margin-bottom: 12px; font-weight: 600; letter-spacing: 0.5px; }
+        .desc-spectra { font-size: 0.8rem; color: #8492a6; line-height: 1.6; padding: 0 10px; }
+        
         .btn-agenda-utama {
-            background: linear-gradient(90deg, #1d4ed8, #2563eb);
-            color: #ffffff;
-            margin: 15px 20px;
-            padding: 14px;
-            border-radius: 25px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            background: linear-gradient(90deg, #1d4ed8, #2563eb); color: #ffffff;
+            margin: 15px 20px; padding: 14px; border-radius: 25px; text-align: center;
+            font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
             box-shadow: 0 4px 15px rgba(29, 78, 216, 0.4);
         }
 
-        .top-tabs {
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            margin-bottom: 25px;
-        }
-
-        .tab-link {
-            padding: 12px 5px;
-            font-size: 0.85rem;
-            color: #8492a6;
-            font-weight: 700;
-            cursor: pointer;
-            position: relative;
-            text-align: center;
-            flex: 1;
-        }
-
+        .top-tabs { display: flex; justify-content: space-between; padding: 0 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); margin-bottom: 25px; }
+        .tab-link { padding: 12px 5px; font-size: 0.85rem; color: #8492a6; font-weight: 700; cursor: pointer; position: relative; text-align: center; flex: 1; }
         .tab-link.active { color: #ffffff; }
+        .tab-link.active::after { content: ''; position: absolute; bottom: -1px; left: 15%; width: 70%; height: 2px; background: #2563eb; box-shadow: 0 -2px 10px #2563eb; }
 
-        .tab-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 15%;
-            width: 70%;
-            height: 2px;
-            background: #2563eb;
-            box-shadow: 0 -2px 10px #2563eb;
-        }
-
-        .page-content {
-            display: none;
-            padding: 0 20px;
-        }
-
+        .page-content { display: none; padding: 0 20px; }
         .page-content.active { display: block; }
 
         /* ================= 3. BERANDA (GRID STRUKTUR ORGANISASI) ================= */
-        .grid-org-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            width: 100%;
-        }
-
-        .card-member.boss {
-            grid-column: span 2;
-            border-left: 4px solid #00ffaa;
-            background: linear-gradient(90deg, rgba(0,255,170,0.04), transparent);
-        }
-
+        .grid-org-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
+        .card-member.boss { grid-column: span 2; border-left: 4px solid #00ffaa; background: linear-gradient(90deg, rgba(0,255,170,0.04), transparent); }
         .card-member {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            padding: 16px 10px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s;
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px; padding: 16px 10px; text-align: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.2s;
         }
-
-        .card-member:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .member-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            object-fit: cover;
-            background: #111520;
-            border: 2px solid #8492a6;
-        }
-
+        .card-member:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.04); }
+        .member-avatar { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 10px; object-fit: cover; background: #111520; border: 2px solid #8492a6; }
         .card-member.boss .member-avatar { border-color: #00ffaa; }
         .card-member.gm { border-left: 3px solid #0088ff; background: linear-gradient(90deg, rgba(0,136,255,0.03), transparent); }
         .card-member.gm .member-avatar { border-color: #0088ff; }
 
-        .member-name {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 4px;
-            line-height: 1.3;
-        }
-
-        .member-role {
-            font-size: 0.68rem;
-            color: #8492a6;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            line-height: 1.2;
-        }
-
+        .member-name { font-size: 0.85rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; line-height: 1.3; }
+        .member-role { font-size: 0.68rem; color: #8492a6; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; line-height: 1.2; }
         .card-member.boss .member-role { color: #00ffaa; }
         .card-member.gm .member-role { color: #0088ff; }
 
-        /* Ditambahkan kontainer informasi tambahan di bagian bawah beranda (Alamat & Kontak Resmi) */
-        .company-info-box {
-            margin-top: 25px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 16px;
-        }
-
-        .info-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #00ffaa;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .info-item {
-            font-size: 0.8rem;
-            color: #cbd5e1;
-            line-height: 1.5;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .info-item i {
-            margin-top: 3px;
-            color: #2563eb;
-            width: 14px;
-        }
+        .company-info-box { margin-top: 25px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 16px; }
+        .info-title { font-size: 0.9rem; font-weight: 700; color: #00ffaa; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .info-item { font-size: 0.8rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; }
+        .info-item i { margin-top: 3px; color: #2563eb; width: 14px; }
 
         /* ================= 4. STYLE ITEM AGENDA ================= */
-        .agenda-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 14px;
-            margin-bottom: 12px;
-        }
-        .agenda-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: #00ffaa;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
+        .agenda-item { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+        .agenda-meta { display: flex; justify-content: space-between; font-size: 0.75rem; color: #00ffaa; font-weight: 700; margin-bottom: 6px; }
 
         /* ================= 5. DATA DAN STRUKTUR TABEL PMR ================= */
-        .spectra-table-container {
-            width: 100%;
-            overflow-x: auto;
-            margin-top: 15px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .spectra-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-            text-align: left;
-        }
-
-        .spectra-table th {
-            background: #111520;
-            color: #00ffaa;
-            padding: 10px;
-            font-weight: 700;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .spectra-table td {
-            padding: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            color: #cbd5e1;
-        }
-
-        .btn-daftar-tabel {
-            background: #00ffaa;
-            color: #000000;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
+        .spectra-table-container { width: 100%; overflow-x: auto; margin-top: 15px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); }
+        .spectra-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; }
+        .spectra-table th { background: #111520; color: #00ffaa; padding: 10px; font-weight: 700; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .spectra-table td { padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #cbd5e1; }
+        .btn-daftar-tabel { background: #00ffaa; color: #000000; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-decoration: none; display: inline-block; text-align: center; }
 
         /* ================= 6. BOTTOM NAVIGATION GRID ================= */
         .bottom-grid-nav {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 460px;
-            background: rgba(7, 9, 14, 0.95);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 12px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            z-index: 999;
+            position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 460px;
+            background: rgba(7, 9, 14, 0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; z-index: 999;
         }
-
         .grid-icon-btn {
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            padding: 10px 2px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            color: #8492a6;
-            font-size: 0.7rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
+            background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 8px;
+            padding: 10px 2px; display: flex; flex-direction: column; align-items: center; gap: 6px; color: #8492a6; font-size: 0.7rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
         }
-
         .grid-icon-btn i { font-size: 1.15rem; }
-
-        .grid-icon-btn.active {
-            color: #2563eb;
-            background: rgba(37, 99, 235, 0.06);
-            border-color: rgba(37, 99, 235, 0.2);
-        }
+        .grid-icon-btn.active { color: #2563eb; background: rgba(37, 99, 235, 0.06); border-color: rgba(37, 99, 235, 0.2); }
     </style>
 </head>
 <body>
 
+    <audio id="loading-audio" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-84.wav" loop></audio>
+
     <div id="loading-screen">
         <canvas id="matrix-canvas"></canvas>
         <div class="matrix-mask"></div>
-        
         <div class="loading-content">
-            <div class="shield-container">
-                <img src="LOGO.png" alt="Spectra Shield Logo">
-            </div>
+            <div class="shield-container"><img src="LOGO.png" alt="Spectra Shield Logo"></div>
             <div class="welcome-box">SPECTRA MANAGEMENT.</div>
             <div class="welcome-subtext">WELCOME TO WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
         </div>
@@ -451,7 +146,6 @@
 
     <div id="main-app">
         <div class="top-neon-line"></div>
-
         <div class="header-brand">
             <div class="badge-spectra">SPECTRA MANAGEMENT.</div>
             <h1 class="title-spectra">PT Spectra Jaya Abadi</h1>
@@ -482,13 +176,11 @@
                     <div class="member-name">RANGGA</div>
                     <div class="member-role">Penasehat Perusahaan</div>
                 </div>
-                
                 <div class="card-member gm">
                     <img class="member-avatar" src="EO.jpeg" alt="SIGIT">
                     <div class="member-name">SIGIT</div>
                     <div class="member-role">General Manager (GM)</div>
                 </div>
-                
                 <div class="card-member">
                     <img class="member-avatar" src="KEAMANAN.png" alt="SOPIAN">
                     <div class="member-name">SOPIAN</div>
@@ -503,43 +195,18 @@
 
             <div class="company-info-box">
                 <div class="info-title"><i class="fa-solid fa-circle-info"></i> Informasi Perusahaan</div>
-                <div class="info-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span><strong>Alamat:</strong> Jl. Desa tanjung baru, Tanjung Baru, Indralaya Utara, Ogan Ilir, Sumatera Selatan</span>
-                </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <span><strong>Hubungi Kami:</strong> +62 821-8507-8701</span>
-                </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span><strong>Email Resmi:</strong> spectrajayaabadi@gmail.com</span>
-                </div>
+                <div class="info-item"><i class="fa-solid fa-location-dot"></i><span><strong>Alamat:</strong> Jl. Desa tanjung baru, Tanjung Baru, Indralaya Utara, Ogan Ilir, Sumatera Selatan</span></div>
+                <div class="info-item"><i class="fa-solid fa-phone"></i><span><strong>Hubungi Kami:</strong> +62 821-8507-8701</span></div>
+                <div class="info-item"><i class="fa-solid fa-envelope"></i><span><strong>Email Resmi:</strong> spectrajayaabadi@gmail.com</span></div>
             </div>
         </div>
 
         <div id="page-agenda" class="page-content">
             <h3 style="font-size:0.95rem; margin-bottom:12px; color:#2563eb;"><i class="fa-solid fa-timeline"></i> Roadmap Agenda Resmi 2026</h3>
-            
-            <div class="agenda-item">
-                <div class="agenda-meta"><span>Maret 2026</span><span>Planning Phase</span></div>
-                <div style="font-size:0.9rem; font-weight:700;">Spectra E-Sports Championship</div>
-            </div>
-
-            <div class="agenda-item">
-                <div class="agenda-meta"><span>Mei 2026</span><span>Execution Phase</span></div>
-                <div style="font-size:0.9rem; font-weight:700;">Spectra PMR Competition (Madya & Wira)</div>
-            </div>
-
-            <div class="agenda-item">
-                <div class="agenda-meta"><span>Agustus 2026</span><span>Special Event</span></div>
-                <div style="font-size:0.9rem; font-weight:700;">Spectra Independence Festival & Pensi</div>
-            </div>
-
-            <div class="agenda-item">
-                <div class="agenda-meta"><span>Oktober 2026</span><span>Closing Event</span></div>
-                <div style="font-size:0.9rem; font-weight:700;">Spectra Youth Creative & UMKM Expo</div>
-            </div>
+            <div class="agenda-item"><div class="agenda-meta"><span>Maret 2026</span><span>Planning Phase</span></div><div style="font-size:0.9rem; font-weight:700;">Spectra E-Sports Championship</div></div>
+            <div class="agenda-item"><div class="agenda-meta"><span>Mei 2026</span><span>Execution Phase</span></div><div style="font-size:0.9rem; font-weight:700;">Spectra PMR Competition (Madya & Wira)</div></div>
+            <div class="agenda-item"><div class="agenda-meta"><span>Agustus 2026</span><span>Special Event</span></div><div style="font-size:0.9rem; font-weight:700;">Spectra Independence Festival & Pensi</div></div>
+            <div class="agenda-item"><div class="agenda-meta"><span>Oktober 2026</span><span>Closing Event</span></div><div style="font-size:0.9rem; font-weight:700;">Spectra Youth Creative & UMKM Expo</div></div>
         </div>
 
         <div id="page-sponsor" class="page-content">
@@ -550,134 +217,82 @@
         <div id="page-mitra" class="page-content">
             <h3 style="font-size:0.95rem; margin-bottom:4px; color:#00ffaa;"><i class="fa-solid fa-file-signature"></i> REGISTRASI PERLOMBAAN SPECTRA PMR 2026</h3>
             <p style="font-size:0.78rem; color:#8492a6; margin-bottom:10px;">Silakan pilih kategori perlombaan resmi tingkat Madya (SMP) dan Wira (SMA) di bawah ini:</p>
-            
             <div class="spectra-table-container">
                 <table class="spectra-table">
-                    <thead>
-                        <tr>
-                            <th>Cabang Lomba</th>
-                            <th>Tingkat</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Cabang Lomba</th><th>Tingkat</th><th>Aksi</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td>Pertolongan Pertama (PP)</td>
-                            <td>Madya & Wira</td>
-                            <td><a class="btn-daftar-tabel" href="#">Daftar</a></td>
-                        </tr>
-                        <tr>
-                            <td>Perawatan Keluarga (PK)</td>
-                            <td>Madya & Wira</td>
-                            <td><a class="btn-daftar-tabel" href="#">Daftar</a></td>
-                        </tr>
-                        <tr>
-                            <td>Tandu Darurat (TD)</td>
-                            <td>Madya & Wira</td>
-                            <td><a class="btn-daftar-tabel" href="#">Daftar</a></td>
-                        </tr>
-                        <tr>
-                            <td>Pasang Bongkar Tenda (PBT)</td>
-                            <td>Wira</td>
-                            <td><a class="btn-daftar-tabel" href="#">Daftar</a></td>
-                        </tr>
+                        <tr><td>Pertolongan Pertama (PP)</td><td>Madya & Wira</td><td><a class="btn-daftar-tabel" href="#">Daftar</a></td></tr>
+                        <tr><td>Perawatan Keluarga (PK)</td><td>Madya & Wira</td><td><a class="btn-daftar-tabel" href="#">Daftar</a></td></tr>
+                        <tr><td>Tandu Darurat (TD)</td><td>Madya & Wira</td><td><a class="btn-daftar-tabel" href="#">Daftar</a></td></tr>
+                        <tr><td>Pasang Bongkar Tenda (PBT)</td><td>Wira</td><td><a class="btn-daftar-tabel" href="#">Daftar</a></td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
         <div class="bottom-grid-nav">
-            <div class="grid-icon-btn active" id="btn-nav-beranda" onclick="switchPage('beranda', this)">
-                <i class="fa-solid fa-house"></i><span>Beranda</span>
-            </div>
-            <div class="grid-icon-btn" id="btn-nav-agenda" onclick="switchPage('agenda', this)">
-                <i class="fa-regular fa-calendar-check"></i><span>Agenda Event</span>
-            </div>
-            <div class="grid-icon-btn" id="btn-nav-sponsor" onclick="switchPage('sponsor', this)">
-                <i class="fa-solid fa-award"></i><span>Sponsor</span>
-            </div>
-            <div class="grid-icon-btn" id="btn-nav-mitra" onclick="switchPage('mitra', this)">
-                <i class="fa-solid fa-school"></i><span>Mitra Sekolah</span>
-            </div>
+            <div class="grid-icon-btn active" id="btn-nav-beranda" onclick="switchPage('beranda', this)"><i class="fa-solid fa-house"></i><span>Beranda</span></div>
+            <div class="grid-icon-btn" id="btn-nav-agenda" onclick="switchPage('agenda', this)"><i class="fa-regular fa-calendar-check"></i><span>Agenda Event</span></div>
+            <div class="grid-icon-btn" id="btn-nav-sponsor" onclick="switchPage('sponsor', this)"><i class="fa-solid fa-award"></i><span>Sponsor</span></div>
+            <div class="grid-icon-btn" id="btn-nav-mitra" onclick="switchPage('mitra', this)"><i class="fa-solid fa-school"></i><span>Mitra Sekolah</span></div>
         </div>
     </div>
 
     <script>
-        // ================= JAVASCRIPT CYBER GREEN MATRIX ENGINE =================
+        const bgAudio = document.getElementById('loading-audio');
+        function startAudioOnInteraction() {
+            if (bgAudio.paused) { bgAudio.play().catch(err => console.log(err)); }
+        }
+        window.addEventListener('click', startAudioOnInteraction);
+        window.addEventListener('touchstart', startAudioOnInteraction);
+
+        // ================= MATRIX ENGINE =================
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        resizeCanvas(); window.addEventListener('resize', resizeCanvas);
 
         const matrixChars = "0123456789X0101101001101";
         const charArray = matrixChars.split("");
-
         const fontSize = 11;
         let columns = canvas.width / fontSize;
         const dropPositions = [];
-
-        for (let i = 0; i < columns; i++) {
-            dropPositions[i] = Math.random() * -150; 
-        }
+        for (let i = 0; i < columns; i++) { dropPositions[i] = Math.random() * -150; }
 
         function drawMatrix() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+            ctx.fillStyle = "rgba(0, 0, 0, 0.04)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.font = "bold " + fontSize + "px monospace";
-
             for (let i = 0; i < dropPositions.length; i++) {
                 const randomChar = charArray[Math.floor(Math.random() * charArray.length)];
-                const xPos = i * fontSize;
-                const yPos = dropPositions[i] * fontSize;
-
-                if (Math.random() > 0.98) {
-                    ctx.fillStyle = "#ffffff"; 
-                    ctx.shadowBlur = 8;
-                    ctx.shadowColor = "#ffffff";
-                } else {
-                    ctx.fillStyle = "#00ffaa";
-                    ctx.shadowBlur = 3;
-                    ctx.shadowColor = "#00ffaa";
-                }
-
-                ctx.fillText(randomChar, xPos, yPos);
-                ctx.shadowBlur = 0; 
-
-                if (yPos > canvas.height && Math.random() * 100 > 98.5) {
-                    dropPositions[i] = 0;
-                }
+                const xPos = i * fontSize; const yPos = dropPositions[i] * fontSize;
+                if (Math.random() > 0.98) { ctx.fillStyle = "#ffffff"; ctx.shadowBlur = 8; ctx.shadowColor = "#ffffff"; }
+                else { ctx.fillStyle = "#00ffaa"; ctx.shadowBlur = 3; ctx.shadowColor = "#00ffaa"; }
+                ctx.fillText(randomChar, xPos, yPos); ctx.shadowBlur = 0;
+                if (yPos > canvas.height && Math.random() * 100 > 98.5) { dropPositions[i] = 0; }
                 dropPositions[i] += 1.5;
             }
         }
-
         const matrixInterval = setInterval(drawMatrix, 22);
 
-        // ================= TIMEOUT LOADING SCREEN 8 DETIK (8000ms) =================
+        // ================= TIMEOUT LOADING SCREEN 8 DETIK =================
         setTimeout(() => {
-            clearInterval(matrixInterval); 
+            clearInterval(matrixInterval);
+            if (!bgAudio.paused) { bgAudio.pause(); }
             const targetScreen = document.getElementById('loading-screen');
             targetScreen.style.opacity = '0';
             setTimeout(() => {
                 targetScreen.style.display = 'none';
                 document.getElementById('main-app').style.display = 'block';
-            }, 800); 
-        }, 8000); 
+            }, 800);
+        }, 8000);
 
-        // ================= ROUTING NAVIGATION SYSTEM =================
+        // ================= ROUTING SYSTEM =================
         function switchPage(pageKey, currentElement) {
             document.querySelectorAll('.page-content').forEach(content => content.classList.remove('active'));
             const targetContentPage = document.getElementById('page-' + pageKey);
             if(targetContentPage) targetContentPage.classList.add('active');
-
             document.querySelectorAll('.tab-link, .grid-icon-btn').forEach(btn => btn.classList.remove('active'));
             currentElement.classList.add('active');
-            
             const matchingTopTab = document.getElementById('tab-top-' + pageKey);
             const matchingBottomNav = document.getElementById('btn-nav-' + pageKey);
             if(matchingTopTab) matchingTopTab.classList.add('active');
