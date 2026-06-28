@@ -45,9 +45,20 @@
             font-size: 1.2rem; font-weight: 800; color: #ffffff; margin-top: 15px;
             letter-spacing: 1px; line-height: 1.4; text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
         }
+        
+        /* Petunjuk interaksi agar pengguna tahu mereka harus klik layar untuk suara */
+        .audio-hint {
+            margin-top: 20px; font-size: 0.75rem; color: #00ffaa; opacity: 0.8;
+            animation: pulse 1.5s infinite; font-weight: 600; letter-spacing: 1px;
+        }
+
         @keyframes shieldZoomIn {
             0% { transform: scale(0); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
         }
 
         /* ================= 2. MAIN APP CONTAINER ================= */
@@ -132,8 +143,6 @@
 </head>
 <body>
 
-    <audio id="loading-audio" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-84.wav" loop></audio>
-
     <div id="loading-screen">
         <canvas id="matrix-canvas"></canvas>
         <div class="matrix-mask"></div>
@@ -141,6 +150,7 @@
             <div class="shield-container"><img src="LOGO.png" alt="Spectra Shield Logo"></div>
             <div class="welcome-box">SPECTRA MANAGEMENT.</div>
             <div class="welcome-subtext">WELCOME TO WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
+            <div class="audio-hint"><i class="fa-solid fa-volume-high"></i> KETUK LAYAR UNTUK SUARA DIGITAL</div>
         </div>
     </div>
 
@@ -239,12 +249,46 @@
     </div>
 
     <script>
-        const bgAudio = document.getElementById('loading-audio');
-        function startAudioOnInteraction() {
-            if (bgAudio.paused) { bgAudio.play().catch(err => console.log(err)); }
+        // ================= JAVASCRIPT MEMBUAT SUARA CHIP/CYBER MURNI TANPA FILE/INTERNET =================
+        let audioCtx = null;
+        let soundInterval = null;
+
+        function playCyberSound() {
+            // Inisialisasi AudioContext begitu pengguna mengetuk layar
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            // Jika interval suara belum jalan, buat loop ketukan nada digital cyber otomatis
+            if (!soundInterval) {
+                soundInterval = setInterval(() => {
+                    if (!audioCtx) return;
+                    
+                    // Membuat komponen synthesizer mini bawaan browser
+                    let osc = audioCtx.createOscillator();
+                    let gainNode = audioCtx.createGain();
+                    
+                    osc.connect(gainNode);
+                    gainNode.connect(audioCtx.destination);
+                    
+                    // Mengatur nada random berkarakter fiksi ilmiah (Sci-Fi Matrix)
+                    osc.type = Math.random() > 0.5 ? 'sine' : 'square';
+                    let frequencies = [400, 600, 800, 1200, 1500, 1800];
+                    osc.frequency.setValueAtTime(frequencies[Math.floor(Math.random() * frequencies.length)], audioCtx.currentTime);
+                    
+                    // Efek suara memudar cepat (Staccato/Bleep)
+                    gainNode.gain.setValueAtTime(0.04, audioCtx.currentTime); // Volume kecil (aman bagi telinga)
+                    gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.15);
+                    
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.15);
+                }, 180); // Berbunyi serasi setiap 180ms mengikuti jatuhnya hujan kode Matrix
+            }
         }
-        window.addEventListener('click', startAudioOnInteraction);
-        window.addEventListener('touchstart', startAudioOnInteraction);
+
+        // Jalankan mesin suara murni begitu layar tersentuh atau diklik pertama kali
+        window.addEventListener('click', playCyberSound);
+        window.addEventListener('touchstart', playCyberSound);
 
         // ================= MATRIX ENGINE =================
         const canvas = document.getElementById('matrix-canvas');
@@ -277,7 +321,15 @@
         // ================= TIMEOUT LOADING SCREEN 8 DETIK =================
         setTimeout(() => {
             clearInterval(matrixInterval);
-            if (!bgAudio.paused) { bgAudio.pause(); }
+            
+            // Matikan loop suara digital saat beralih ke menu utama Beranda
+            if (soundInterval) {
+                clearInterval(soundInterval);
+            }
+            if (audioCtx) {
+                audioCtx.close();
+            }
+
             const targetScreen = document.getElementById('loading-screen');
             targetScreen.style.opacity = '0';
             setTimeout(() => {
