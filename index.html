@@ -46,7 +46,6 @@
             letter-spacing: 1px; line-height: 1.4; text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
         }
         
-        /* Petunjuk interaksi agar pengguna tahu mereka harus klik layar untuk suara */
         .audio-hint {
             margin-top: 20px; font-size: 0.75rem; color: #00ffaa; opacity: 0.8;
             animation: pulse 1.5s infinite; font-weight: 600; letter-spacing: 1px;
@@ -150,7 +149,7 @@
             <div class="shield-container"><img src="LOGO.png" alt="Spectra Shield Logo"></div>
             <div class="welcome-box">SPECTRA MANAGEMENT.</div>
             <div class="welcome-subtext">WELCOME TO WEBSITE RESMI<br>PT SPECTRA JAYA ABADI</div>
-            <div class="audio-hint"><i class="fa-solid fa-volume-high"></i> KETUK LAYAR UNTUK SUARA DIGITAL</div>
+            <div class="audio-hint"><i class="fa-solid fa-robot"></i> KETUK LAYAR UNTUK MENDENGAR SUARA ROBOT</div>
         </div>
     </div>
 
@@ -249,46 +248,35 @@
     </div>
 
     <script>
-        // ================= JAVASCRIPT MEMBUAT SUARA CHIP/CYBER MURNI TANPA FILE/INTERNET =================
-        let audioCtx = null;
-        let soundInterval = null;
+        // ================= ENGINE SUARA ROBOT WELCOME (TEXT-TO-SPEECH) =================
+        let speechPlayed = false;
 
-        function playCyberSound() {
-            // Inisialisasi AudioContext begitu pengguna mengetuk layar
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
+        function playRobotWelcome() {
+            // Memastikan suara hanya berputar satu kali saja per sesi pemuatan halaman
+            if (speechPlayed) return;
 
-            // Jika interval suara belum jalan, buat loop ketukan nada digital cyber otomatis
-            if (!soundInterval) {
-                soundInterval = setInterval(() => {
-                    if (!audioCtx) return;
-                    
-                    // Membuat komponen synthesizer mini bawaan browser
-                    let osc = audioCtx.createOscillator();
-                    let gainNode = audioCtx.createGain();
-                    
-                    osc.connect(gainNode);
-                    gainNode.connect(audioCtx.destination);
-                    
-                    // Mengatur nada random berkarakter fiksi ilmiah (Sci-Fi Matrix)
-                    osc.type = Math.random() > 0.5 ? 'sine' : 'square';
-                    let frequencies = [400, 600, 800, 1200, 1500, 1800];
-                    osc.frequency.setValueAtTime(frequencies[Math.floor(Math.random() * frequencies.length)], audioCtx.currentTime);
-                    
-                    // Efek suara memudar cepat (Staccato/Bleep)
-                    gainNode.gain.setValueAtTime(0.04, audioCtx.currentTime); // Volume kecil (aman bagi telinga)
-                    gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.15);
-                    
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.15);
-                }, 180); // Berbunyi serasi setiap 180ms mengikuti jatuhnya hujan kode Matrix
+            // Mengecek ketersediaan fitur SpeechSynthesis di browser
+            if ('speechSynthesis' in window) {
+                // Membuat teks instruksi suara robot
+                let speech = new SpeechSynthesisUtterance("Welcome to Spectra Management");
+                
+                // Mengatur ke bahasa Inggris agar lafal "Welcome" terdengar alami dan pas
+                speech.lang = 'en-US'; 
+                
+                // KUNCI SUARA ROBOT: Mengatur laju ketukan dan nada datar kaku
+                speech.pitch = 0.4;  // Nada sangat rendah dan berat (efek cyborg robotik)
+                speech.rate = 0.85;  // Berbicara sedikit lambat agar terkesan misterius / kaku
+                speech.volume = 0.8; // Volume suara tinggi (jelas terdengar)
+
+                // Eksekusi pemutaran suara oleh browser
+                window.speechSynthesis.speak(speech);
+                speechPlayed = true;
             }
         }
 
-        // Jalankan mesin suara murni begitu layar tersentuh atau diklik pertama kali
-        window.addEventListener('click', playCyberSound);
-        window.addEventListener('touchstart', playCyberSound);
+        // Jalankan perintah suara robot begitu pengguna melakukan klik/sentuhan pertama di layar loading
+        window.addEventListener('click', playRobotWelcome);
+        window.addEventListener('touchstart', playRobotWelcome);
 
         // ================= MATRIX ENGINE =================
         const canvas = document.getElementById('matrix-canvas');
@@ -321,15 +309,6 @@
         // ================= TIMEOUT LOADING SCREEN 8 DETIK =================
         setTimeout(() => {
             clearInterval(matrixInterval);
-            
-            // Matikan loop suara digital saat beralih ke menu utama Beranda
-            if (soundInterval) {
-                clearInterval(soundInterval);
-            }
-            if (audioCtx) {
-                audioCtx.close();
-            }
-
             const targetScreen = document.getElementById('loading-screen');
             targetScreen.style.opacity = '0';
             setTimeout(() => {
